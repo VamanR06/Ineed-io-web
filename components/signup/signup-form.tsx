@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link'
+import Link from 'next/link';
 import '../../app/globals.css';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -77,8 +77,7 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Already have an account?{' '}
-              <Link href = "/login">Log In</Link>
+              Already have an account? <Link href="/login">Log In</Link>
             </div>
           </form>
         </CardContent>

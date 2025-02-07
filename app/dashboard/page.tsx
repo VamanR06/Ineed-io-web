@@ -1,7 +1,12 @@
-import React from 'react';
+import '../globals.css';
+import React, { JSX } from 'react';
 
-const Dashboard = () => {
-  return <div>This is the Dashboard</div>;
+const Explore: React.FC = (): JSX.Element => {
+  return (
+    <div className="ineed.io-dashboard-page">
+      <h1 className="marg my-64 text-center text-3xl font-bold text-primary">Dashboard Page</h1>
+    </div>
+  );
 };
 
-export default Dashboard;
+export default Explore;

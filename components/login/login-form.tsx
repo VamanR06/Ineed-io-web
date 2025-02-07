@@ -64,10 +64,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{' '}
-              <Link href = "/signup">
-                Sign up
-              </Link>
+              Don&apos;t have an account? <Link href="/signup">Sign up</Link>
             </div>
           </form>
         </CardContent>
