@@ -31,7 +31,13 @@ export const ForgotPasswordForm: React.FC = ({
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Remembered your password? <Link href="/login">Login</Link>
+              Remembered your password?{' '}
+              <Link
+                href="/login"
+                className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+              >
+                Login
+              </Link>
             </div>
           </form>
         </CardContent>

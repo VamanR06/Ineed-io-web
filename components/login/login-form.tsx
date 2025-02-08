@@ -26,11 +26,11 @@ export const LoginForm: React.FC = ({
           <CardDescription>Enter your email below to login to your account</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form method="post" action="/api/auth/signin">
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="m@example.com" required />
+                <Input id="email" type="email" name="email" placeholder="m@example.com" required />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
@@ -44,7 +44,12 @@ export const LoginForm: React.FC = ({
                   </Link>
                 </div>
                 <div className="relative">
-                  <Input id="password" type={showPassword ? 'text' : 'password'} required />
+                  <Input
+                    id="password"
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    required
+                  />
                   <Button
                     type="button"
                     variant="ghost"
@@ -65,7 +70,11 @@ export const LoginForm: React.FC = ({
               </SubmitButton>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account? <Link href="/signup">Sign up</Link>
+              Don&apos;t have an account?{' '}
+              <Link
+                href="/signup"
+                className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+              ></Link>
             </div>
           </form>
         </CardContent>

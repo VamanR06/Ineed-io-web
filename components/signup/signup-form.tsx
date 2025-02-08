@@ -89,7 +89,13 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
               </SubmitButton>
             </div>
             <div className="mt-4 text-center text-sm">
-              Already have an account? <Link href="/login">Log In</Link>
+              Already have an account?{' '}
+              <Link
+                href="/login"
+                className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+              >
+                <u>Log In</u>
+              </Link>
             </div>
           </form>
         </CardContent>
