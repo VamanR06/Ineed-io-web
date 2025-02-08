@@ -16,9 +16,6 @@ export const LoginForm: React.FC = ({
 }: React.ComponentPropsWithoutRef<'div'>) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleMouseDown = () => setShowPassword(true);
-  const handleMouseUp = () => setShowPassword(false);
-
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
@@ -36,30 +33,25 @@ export const LoginForm: React.FC = ({
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
+
+                  <Link
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                    href="/forgot-password"
                   >
-                    Forgot your password?
-                  </a>
+                    Forgot password?
+                  </Link>
                 </div>
                 <div className="relative">
                   <Input id="password" type={showPassword ? 'text' : 'password'} required />
-                  <button
+                  <Button
                     type="button"
-                    className={`absolute right-0 top-0 h-full px-3 py-2 transition-colors ${
-                      showPassword ? 'text-gray-700' : 'text-gray-400'
-                    } hover:text-gray-700`}
-                    onMouseDown={handleMouseDown}
-                    onMouseUp={handleMouseUp}
-                    onMouseLeave={handleMouseUp}
-                    onTouchStart={handleMouseDown}
-                    onTouchEnd={handleMouseUp}
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    onClick={() => setShowPassword(!showPassword)}
                   >
-                    <span>
-                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                    </span>
-                  </button>
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </Button>
                 </div>
               </div>
               <Button type="submit" className="w-full">
