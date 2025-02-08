@@ -41,7 +41,8 @@ export const updateSession = async (request: NextRequest) => {
     }
     if (
       (request.nextUrl.pathname.startsWith('/login') ||
-        request.nextUrl.pathname.startsWith('/signup')) &&
+        request.nextUrl.pathname.startsWith('/signup') ||
+        request.nextUrl.pathname.startsWith('/forgot-password')) &&
       !user.error
     ) {
       return NextResponse.redirect(new URL('/dashboard', request.url));

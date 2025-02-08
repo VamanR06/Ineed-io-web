@@ -13,7 +13,11 @@ export const signUpAction = async (formData: FormData) => {
   const origin = (await headers()).get('origin');
 
   if (!email || !password || !confirmPassword) {
-    return encodedRedirect('error', '/signup', 'Email, password, and confirm password are required');
+    return encodedRedirect(
+      'error',
+      '/signup',
+      'Email, password, and confirm password are required'
+    );
   }
 
   if (password !== confirmPassword) {

@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import '../../app/globals.css';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/login/card';
@@ -12,20 +11,10 @@ import { Label } from '@/components/login/label';
 import { Eye, EyeOff } from 'lucide-react';
 import { signUpAction } from '@/app/actions';
 import { SubmitButton } from '../submit-button';
-import SmtpMessage from '@/app/(auth-pages)/smtp-message';
 
 export function SignupForm({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
-  const [showSmtpMessage, setShowSmtpMessage] = useState<boolean>(false);
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const status = searchParams.get('status');
-    if (status === 'success') {
-      setShowSmtpMessage(true);
-    }
-  }, [searchParams]);
 
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -35,7 +24,7 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
           <CardDescription>Create a new account to get started</CardDescription>
         </CardHeader>
         <CardContent>
-          <form action={signUpAction}>
+          <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -103,7 +92,6 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
               Already have an account? <Link href="/login">Log In</Link>
             </div>
           </form>
-          {showSmtpMessage && <SmtpMessage />}
         </CardContent>
       </Card>
     </div>

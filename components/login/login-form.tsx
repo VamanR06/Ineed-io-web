@@ -8,15 +8,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/login/input';
 import { Label } from '@/components/login/label';
 import { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
-import { SubmitButton } from '../submit-button';
-import { signInAction } from '@/app/actions';
 
 export const LoginForm: React.FC = ({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handleMouseDown = () => setShowPassword(true);
+  const handleMouseUp = () => setShowPassword(false);
 
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -35,34 +35,36 @@ export const LoginForm: React.FC = ({
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-
-                  <Link
+                  <a
+                    href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                    href="/forgot-password"
                   >
-                    Forgot password?
-                  </Link>
+                    Forgot your password?
+                  </a>
                 </div>
                 <div className="relative">
                   <Input id="password" type={showPassword ? 'text' : 'password'} required />
-                  <Button
+                  <button
                     type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                    onClick={() => setShowPassword(!showPassword)}
+                    className={`absolute right-0 top-0 h-full px-3 py-2 transition-colors ${
+                      showPassword ? 'text-gray-700' : 'text-gray-400'
+                    } hover:text-gray-700`}
+                    onMouseDown={handleMouseDown}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseUp}
+                    onTouchStart={handleMouseDown}
+                    onTouchEnd={handleMouseUp}
                   >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                  </Button>
+                    <span className="text-lg">&#128065;</span>
+                    <span className="sr-only">
+                      {showPassword ? 'Hide password' : 'Show password'}
+                    </span>
+                  </button>
                 </div>
               </div>
-              <SubmitButton
-                pendingText="Signing In..."
-                formAction={signInAction}
-                className="w-full"
-              >
+              <Button type="submit" className="w-full">
                 Login
-              </SubmitButton>
+              </Button>
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account? <Link href="/signup">Sign up</Link>
