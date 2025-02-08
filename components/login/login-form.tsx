@@ -9,8 +9,11 @@ import { Input } from '@/components/login/input';
 import { Label } from '@/components/login/label';
 import { useState } from 'react';
 
-export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
-  const [showPassword, setShowPassword] = useState(false);
+export const LoginForm: React.FC = ({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleMouseDown = () => setShowPassword(true);
   const handleMouseUp = () => setShowPassword(false);
@@ -71,4 +74,4 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
       </Card>
     </div>
   );
-}
+};
