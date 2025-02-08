@@ -2,17 +2,30 @@
 
 import Link from 'next/link';
 import '../../app/globals.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/login/card';
 import { Input } from '@/components/login/input';
 import { Label } from '@/components/login/label';
 import { Eye, EyeOff } from 'lucide-react';
+import { signUpAction } from '@/app/actions';
+import { SubmitButton } from '../submit-button';
+import SmtpMessage from '@/app/(auth-pages)/smtp-message';
 
 export function SignupForm({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [showSmtpMessage, setShowSmtpMessage] = useState<boolean>(false);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const status = searchParams.get('status');
+    if (status === 'success') {
+      setShowSmtpMessage(true);
+    }
+  }, [searchParams]);
 
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -22,16 +35,21 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
           <CardDescription>Create a new account to get started</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form action={signUpAction}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="m@example.com" required />
+                <Input id="email" type="email" name="email" placeholder="m@example.com" required />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
-                  <Input id="password" type={showPassword ? 'text' : 'password'} required />
+                  <Input
+                    id="password"
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    required
+                  />
                   <Button
                     type="button"
                     variant="ghost"
@@ -52,6 +70,7 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
                   <Input
                     id="confirmPassword"
                     type={showConfirmPassword ? 'text' : 'password'}
+                    name="confirmPassword"
                     required
                   />
                   <Button
@@ -72,14 +91,19 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
                   </Button>
                 </div>
               </div>
-              <Button type="submit" className="w-full">
+              <SubmitButton
+                pendingText="Signing Up..."
+                formAction={signUpAction}
+                className="w-full"
+              >
                 Sign Up
-              </Button>
+              </SubmitButton>
             </div>
             <div className="mt-4 text-center text-sm">
               Already have an account? <Link href="/login">Log In</Link>
             </div>
           </form>
+          {showSmtpMessage && <SmtpMessage />}
         </CardContent>
       </Card>
     </div>

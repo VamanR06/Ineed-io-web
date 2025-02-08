@@ -39,6 +39,13 @@ export const updateSession = async (request: NextRequest) => {
     if (request.nextUrl.pathname.startsWith('/settings') && user.error) {
       return NextResponse.redirect(new URL('/login', request.url));
     }
+    if (
+      (request.nextUrl.pathname.startsWith('/login') ||
+        request.nextUrl.pathname.startsWith('/signup')) &&
+      !user.error
+    ) {
+      return NextResponse.redirect(new URL('/dashboard', request.url));
+    }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     return NextResponse.next({

@@ -9,6 +9,8 @@ import { Input } from '@/components/login/input';
 import { Label } from '@/components/login/label';
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+import { SubmitButton } from '../submit-button';
+import { signInAction } from '@/app/actions';
 
 export const LoginForm: React.FC = ({
   className,
@@ -54,9 +56,13 @@ export const LoginForm: React.FC = ({
                   </Button>
                 </div>
               </div>
-              <Button type="submit" className="w-full">
+              <SubmitButton
+                pendingText="Signing In..."
+                formAction={signInAction}
+                className="w-full"
+              >
                 Login
-              </Button>
+              </SubmitButton>
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account? <Link href="/signup">Sign up</Link>

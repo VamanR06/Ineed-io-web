@@ -8,12 +8,18 @@ import { redirect } from 'next/navigation';
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get('email')?.toString();
   const password = formData.get('password')?.toString();
+  const confirmPassword = formData.get('confirmPassword')?.toString();
   const supabase = await createClient();
   const origin = (await headers()).get('origin');
 
-  if (!email || !password) {
-    return encodedRedirect('error', '/signup', 'Email and password are required');
+  if (!email || !password || !confirmPassword) {
+    return encodedRedirect('error', '/signup', 'Email, password, and confirm password are required');
   }
+
+  if (password !== confirmPassword) {
+    return encodedRedirect('error', '/signup', 'Passwords do not match');
+  }
+
   const { error } = await supabase.auth.signUp({
     email,
     password,
@@ -21,6 +27,7 @@ export const signUpAction = async (formData: FormData) => {
       emailRedirectTo: `${origin}/auth/callback`,
     },
   });
+
   if (error) {
     console.error(error.code + ' ' + error.message);
     return encodedRedirect('error', '/signup', error.message);
