@@ -74,7 +74,9 @@ export const LoginForm: React.FC = ({
               <Link
                 href="/signup"
                 className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-              ></Link>
+              >
+                Sign Up
+              </Link>
             </div>
           </form>
         </CardContent>

@@ -3,10 +3,11 @@
 import '../../app/globals.css';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/login/card';
 import { Input } from '@/components/login/input';
 import { Label } from '@/components/login/label';
+import { forgotPasswordAction } from '@/app/actions';
+import { SubmitButton } from '../submit-button';
 
 export const ForgotPasswordForm: React.FC = ({
   className,
@@ -20,15 +21,19 @@ export const ForgotPasswordForm: React.FC = ({
           <CardDescription>Enter your email below to reset your password</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form method="post" action="/api/auth/forgot-password">
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="m@example.com" required />
+                <Input id="email" type="email" name="email" placeholder="m@example.com" required />
               </div>
-              <Button type="submit" className="w-full">
+              <SubmitButton
+                pendingText="Resetting password..."
+                formAction={forgotPasswordAction}
+                className="w-full"
+              >
                 Reset Password
-              </Button>
+              </SubmitButton>
             </div>
             <div className="mt-4 text-center text-sm">
               Remembered your password?{' '}
