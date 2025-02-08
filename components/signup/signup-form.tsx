@@ -11,8 +11,8 @@ import { Label } from '@/components/login/label';
 import { Eye, EyeOff } from 'lucide-react';
 
 export function SignupForm({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>

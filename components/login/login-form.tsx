@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/login/input';
 import { Label } from '@/components/login/label';
 import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 
 export const LoginForm: React.FC = ({
   className,
@@ -55,9 +56,8 @@ export const LoginForm: React.FC = ({
                     onTouchStart={handleMouseDown}
                     onTouchEnd={handleMouseUp}
                   >
-                    <span className="text-lg">&#128065;</span>
-                    <span className="sr-only">
-                      {showPassword ? 'Hide password' : 'Show password'}
+                    <span>
+                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </span>
                   </button>
                 </div>
