@@ -13,6 +13,9 @@ const Settings: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col gap-4">
+              <Link href="/settings/update-profile" className="text-blue-500 hover:underline">
+                Update Profile
+              </Link>
               <Link href="/settings/reset-password" className="text-blue-500 hover:underline">
                 Reset Password
               </Link>

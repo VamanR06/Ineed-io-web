@@ -9,10 +9,12 @@ export const signUpAction = async (formData: FormData) => {
   const email = formData.get('email')?.toString();
   const password = formData.get('password')?.toString();
   const confirmPassword = formData.get('confirmPassword')?.toString();
+  const firstName = formData.get('firstName')?.toString();
+  const lastName = formData.get('lastName')?.toString();
   const supabase = await createClient();
   const origin = (await headers()).get('origin');
 
-  if (!email || !password || !confirmPassword) {
+  if (!email || !password || !confirmPassword || !firstName || !lastName) {
     return encodedRedirect(
       'error',
       '/signup',
@@ -29,6 +31,10 @@ export const signUpAction = async (formData: FormData) => {
     password,
     options: {
       emailRedirectTo: `${origin}/auth/callback`,
+      data: {
+        first_name: firstName,
+        last_name: lastName,
+      },
     },
   });
 
