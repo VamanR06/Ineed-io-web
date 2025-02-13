@@ -1,4 +1,3 @@
-import type { User } from '@supabase/supabase-js';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -12,15 +11,11 @@ import {
 import { signOutAction } from '@/app/actions';
 import Link from 'next/link';
 
-interface UserDropdownMenuProps {
-  user: User;
-}
-
-export function UserDropdownMenu({ user }: UserDropdownMenuProps) {
+export function UserDropdownMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">{user.email}</Button>
+        <Button variant="outline">Menu</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>

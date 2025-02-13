@@ -27,6 +27,14 @@ export function SignupForm({ className, ...props }: React.ComponentPropsWithoutR
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
+                <Label htmlFor="firstName">First Name</Label>
+                <Input id="firstName" type="text" name="firstName" placeholder="John" required />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="lastName">Last Name</Label>
+                <Input id="lastName" type="text" name="lastName" placeholder="Doe" required />
+              </div>
+              <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" type="email" name="email" placeholder="m@example.com" required />
               </div>
