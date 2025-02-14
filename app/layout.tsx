@@ -18,7 +18,10 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.variable}>
+      <head>
+        <link rel="icon" href="/images/logo.png" />
+      </head>
+      <body className={`${inter.variable} flex flex-col min-h-screen`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -27,7 +30,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ToastProvider>
             <NavBar />
-            {children}
+            <main className="flex-grow">{children}</main>
             <Toaster />
             <Footer />
           </ToastProvider>

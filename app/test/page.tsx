@@ -1,11 +1,18 @@
-"use client"
+'use client';
 
-import React, { useEffect, useState } from "react"
-import "../globals.css"
-import { createClient } from "@/utils/supabase/client"
+import React, { useEffect, useState } from 'react';
+import '../globals.css';
+import { createClient } from '@/utils/supabase/client';
+
+interface DataTypes {
+  id: string;
+  first_name: string;
+  last_name: string;
+  user_id: string;
+}
 
 const Test: React.FC = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<DataTypes[]>([]);
   const supabase = createClient();
 
   const fetchData = async () => {
@@ -19,10 +26,12 @@ const Test: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const handleInsert = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
     const { error } = await supabase.from('test').insert([
       {
         created_at: new Date(),
@@ -42,13 +51,9 @@ const Test: React.FC = () => {
     <div className="test">
       test
       <button onClick={handleInsert}>Button</button>
-      <div>
-        {data && data.map((item: any) => (
-          <div key={item.id}>{item.first_name}</div>
-        ))}
-      </div>
+      <div>{data && data.map((item) => <div key={item.id}>{item.first_name}</div>)}</div>
     </div>
   );
-}
+};
 
 export default Test;
