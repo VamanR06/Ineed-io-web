@@ -133,3 +133,16 @@ export const signOutAction = async () => {
   await supabase.auth.signOut();
   return redirect('/');
 };
+
+export const deleteAccountAction = async () => {
+  console.log('delete Account triggered');
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user) {
+    const userID = user.id;
+    await supabase.auth.admin.deleteUser(userID);
+    return redirect('/');
+  }
+};
