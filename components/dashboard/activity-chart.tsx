@@ -1,7 +1,6 @@
-'use client';
-
 import { Card } from '@/components/ui/card';
 import { Bar } from 'react-chartjs-2';
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -33,18 +32,25 @@ const options = {
   },
 };
 
-const data = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  datasets: [
-    {
-      data: [65, 59, 80, 81, 56, 55, 40, 88, 45, 95, 75, 85],
-      backgroundColor: '#00ac4f',
-      borderRadius: 6,
-    },
-  ],
-};
-
 export function ActivityChart() {
+  const [data, setData] = useState({
+    labels: [],
+    datasets: [],
+  });
+
+  useEffect(() => {
+    setData({
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [
+        {
+          data: [65, 59, 80, 81, 56, 55, 40, 88, 45, 95, 75, 85],
+          backgroundColor: '#00ac4f',
+          borderRadius: 6,
+        },
+      ],
+    });
+  }, []);
+
   return (
     <Card className="p-6">
       <h2 className="mb-4 text-xl font-semibold">Activity</h2>

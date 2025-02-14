@@ -1,22 +1,24 @@
-'use client';
-
 import { Card } from '@/components/ui/card';
+import React, { useEffect, useState } from 'react';
 
 export function SubmissionsCalendar() {
-  // Generate dummy data for the calendar
-  const generateCalendarData = () => {
-    const data = [];
-    for (let i = 0; i < 52; i++) {
-      const weekData = [];
-      for (let j = 0; j < 7; j++) {
-        weekData.push(Math.floor(Math.random() * 4));
-      }
-      data.push(weekData);
-    }
-    return data;
-  };
+  const [calendarData, setCalendarData] = useState<number[][]>([]);
 
-  const calendarData = generateCalendarData();
+  useEffect(() => {
+    const generateCalendarData = () => {
+      const data = [];
+      for (let i = 0; i < 52; i++) {
+        const weekData = [];
+        for (let j = 0; j < 7; j++) {
+          weekData.push(Math.floor(Math.random() * 4));
+        }
+        data.push(weekData);
+      }
+      return data;
+    };
+
+    setCalendarData(generateCalendarData());
+  }, []);
 
   return (
     <Card className="p-6">
