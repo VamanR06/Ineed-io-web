@@ -15,14 +15,14 @@ const Test: React.FC = () => {
   const [data, setData] = useState<DataTypes[]>([]);
   const supabase = createClient();
 
-  const fetchData = async () => {
+  const fetchData = React.useCallback(async () => {
     const { data, error } = await supabase.from('test').select();
     if (error) {
       console.error('Error fetching data:', error);
     } else {
       setData(data);
     }
-  };
+  }, [supabase]);
 
   useEffect(() => {
     fetchData();

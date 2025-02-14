@@ -19,7 +19,7 @@ const Profile: React.FC = () => {
     };
 
     fetchUser();
-  }, [supabase]);
+  }, [supabase.auth]); // Ensure the dependency array is empty to avoid infinite loops
 
   return (
     <div className="ineed.io-profile-page flex min-h-screen items-center justify-center">

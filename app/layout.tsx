@@ -21,7 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head>
         <link rel="icon" href="/images/logo.png" />
       </head>
-      <body className={`${inter.variable} flex flex-col min-h-screen`}>
+      <body className={`${inter.variable} flex min-h-screen flex-col`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
