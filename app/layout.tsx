@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import NavBar from '@/components/navbar/NavBar';
 import { ToastProvider } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
+import Footer from '@/components/footer/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,7 +18,10 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.variable}>
+      <head>
+        <link rel="icon" href="/images/logo.png" />
+      </head>
+      <body className={`${inter.variable} flex flex-col min-h-screen`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -26,8 +30,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ToastProvider>
             <NavBar />
-            {children}
+            <main className="flex-grow">{children}</main>
             <Toaster />
+            <Footer />
           </ToastProvider>
         </ThemeProvider>
       </body>

@@ -56,7 +56,7 @@ const NavBar = () => {
             <Link href="/" className="flex items-center">
               <Image
                 className="h-8 w-auto"
-                src="/images/mlogo.png"
+                src="/images/logo.png"
                 alt="Logo"
                 width={32}
                 height={32}

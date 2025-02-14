@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import Link from 'next/link';
 
 interface ProfileFormProps extends React.ComponentPropsWithoutRef<'div'> {
   initialProfile?: {
@@ -127,6 +128,13 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
                 onChange={handleInputChange}
                 placeholder="Computer Science"
               />
+            </div>
+            <div>
+              <Link href={'/settings/update-profile'}>
+                <Button type="button" className="w-full" disabled={!isDirty}>
+                  Back
+                </Button>
+              </Link>
             </div>
             <Button type="submit" className="w-full" disabled={!isDirty}>
               Save Changes
