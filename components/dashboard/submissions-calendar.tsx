@@ -1,50 +1,30 @@
-import { Card } from '@/components/ui/card';
-import React, { useEffect, useState } from 'react';
-
 export function SubmissionsCalendar() {
-  const [calendarData, setCalendarData] = useState<number[][]>([]);
-
-  useEffect(() => {
-    const generateCalendarData = () => {
-      const data = [];
-      for (let i = 0; i < 52; i++) {
-        const weekData = [];
-        for (let j = 0; j < 7; j++) {
-          weekData.push(Math.floor(Math.random() * 4));
-        }
-        data.push(weekData);
-      }
-      return data;
-    };
-
-    setCalendarData(generateCalendarData());
-  }, []);
-
+  // This is a simplified version. In a real app, you'd want to generate
+  // this based on actual submission data
   return (
-    <Card className="p-6">
-      <h2 className="mb-4 text-xl font-semibold">Submission Activity</h2>
-      <div className="overflow-x-auto">
-        <div className="inline-flex gap-1">
-          {calendarData.map((week, weekIndex) => (
-            <div key={weekIndex} className="flex flex-col gap-1">
-              {week.map((value, dayIndex) => (
-                <div
-                  key={dayIndex}
-                  className={`h-3 w-3 rounded-sm ${
-                    value === 0
-                      ? 'bg-[#ebedf0]'
-                      : value === 1
-                        ? 'bg-[#9be9a8]'
-                        : value === 2
-                          ? 'bg-[#40c463]'
-                          : 'bg-[#00ac4f]'
-                  }`}
-                />
-              ))}
-            </div>
-          ))}
+    <div className="grid grid-cols-12 gap-2">
+      {Array.from({ length: 12 }).map((_, monthIndex) => (
+        <div key={monthIndex} className="space-y-2">
+          <div className="grid grid-cols-5 gap-1">
+            {Array.from({ length: 25 }).map((_, dayIndex) => (
+              <div
+                key={dayIndex}
+                className="aspect-square rounded-sm bg-blue-100"
+                style={{
+                  opacity: Math.random() > 0.5 ? 0.8 : 0.2,
+                }}
+              />
+            ))}
+          </div>
+          <div className="text-center text-xs text-gray-500">
+            {
+              ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][
+                monthIndex
+              ]
+            }
+          </div>
         </div>
-      </div>
-    </Card>
+      ))}
+    </div>
   );
 }

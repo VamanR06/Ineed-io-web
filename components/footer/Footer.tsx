@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto w-full bg-white shadow-sm dark:bg-[var(--background)]">
+    <footer className="w-fullshadow-sm mt-auto">
       <div className="mx-auto w-full max-w-screen-xl p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link href="/" className="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">

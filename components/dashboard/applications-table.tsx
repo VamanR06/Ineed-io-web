@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Table,
   TableBody,
@@ -7,56 +9,39 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 
-const applications = [
-  {
-    company: 'Google',
-    position: 'Software Engineer Intern',
-    appliedDate: '2024-02-10',
-    status: 'pending',
-    location: 'Mountain View, CA',
-  },
-  {
-    company: 'Microsoft',
-    position: 'Product Manager Intern',
-    appliedDate: '2024-02-08',
-    status: 'rejected',
-    location: 'Redmond, WA',
-  },
-  {
-    company: 'Apple',
-    position: 'iOS Developer Intern',
-    appliedDate: '2024-02-05',
-    status: 'accepted',
-    location: 'Cupertino, CA',
-  },
+const companies = ['Google', 'Microsoft', 'Apple', 'Amazon', 'Facebook', 'Netflix', 'Tesla'];
+const positions = [
+  'Software Engineer Intern',
+  'Product Manager Intern',
+  'iOS Developer Intern',
+  'Data Scientist Intern',
+  'UX Designer Intern',
 ];
+const statuses = ['pending', 'rejected', 'accepted'];
+const locations = [
+  'Mountain View, CA',
+  'Redmond, WA',
+  'Cupertino, CA',
+  'Seattle, WA',
+  'Menlo Park, CA',
+  'Los Gatos, CA',
+  'Palo Alto, CA',
+];
+
+const applications = Array.from({ length: 53 }, (_, i) => ({
+  company: companies[i % companies.length],
+  position: positions[i % positions.length],
+  appliedDate: `2024-02-${(i % 28) + 1}`,
+  status: statuses[i % statuses.length],
+  location: locations[i % locations.length],
+}));
 
 export function ApplicationsTable() {
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-xl font-semibold">Recent Applications</h2>
-        <div className="flex items-center gap-4">
-          <Input placeholder="Search applications..." className="w-[300px]" />
-          <Select defaultValue="newest">
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Sort by" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="newest">Newest First</SelectItem>
-              <SelectItem value="oldest">Oldest First</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
       </div>
       <Table>
         <TableHeader>
@@ -69,8 +54,8 @@ export function ApplicationsTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {applications.map((app) => (
-            <TableRow key={`${app.company}-${app.position}`}>
+          {applications.map((app, index) => (
+            <TableRow key={`${app.company}-${app.position}-${index}`}>
               <TableCell className="font-medium">{app.company}</TableCell>
               <TableCell>{app.position}</TableCell>
               <TableCell>{app.appliedDate}</TableCell>

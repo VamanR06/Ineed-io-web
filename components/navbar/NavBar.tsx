@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ModeToggle } from './ModeToggle';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { UserDropdownMenu } from '../profile/user-dropdown-menu';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -106,6 +108,7 @@ const NavBar = () => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <ModeToggle />
+            <UserDropdownMenu />
           </div>
         </div>
       </div>
@@ -148,6 +151,10 @@ const NavBar = () => {
           >
             FAQ
           </Link>
+          <Avatar>
+            <AvatarImage src="/placeholder.svg" />
+            <AvatarFallback>EV</AvatarFallback>
+          </Avatar>
         </div>
       </div>
     </nav>
