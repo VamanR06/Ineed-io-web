@@ -8,17 +8,20 @@ import { User } from '@/types/user';
 import { createClient } from '@/utils/supabase/client';
 
 const Home: React.FC = () => {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User | null>(null);
+
   useEffect(() => {
     const fetchData = async () => {
       const supabase = await createClient();
       const { data, error } = await supabase.auth.getUser();
       if (!error) {
         setUser(data.user as User);
+        window.location.reload(); // Refresh the page after getting user data
       }
     };
     fetchData();
   }, []);
+
   return (
     <div className="">
       <Head>
