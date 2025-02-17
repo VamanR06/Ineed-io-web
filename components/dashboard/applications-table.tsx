@@ -1,5 +1,6 @@
 'use client';
 
+import { X } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -9,35 +10,36 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import { Application } from '@/types/application';
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 
-const companies = ['Google', 'Microsoft', 'Apple', 'Amazon', 'Facebook', 'Netflix', 'Tesla'];
-const positions = [
-  'Software Engineer Intern',
-  'Product Manager Intern',
-  'iOS Developer Intern',
-  'Data Scientist Intern',
-  'UX Designer Intern',
-];
-const statuses = ['pending', 'rejected', 'accepted'];
-const locations = [
-  'Mountain View, CA',
-  'Redmond, WA',
-  'Cupertino, CA',
-  'Seattle, WA',
-  'Menlo Park, CA',
-  'Los Gatos, CA',
-  'Palo Alto, CA',
-];
+dayjs.extend(advancedFormat);
 
-const applications = Array.from({ length: 53 }, (_, i) => ({
-  company: companies[i % companies.length],
-  position: positions[i % positions.length],
-  appliedDate: `2024-02-${(i % 28) + 1}`,
-  status: statuses[i % statuses.length],
-  location: locations[i % locations.length],
-}));
+export function ApplicationsTable({
+  applications,
+  setApplications,
+}: {
+  applications: Application[];
+  setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
+}) {
+  const handleDelete = (id: string) => {
+    // TODO: Handle delete on the actual database
+    setApplications(applications.filter((app) => `${app.id}` !== id));
+  };
 
-export function ApplicationsTable() {
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between">
@@ -51,14 +53,15 @@ export function ApplicationsTable() {
             <TableHead>Applied Date</TableHead>
             <TableHead>Location</TableHead>
             <TableHead>Status</TableHead>
+            <TableHead className="w-[50px]"></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {applications.map((app, index) => (
-            <TableRow key={`${app.company}-${app.position}-${index}`}>
-              <TableCell className="font-medium">{app.company}</TableCell>
-              <TableCell>{app.position}</TableCell>
-              <TableCell>{app.appliedDate}</TableCell>
+          {applications.map((app) => (
+            <TableRow key={app.id}>
+              <TableCell className="font-medium">{app.company_name}</TableCell>
+              <TableCell>{app.company_name}</TableCell>
+              <TableCell>{dayjs(app.created_at).format('MMMM Do YYYY h:mm A')}</TableCell>
               <TableCell>{app.location}</TableCell>
               <TableCell>
                 <span
@@ -72,6 +75,37 @@ export function ApplicationsTable() {
                 >
                   {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
                 </span>
+              </TableCell>
+              <TableCell>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-muted-foreground hover:text-red-600"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Delete Application</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Are you sure you want to delete the application for {app.company_name}? This
+                        action cannot be undone.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction
+                        className="bg-red-600 hover:bg-red-700"
+                        onClick={() => handleDelete(`${app.id}`)}
+                      >
+                        Delete
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </TableCell>
             </TableRow>
           ))}

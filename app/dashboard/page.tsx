@@ -10,9 +10,11 @@ import { createClient } from '@/utils/supabase/client';
 import React, { useState, useEffect } from 'react';
 import { User } from '@/types/user';
 import { redirect } from 'next/navigation';
+import { Application } from '@/types/application';
 
 const DashboardPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [applications, setApplications] = useState<Application[]>([]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -28,13 +30,33 @@ const DashboardPage: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const client = createClient();
+      const user = await client.auth.getUser();
+
+      const { data, error } = await client
+        .from('internships')
+        .select('*')
+        .eq('user_id', user.data.user?.id);
+
+      if (error) {
+        console.error('Error fetching data:', error);
+      } else {
+        setApplications(data);
+      }
+    };
+
+    fetchData();
+  }, [user]);
+
   return (
     <div className="ineed.io-dashboard.page min-h-screen bg-background p-6">
       <DashboardHeader user={user} />
       <div className="">
         <DashboardMetrics />
         <NewApplicationForm />
-        <ApplicationsTable />
+        <ApplicationsTable applications={applications} setApplications={setApplications} />
       </div>
     </div>
   );
