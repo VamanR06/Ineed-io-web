@@ -53,7 +53,7 @@ const DashboardPage: React.FC = () => {
     <div className="ineed.io-dashboard.page min-h-screen bg-background p-6">
       <DashboardHeader user={user} />
       <div className="">
-        <DashboardMetrics />
+        <DashboardMetrics applications={applications} />
         <NewApplicationForm />
         <ApplicationsTable applications={applications} setApplications={setApplications} />
       </div>

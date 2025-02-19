@@ -9,7 +9,7 @@ export function SubmissionsCalendar() {
             {Array.from({ length: 25 }).map((_, dayIndex) => (
               <div
                 key={dayIndex}
-                className="aspect-square rounded-sm bg-blue-100"
+                className="aspect-square rounded-sm bg-green-500"
                 style={{
                   opacity: Math.random() > 0.5 ? 0.8 : 0.2,
                 }}

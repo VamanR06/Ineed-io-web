@@ -37,6 +37,9 @@ export function ApplicationsTable({
 }) {
   const handleDelete = (id: string) => {
     // TODO: Handle delete on the actual database
+    // LINK: https://supabase.com/docs/reference/javascript/delete
+    // Remember to call .eq() on the "id" column
+    // I.E .eq('id', id)
     setApplications(applications.filter((app) => `${app.id}` !== id));
   };
 
@@ -52,6 +55,7 @@ export function ApplicationsTable({
             <TableHead>Position</TableHead>
             <TableHead>Applied Date</TableHead>
             <TableHead>Location</TableHead>
+            {/* TODO: Add another TableHead called Link */}
             <TableHead>Status</TableHead>
             <TableHead className="w-[50px]"></TableHead>
           </TableRow>
@@ -62,6 +66,7 @@ export function ApplicationsTable({
               <TableCell className="font-medium">{app.company_name}</TableCell>
               <TableCell>{app.company_name}</TableCell>
               <TableCell>{dayjs(app.created_at).format('MMMM Do YYYY h:mm A')}</TableCell>
+              {/* TODO: Remember to add app.link to get all the links for each internship from the database */}
               <TableCell>{app.location}</TableCell>
               <TableCell>
                 <span

@@ -1,7 +1,26 @@
 import { Users2, UserPlus, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { Application } from '@/types/application';
 
-export function DashboardMetrics() {
+export function DashboardMetrics({ applications = [] }: { applications?: Application[] }) {
+  {
+    /* TODO: We need to calculate the total amount of applications the user has, and use that as the total applications
+      Follow these steps in order:
+      1. applications is being passed as a prop, which is an array of Application objects
+      2. console.log(applications) To see what applications look like
+      3. Active applications are applications that have a "pending status". To calculate the total, use filter, and calculate the array length
+      4. Example:
+
+      const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+      const longWords = words.filter(word => word.length > 6);
+
+      5. Total length of array can just be applications.length
+      6. So formula for active applications is pendingApplications.length / applications.length
+      7. Replace Success Rate with Rejection Rate, which is rejectedApplications.length / applications.length (follow similar logic above)
+      8. Replace the metrics array with the variables you created above
+      */
+  }
   const metrics = [
     {
       title: 'Active Applications',

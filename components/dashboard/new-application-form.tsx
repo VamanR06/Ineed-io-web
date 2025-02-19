@@ -25,6 +25,7 @@ export function NewApplicationForm() {
             <Label htmlFor="company">Company Name</Label>
             <Input id="company" placeholder="Enter company name" />
           </div>
+          {/* TODO: Add more input boxes, specifically link and location */}
           <div className="space-y-2">
             <Label htmlFor="role">Role</Label>
             <Input id="role" placeholder="Enter role/position" />
@@ -69,7 +70,11 @@ export function NewApplicationForm() {
             </div>
           </div>
         )}
-
+        {/* TODO: Create function called handleAddApplication at the top of this component, which will insert data into the databse
+        LINK: https://supabase.com/docs/reference/javascript/insert
+        Data that you need to insert (these are the column names): user_id (call supabase.auth.getUser(), and get the id), company_name,
+        status (default to 'pending'), link, location
+    */}
         <Button className="w-full bg-[#00ac4f] hover:bg-[#008f42]">Add Application</Button>
       </form>
     </Card>
