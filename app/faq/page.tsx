@@ -2,6 +2,9 @@ import '../globals.css';
 import React, { JSX } from 'react';
 
 const Explore: React.FC = (): JSX.Element => {
+  {
+    /* TODO: Replace the information down below with relevant questions and answers! Try to come up with questions that people might have (what is this app, how is it competitive, etc.)  */
+  }
   return (
     <div className="ineed.io-faq-page">
       <section>

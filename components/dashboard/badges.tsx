@@ -3,6 +3,9 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import Image from 'next/image';
 
 // Map badge names to image filenames
+{
+  /* TODO: Scour the internet for more badges, and come up with ideas for badges!*/
+}
 const badgeImages: { [key: string]: string } = {
   'Applied to 10+ internships': '/images/10plus.png',
   'Applied to 25+ internships': '/images/25plus.png',

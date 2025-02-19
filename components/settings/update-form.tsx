@@ -18,7 +18,18 @@ interface ProfileFormProps extends React.ComponentPropsWithoutRef<'div'> {
     major: string;
   };
 }
+{
+  /* TODO: Create a function to update the users values in the database, and also make the back button work as well.
+    Make it so the save changes button is disabled if they haven't made changes to the form yet
+    If they try updating their username, make sure it's unique and not already taken
+    Do this by filtering out rows in the database that have the same username as the one they're trying to update to
+    If there are no rows with the same username, then they can update it
+    If there are rows with the same username, then they can't update it
 
+    Their should also be an upload profile picture button that allows them to upload a profile picture
+    This profile picture should be stored in the database as a url (avatar column)
+    */
+}
 export const ProfileForm: React.FC<ProfileFormProps> = ({
   className,
   initialProfile,
