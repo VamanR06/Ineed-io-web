@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ModeToggle } from './ModeToggle';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { UserDropdownMenu } from '../profile/user-dropdown-menu';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@/types/user';
@@ -169,10 +168,6 @@ const NavBar = () => {
           >
             FAQ
           </Link>
-          <Avatar>
-            <AvatarImage src="/placeholder.svg" />
-            <AvatarFallback>EV</AvatarFallback>
-          </Avatar>
         </div>
       </div>
     </nav>

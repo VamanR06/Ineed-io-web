@@ -25,7 +25,7 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  What do you mean by "Figma assets"?
+                  What do you mean by &quot;Figma assets&quot;?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
                   You will have access to download the full Figma project including all of the
@@ -47,7 +47,7 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  What does "lifetime access" exactly mean?
+                  What does &quot;lifetime access&quot; exactly mean?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
                   Once you have purchased either the design, code, or both packages, you will have
@@ -71,9 +71,9 @@ const Explore: React.FC = (): JSX.Element => {
                   How does support work?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  We're aware of the importance of well qualified support, that is why we decided
-                  that support will only be provided by the authors that actually worked on this
-                  project.
+                  We&apos;re aware of the importance of well qualified support, that is why we
+                  decided that support will only be provided by the authors that actually worked on
+                  this project.
                 </p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Feel free to{' '}
@@ -85,7 +85,7 @@ const Explore: React.FC = (): JSX.Element => {
                   >
                     contact us
                   </a>{' '}
-                  and we'll help you out as soon as we can.
+                  and we&apos;ll help you out as soon as we can.
                 </p>
               </div>
               <div className="mb-10">
@@ -105,10 +105,10 @@ const Explore: React.FC = (): JSX.Element => {
                   I want to build more than one project. Is that allowed?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  You can use Windster for an unlimited amount of projects, whether it's a personal
-                  website, a SaaS app, or a website for a client. As long as you don't build a
-                  product that will directly compete with Windster either as a UI kit, theme, or
-                  template, it's fine.
+                  You can use Windster for an unlimited amount of projects, whether it&apos;s a
+                  personal website, a SaaS app, or a website for a client. As long as you don&apos;t
+                  build a product that will directly compete with Windster either as a UI kit,
+                  theme, or template, it&apos;s fine.
                 </p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Find out more information by{' '}
@@ -137,7 +137,7 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  What does "free updates" include?
+                  What does &quot;free updates&quot; include?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
                   The free updates that will be provided is based on the{' '}

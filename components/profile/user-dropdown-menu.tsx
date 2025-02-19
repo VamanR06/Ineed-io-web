@@ -17,7 +17,7 @@ export function UserDropdownMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar>
-          <AvatarImage src="/placeholder.svg" />
+          <AvatarImage src="" />
           <AvatarFallback>EV</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
