@@ -21,6 +21,7 @@ export function DashboardMetrics({ applications = [] }: { applications?: Applica
       8. Replace the metrics array with the variables you created above
       */
   }
+  console.log(applications);
   const metrics = [
     {
       title: 'Active Applications',

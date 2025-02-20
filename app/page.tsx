@@ -6,19 +6,23 @@ import './globals.css';
 import React, { useState, useEffect } from 'react';
 import { User } from '@/types/user';
 import { createClient } from '@/utils/supabase/client';
+import Image from 'next/image';
 
 const Home: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
-
   useEffect(() => {
+    let isMounted = true;
     const fetchData = async () => {
-      const supabase = await createClient();
+      const supabase = createClient();
       const { data, error } = await supabase.auth.getUser();
-      if (!error) {
+      if (!error && isMounted) {
         setUser(data.user as User);
       }
     };
     fetchData();
+    return () => {
+      isMounted = false;
+    };
   }, []);
   return (
     <div className="">
@@ -197,15 +201,19 @@ const Home: React.FC = () => {
       look at landing section for an example */}
       <section className="relative">
         <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 sm:py-16 md:grid md:grid-cols-2 lg:px-6 xl:gap-16">
-          <img
+          <Image
             className="w-full dark:hidden"
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg"
             alt="dashboard image"
+            width={1200} // Set the width of the image
+            height={800} // Set the height of the image
           />
-          <img
+          <Image
             className="hidden w-full dark:block"
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg"
             alt="dashboard image"
+            width={1200} // Set the width of the image
+            height={800} // Set the height of the image
           />
           <div className="mt-4 md:mt-0">
             <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
