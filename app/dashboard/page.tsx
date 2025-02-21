@@ -47,7 +47,7 @@ const DashboardPage: React.FC = () => {
     };
 
     fetchData();
-  }, [user]);
+  }, []);
 
   return (
     <div className="ineed.io-dashboard.page min-h-screen bg-background p-6">
