@@ -22,23 +22,101 @@ export function DashboardMetrics({ applications = [] }: { applications?: Applica
       */
   }
   console.log(applications);
+
+  const filterLast30Days = (applications: Application[]): Application[] => {
+    const now = new Date();
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(now.getDate() - 30);
+
+    return applications.filter((item) => {
+      const date = new Date(item.reminder);
+      return date >= thirtyDaysAgo && date <= now;
+    });
+  };
+
+  const filterPrev30Days = (applications: Application[]): Application[] => {
+    const now = new Date();
+    const thirtyDaysAgo = new Date();
+    const sixtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(now.getDate() - 30);
+    sixtyDaysAgo.setDate(now.getDate() - 60);
+
+    return applications.filter((item) => {
+      const date = new Date(item.reminder);
+      return date <= thirtyDaysAgo && date >= sixtyDaysAgo;
+    });
+  };
+
+  const filter30DaysOrMore = (applications: Application[]): Application[] => {
+    const now = new Date();
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(now.getDate() - 30);
+
+    return applications.filter((item) => {
+      const date = new Date(item.reminder);
+      return date <= thirtyDaysAgo;
+    });
+  };
+
+  const filterActive = (applications: Application[]): Application[] => {
+    return applications.filter((item) => {
+      return item.status === 'Pending';
+    });
+  };
+
+  const pendingApplications = applications.filter((item) => {
+    return item.status === 'Pending';
+  });
+  const currAcceptedApplications = applications.filter((item) => {
+    return item.status === 'Accepted';
+  }).length;
+  const currRejectedApplications = applications.filter((item) => {
+    return item.status === 'Rejected';
+  }).length;
+  const prevAcceptedApplications = filter30DaysOrMore(applications).filter((item) => {
+    return item.status === 'Accepted';
+  }).length;
+  const prevRejectedApplications = filter30DaysOrMore(applications).filter((item) => {
+    return item.status === 'Rejected';
+  }).length;
+  const prevTotalResults = prevAcceptedApplications + prevRejectedApplications;
+  const prevRejectionRate = prevRejectedApplications / prevTotalResults;
+  const currTotalResults = currAcceptedApplications + currRejectedApplications;
+  const currRejectionRate = currRejectedApplications / currTotalResults;
+  const ratePercentChange =
+    Math.round(((currRejectionRate - prevRejectionRate) / prevRejectionRate) * 100 * 10) / 10;
+
+  const recentApplications = filterLast30Days(applications);
+  const prevApplications = filterPrev30Days(applications);
+  const totalCount = applications.length;
+  const pendingCount = pendingApplications.length;
+  const applicationPercentIncrease =
+    prevApplications.length > 0
+      ? Math.round(
+          ((recentApplications.length - prevApplications.length) / prevApplications.length) *
+            100 *
+            10
+        ) / 10
+      : 100;
+
   const metrics = [
     {
       title: 'Active Applications',
-      value: '40/4,800',
-      trend: 16,
+      value: pendingCount + '/' + totalCount,
+      trend: Math.round((pendingCount / totalCount) * 100 * 10) / 10,
       icon: Users2,
+      total: applications.length,
     },
     {
-      title: 'Total Applications',
-      value: '10,823',
-      trend: -1,
+      title: 'Total Applications this Month',
+      value: recentApplications.length,
+      trend: applicationPercentIncrease,
       icon: UserPlus,
     },
     {
-      title: 'Success Rate',
-      value: '64%',
-      trend: 12,
+      title: 'Rejection Rate',
+      value: Math.round(currRejectionRate * 100 * 10) / 10 + '%',
+      trend: ratePercentChange,
       icon: TrendingUp,
     },
   ];
@@ -54,9 +132,15 @@ export function DashboardMetrics({ applications = [] }: { applications?: Applica
             <div>
               <p className="text-sm text-gray-500">{metric.title}</p>
               <p className="text-2xl font-semibold">{metric.value}</p>
-              <p className={`text-sm ${metric.trend > 0 ? 'text-[#00ac4f]' : 'text-red-500'}`}>
-                {metric.trend > 0 ? '↑' : '↓'} {Math.abs(metric.trend)}% this month
-              </p>
+              {metric.title !== 'Active Applications' ? (
+                <p
+                  className={`text-sm ${metric.trend >= 0 ? (metric.title === 'Total Applications this Month' ? 'text-[#00ac4f]' : 'text-red-500') : metric.title === 'Total Applications this Month' ? 'text-red-500' : 'text-[#00ac4f]'}`}
+                >
+                  {metric.trend >= 0 ? '↑' : '↓'} {Math.abs(metric.trend)}% from previous
+                </p>
+              ) : (
+                <p className={`text-sm text-gray-500`}>{Math.abs(metric.trend)}% of total</p>
+              )}
             </div>
           </div>
         </Card>
