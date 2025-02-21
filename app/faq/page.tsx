@@ -2,9 +2,6 @@ import '../globals.css';
 import React, { JSX } from 'react';
 
 const Explore: React.FC = (): JSX.Element => {
-  {
-    /* TODO: Replace the information down below with relevant questions and answers! Try to come up with questions that people might have (what is this app, how is it competitive, etc.)  */
-  }
   return (
     <div className="ineed.io-faq-page">
       <section>
@@ -28,12 +25,13 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  What do you mean by &quot;Figma assets&quot;?
+                  What makes Ineed.io different?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  You will have access to download the full Figma project including all of the
-                  pages, the components, responsive pages, and also the icons, illustrations, and
-                  images included in the screens.
+                  Using Ineed for internship searching allows for an all in one website to help you
+                  progress in landing internships. Here we maximize engagment with users to allow
+                  for a more fluid searching process with engagement. Utilizing all of our different
+                  features allows for all the assitance you need.
                 </p>
               </div>
               <div className="mb-10">
@@ -50,11 +48,11 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  What does &quot;lifetime access&quot; exactly mean?
+                  How do I search for internships?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Once you have purchased either the design, code, or both packages, you will have
-                  access to all of the future updates based on the roadmap, free of charge.
+                  You can search by keyword, location, industry, or company name using the search
+                  bar or filters.
                 </p>
               </div>
               <div className="mb-10">
@@ -71,17 +69,15 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  How does support work?
+                  Can I apply for internships directly through the app?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  We&apos;re aware of the importance of well qualified support, that is why we
-                  decided that support will only be provided by the authors that actually worked on
-                  this project.
+                  Yes, you can apply directly through Ineed.io.
                 </p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Feel free to{' '}
                   <a
-                    href="#"
+                    href="" //INCLUDE LINK FOR SUPPORT
                     className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
                     target="_blank"
                     rel="noreferrer"
@@ -105,13 +101,10 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  I want to build more than one project. Is that allowed?
+                  How do I track my applications?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  You can use Windster for an unlimited amount of projects, whether it&apos;s a
-                  personal website, a SaaS app, or a website for a client. As long as you don&apos;t
-                  build a product that will directly compete with Windster either as a UI kit,
-                  theme, or template, it&apos;s fine.
+                  You can check your application status in the "My Applications" section.
                 </p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Find out more information by{' '}
@@ -119,7 +112,7 @@ const Explore: React.FC = (): JSX.Element => {
                     href="#"
                     className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
                   >
-                    reading the license
+                    going to the profile tab
                   </a>
                   .
                 </p>
@@ -140,18 +133,15 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  What does &quot;free updates&quot; include?
+                  Is Ineed.io free?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  The free updates that will be provided is based on the{' '}
+                  Yes! Ineed.io is free to all users, allowing users to traverse their internship
+                  journey.{' '}
                   <a
                     href="#"
                     className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
-                  >
-                    roadmap
-                  </a>{' '}
-                  that we have laid out for this project. It is also possible that we will provide
-                  extra updates outside of the roadmap as well.
+                  ></a>{' '}
                 </p>
               </div>
               <div className="mb-10">
@@ -168,22 +158,18 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  What does the free version include?
+                  Do I need a resume to apply for internships?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
                   The{' '}
                   <a
                     href="#"
                     className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
-                  >
-                    free version
-                  </a>{' '}
-                  of Windster includes a minimal style guidelines, component variants, and a
-                  dashboard page with the mobile version alongside it.
+                  ></a>{' '}
                 </p>
                 <p className="text-gray-500 dark:text-gray-400">
-                  You can use this version for any purposes, because it is open-source under the MIT
-                  license.
+                  Yes, most companies require a resume. You can upload your resume or create one
+                  using our resume builder.
                 </p>
               </div>
               <div className="mb-10">
@@ -200,17 +186,13 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  What is the difference between Windster and Tailwind UI?
+                  I forgot my password. How can I reset it?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Although both Windster and Tailwind UI are built for integration with Tailwind
-                  CSS, the main difference is in the design, the pages, the extra components and UI
-                  elements that Windster includes.
+                  Click on "Forgot Password" on the login screen and follow the instructions to
+                  reset it.
                 </p>
-                <p className="text-gray-500 dark:text-gray-400">
-                  Additionally, Windster is a project that is still in development, and later it
-                  will include both the application, marketing, and e-commerce UI interfaces.
-                </p>
+                <p className="text-gray-500 dark:text-gray-400"></p>
               </div>
               <div className="mb-10">
                 <h3 className="mb-4 flex items-center text-lg font-medium text-gray-900 dark:text-white">
@@ -226,26 +208,22 @@ const Explore: React.FC = (): JSX.Element => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  Can I use Windster in open-source projects?
+                  How can I increase my chances at landing an internship?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Generally, it is accepted to use Windster in open-source projects, as long as it
-                  is not a UI library, a theme, a template, a page-builder that would be considered
-                  as an alternative to Windster itself.
+                  Keep your profile complete, add relevant skills, upload a professional resume, and
+                  include any certifications or projects.
                 </p>
+                <p className="text-gray-500 dark:text-gray-400"></p>
                 <p className="text-gray-500 dark:text-gray-400">
-                  With that being said, feel free to use this design kit for your open-source
-                  projects.
-                </p>
-                <p className="text-gray-500 dark:text-gray-400">
-                  Find out more information by{' '}
+                  Make sure to complete{' '}
                   <a
-                    href="#"
+                    href="#" //INCLUDE PROFILE LINK
                     className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
                   >
-                    reading the license
-                  </a>
-                  .
+                    your profile
+                  </a>{' '}
+                  if you have not already.
                 </p>
               </div>
             </div>

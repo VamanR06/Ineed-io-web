@@ -10,11 +10,26 @@ import { Calendar as CalendarComponent } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { TimePickerDemo } from './time-picker';
+import { createClient } from '@/utils/supabase/client';
 
 export function NewApplicationForm() {
   const [reminder, setReminder] = useState(false);
   const [date, setDate] = useState<Date>();
   // const [time, setTime] = useState<string>('');
+  const handleAddApplication = async (company_name: string, link: string, location: string) => {
+    event?.preventDefault();
+    console.log(company_name, link, location);
+    const supabase = await createClient();
+    const { error } = await supabase.from('applications').insert([
+      {
+        user_id: (await supabase.auth.getUser()).data?.user?.id,
+        company_name: company_name,
+        status: 'pending',
+        link: link,
+        location: location,
+      },
+    ]);
+  };
 
   return (
     <Card className="p-6">
@@ -30,13 +45,19 @@ export function NewApplicationForm() {
             <Label htmlFor="role">Role</Label>
             <Input id="role" placeholder="Enter role/position" />
           </div>
+          <div className="space-y-2">
+            <Label htmlFor="link">Link</Label>
+            <Input id="link" placeholder="Enter link" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="location">Location</Label>
+            <Input id="location" placeholder="Enter location" />
+          </div>
         </div>
-
         <div className="flex items-center space-x-2">
           <Switch id="reminder" checked={reminder} onCheckedChange={setReminder} />
           <Label htmlFor="reminder">Set Reminder</Label>
         </div>
-
         {reminder && (
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -75,7 +96,15 @@ export function NewApplicationForm() {
         Data that you need to insert (these are the column names): user_id (call supabase.auth.getUser(), and get the id), company_name,
         status (default to 'pending'), link, location
     */}
-        <Button className="w-full bg-[#00ac4f] hover:bg-[#008f42]">Add Application</Button>
+        <Button
+          onClick={() => {
+            handleAddApplication(company_name, link, location);
+          }}
+          className="w-full bg-[#00ac4f] hover:bg-[#008f42]"
+        >
+          {' '}
+          Add Application
+        </Button>
       </form>
     </Card>
   );

@@ -25,6 +25,7 @@ import {
 import { Application } from '@/types/application';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import { createClient } from '@/utils/supabase/client';
 
 dayjs.extend(advancedFormat);
 
@@ -35,27 +36,53 @@ export function ApplicationsTable({
   applications: Application[];
   setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
 }) {
-  const handleDelete = (id: string) => {
-    // TODO: Handle delete on the actual database
-    // LINK: https://supabase.com/docs/reference/javascript/delete
-    // Remember to call .eq() on the "id" column
-    // I.E .eq('id', id)
+  // TODO: ADD CHECKBOX FOR SELECT ALL
+  // setApplications([
+  //   ...applications,
+  //   {
+  //     id: -1,
+  //     company_name: '',
+  //     created_at: '',
+  //     user_id: '',
+  //     reminder: '',
+  //     status: '',
+  //     link: '',
+  //     location: '',
+  //   },
+  // ]);
+
+  // TODO: USE CHECKBOXES TO DELETE MULTIPLE APPLICATIONS OR MARK AS ACCEPTED/REJECTED OR SET REMINDERS
+
+  const handleDelete = async (id: string) => {
+    const supabase = await createClient();
+    const { error } = await supabase.from('internships').delete().eq('id', id);
+
+    if (error) {
+      console.error('Error deleting application:', error.message);
+      return;
+    }
+
+    console.log('Application deleted successfully');
     setApplications(applications.filter((app) => `${app.id}` !== id));
   };
-
+  const handleCheckAll = async (id: string) => {
+    const applicationsTable = document.getElementById('applications-table');
+    const checkboxes = applicationsTable?.querySelectorAll('input[type="checkbox"]');
+  };
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-xl font-semibold">Recent Applications</h2>
       </div>
-      <Table>
+      <Table id="applications-table">
         <TableHeader>
           <TableRow>
+            <TableHead>Select</TableHead>
             <TableHead>Company</TableHead>
             <TableHead>Position</TableHead>
             <TableHead>Applied Date</TableHead>
             <TableHead>Location</TableHead>
-            {/* TODO: Add another TableHead called Link */}
+            <TableHead>Application Link</TableHead>
             <TableHead>Status</TableHead>
             <TableHead className="w-[50px]"></TableHead>
           </TableRow>
@@ -63,17 +90,22 @@ export function ApplicationsTable({
         <TableBody>
           {applications.map((app) => (
             <TableRow key={app.id}>
+              <TableCell>
+                <input type="checkbox" />
+              </TableCell>
               <TableCell className="font-medium">{app.company_name}</TableCell>
               <TableCell>{app.company_name}</TableCell>
-              <TableCell>{dayjs(app.created_at).format('MMMM Do YYYY h:mm A')}</TableCell>
-              {/* TODO: Remember to add app.link to get all the links for each internship from the database */}
+              <TableCell>{dayjs(app.reminder).format('MMMM Do YYYY h:mm A')}</TableCell>
               <TableCell>{app.location}</TableCell>
+              <TableCell>
+                <a href={app.link}>{app.link}</a>
+              </TableCell>
               <TableCell>
                 <span
                   className={`rounded-full px-3 py-1 text-sm ${
-                    app.status === 'accepted'
+                    app.status === 'Accepted'
                       ? 'bg-[#e8faf3] text-[#00ac4f]'
-                      : app.status === 'rejected'
+                      : app.status === 'Rejected'
                         ? 'bg-red-100 text-red-600'
                         : 'bg-yellow-100 text-yellow-600'
                   }`}

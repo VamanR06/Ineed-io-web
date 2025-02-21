@@ -12,10 +12,12 @@ const badgeImages: { [key: string]: string } = {
   'Applied to 100+ internships': '/images/100plus.png',
   'Applied to 200+ internships': '/images/200plus.png',
   'Accepted to an internship': '/images/accepted.png',
-  'Some desc 1': '/images/best.png',
+  'Active 7 days in a row': '/images/best.png',
   'Applied to any internship(s)': '/images/new.png',
-  'Some desc 2': '/images/second.png',
-  'Some desc 3': '/images/third.png',
+  'Active 30 days in a row': '/images/second.png',
+  'Active 365 days in a row': '/images/third.png',
+  //'100 Rejections': '/images/100rejections_badge-min.png',
+  //'1000 Rejections': '/images/1000rejections_badge-min.png',
 };
 
 export function Badges() {

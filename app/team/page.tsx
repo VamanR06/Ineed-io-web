@@ -30,7 +30,7 @@ const TeamPage: React.FC = () => {
               </a>
               <div className="p-5">
                 <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  <a href="#">Bonnie Green</a>
+                  <a href="#">Samuel Konigbagbe</a>
                 </h3>
                 <span className="text-gray-500 dark:text-gray-400">CEO & Web Developer</span>
                 <p className="mb-4 mt-3 font-light text-gray-500 dark:text-gray-400">
@@ -112,7 +112,7 @@ const TeamPage: React.FC = () => {
               </a>
               <div className="p-5">
                 <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  <a href="#">Jese Leos</a>
+                  <a href="#">David Nguyen</a>
                 </h3>
                 <span className="text-gray-500 dark:text-gray-400">CTO</span>
                 <p className="mb-4 mt-3 font-light text-gray-500 dark:text-gray-400">
