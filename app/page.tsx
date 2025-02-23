@@ -1,5 +1,4 @@
 'use client';
-import Head from 'next/head';
 import Link from 'next/link';
 import './globals.css';
 import React, { useState, useEffect } from 'react';
@@ -236,8 +235,9 @@ const Home: React.FC = () => {
               Searching for internships can be overwhelming, but it doesn’t have to be. Our platform
               helps you track applications, set reminders, and stay on top of deadlines
               effortlessly. Get insights into your progress, manage your networking efforts, and
-              streamline your job search—all in one place. Whether you're applying to your first
-              internship or refining your career path, we’re here to keep you focused and on track.
+              streamline your job search—all in one place. Whether you&lsquo;re applying to your
+              first internship or refining your career path, we’re here to keep you focused and on
+              track.
             </p>
             <Link
               href="/login"

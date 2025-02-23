@@ -2,7 +2,7 @@ import { Users2, UserPlus, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Application } from '@/types/application';
 
-export function DashboardMetrics({ applications = [] }: { applications?: Application[] }) {
+export function DashboardMetrics({ applications = [] }: { applications: Application[] }) {
   {
     /* TODO: We need to calculate the total amount of applications the user has, and use that as the total applications
       Follow these steps in order:
@@ -58,12 +58,14 @@ export function DashboardMetrics({ applications = [] }: { applications?: Applica
     });
   };
 
+  /*
   const filterActive = (applications: Application[]): Application[] => {
     return applications.filter((item) => {
       return item.status === 'Pending';
     });
   };
 
+ */
   const pendingApplications = applications.filter((item) => {
     return item.status === 'Pending';
   });

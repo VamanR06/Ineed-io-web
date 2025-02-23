@@ -65,10 +65,12 @@ export function ApplicationsTable({
     console.log('Application deleted successfully');
     setApplications(applications.filter((app) => `${app.id}` !== id));
   };
+  /*
   const handleCheckAll = async (id: string) => {
     const applicationsTable = document.getElementById('applications-table');
     const checkboxes = applicationsTable?.querySelectorAll('input[type="checkbox"]');
   };
+  */
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between">

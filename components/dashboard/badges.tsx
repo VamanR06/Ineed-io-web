@@ -16,8 +16,8 @@ const badgeImages: { [key: string]: string } = {
   'Applied to any internship(s)': '/images/new.png',
   'Active 30 days in a row': '/images/second.png',
   'Active 365 days in a row': '/images/third.png',
-  //'100 Rejections': '/images/100rejections_badge-min.png',
-  //'1000 Rejections': '/images/1000rejections_badge-min.png',
+  '100 Rejections': '/images/100rejections_badge-min.png',
+  '1000 Rejections': '/images/1000rejections_badge-min.png',
 };
 
 export function Badges() {
