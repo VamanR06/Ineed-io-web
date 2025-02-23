@@ -1,5 +1,6 @@
 import '../globals.css';
 import React, { JSX } from 'react';
+import Link from 'next/link';
 
 const Explore: React.FC = (): JSX.Element => {
   return (
@@ -76,14 +77,12 @@ const Explore: React.FC = (): JSX.Element => {
                 </p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Feel free to{' '}
-                  <a
-                    href="" //INCLUDE LINK FOR SUPPORT
+                  <Link
+                    href="/team"
                     className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
-                    target="_blank"
-                    rel="noreferrer"
                   >
                     contact us
-                  </a>{' '}
+                  </Link>{' '}
                   and we&apos;ll help you out as soon as we can.
                 </p>
               </div>
@@ -104,16 +103,17 @@ const Explore: React.FC = (): JSX.Element => {
                   How do I track my applications?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  You can check your application status in the "My Applications" section.
+                  You can check your application status in the &ldquo;My Applications&ldquo;
+                  section.
                 </p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Find out more information by{' '}
-                  <a
-                    href="#"
+                  <Link
+                    href="/profile"
                     className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
                   >
                     going to the profile tab
-                  </a>
+                  </Link>
                   .
                 </p>
               </div>
@@ -137,11 +137,7 @@ const Explore: React.FC = (): JSX.Element => {
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
                   Yes! Ineed.io is free to all users, allowing users to traverse their internship
-                  journey.{' '}
-                  <a
-                    href="#"
-                    className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
-                  ></a>{' '}
+                  journey.
                 </p>
               </div>
               <div className="mb-10">
@@ -160,13 +156,6 @@ const Explore: React.FC = (): JSX.Element => {
                   </svg>
                   Do I need a resume to apply for internships?
                 </h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  The{' '}
-                  <a
-                    href="#"
-                    className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
-                  ></a>{' '}
-                </p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Yes, most companies require a resume. You can upload your resume or create one
                   using our resume builder.
@@ -189,10 +178,9 @@ const Explore: React.FC = (): JSX.Element => {
                   I forgot my password. How can I reset it?
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Click on "Forgot Password" on the login screen and follow the instructions to
-                  reset it.
+                  Click on &ldquo;Forgot Password&ldquo; on the login screen and follow the
+                  instructions to reset it.
                 </p>
-                <p className="text-gray-500 dark:text-gray-400"></p>
               </div>
               <div className="mb-10">
                 <h3 className="mb-4 flex items-center text-lg font-medium text-gray-900 dark:text-white">
@@ -214,15 +202,14 @@ const Explore: React.FC = (): JSX.Element => {
                   Keep your profile complete, add relevant skills, upload a professional resume, and
                   include any certifications or projects.
                 </p>
-                <p className="text-gray-500 dark:text-gray-400"></p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Make sure to complete{' '}
-                  <a
-                    href="#" //INCLUDE PROFILE LINK
+                  <Link
+                    href="/profile"
                     className="text-primary-600 dark:text-primary-500 font-medium underline hover:no-underline"
                   >
                     your profile
-                  </a>{' '}
+                  </Link>{' '}
                   if you have not already.
                 </p>
               </div>

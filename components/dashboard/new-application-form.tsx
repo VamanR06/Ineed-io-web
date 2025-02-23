@@ -10,26 +10,29 @@ import { Calendar as CalendarComponent } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { TimePickerDemo } from './time-picker';
-import { createClient } from '@/utils/supabase/client';
+//import { createClient } from '@/utils/supabase/client';
 
 export function NewApplicationForm() {
   const [reminder, setReminder] = useState(false);
   const [date, setDate] = useState<Date>();
   // const [time, setTime] = useState<string>('');
-  const handleAddApplication = async (company_name: string, link: string, location: string) => {
-    event?.preventDefault();
-    console.log(company_name, link, location);
-    const supabase = await createClient();
-    const { error } = await supabase.from('applications').insert([
-      {
-        user_id: (await supabase.auth.getUser()).data?.user?.id,
-        company_name: company_name,
-        status: 'pending',
-        link: link,
-        location: location,
-      },
-    ]);
-  };
+  // const handleAddApplication = async (company_name: string, link: string, location: string) => {
+  //   event?.preventDefault();
+  //   console.log(company_name, link, location);
+  //   const supabase = await createClient();
+  //   const { error } = await supabase.from('applications').insert([
+  //     {
+  //       user_id: (await supabase.auth.getUser()).data?.user?.id,
+  //       company_name: company_name,
+  //       status: 'pending',
+  //       link: link,
+  //       location: location,
+  //     },
+  //   ]);
+  //   if (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <Card className="p-6">
@@ -98,7 +101,7 @@ export function NewApplicationForm() {
     */}
         <Button
           onClick={() => {
-            handleAddApplication(company_name, link, location);
+            //handleAddApplication(company_name, link, location);
           }}
           className="w-full bg-[#00ac4f] hover:bg-[#008f42]"
         >
