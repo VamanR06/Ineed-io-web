@@ -450,6 +450,15 @@ const users = [
   },
 ];
 
+// TODO: Implement the functionality of the leaderboard. Get the first 50 users (we will set custom number later)
+// and display them in the table. ORDER NEEDS TO BE BASED UPON total_applications COLUMN in the profiles table.
+/* 
+What this means is that the profiles table has every single user on the website, and there is a column attached
+called total_applications. This column is the total amount of applications that the user has made. We need to get
+we need to get the first 50 users from the profiles table, and order them based upon the total_applications column.
+Check out how to order here: https://supabase.com/docs/reference/javascript/order
+*/
+
 export function LeaderboardTable() {
   const [searchQuery, setSearchQuery] = useState('');
 

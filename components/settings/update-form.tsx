@@ -6,30 +6,34 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import Link from 'next/link';
 
 interface ProfileFormProps extends React.ComponentPropsWithoutRef<'div'> {
   initialProfile?: {
+    avatar: string;
+    username: string;
     firstName: string;
     lastName: string;
     age: string;
     college: string;
     gradYear: string;
     major: string;
+    bio: string;
   };
 }
-{
-  /* TODO: Create a function to update the users values in the database, and also make the back button work as well.
-    Make it so the save changes button is disabled if they haven't made changes to the form yet
-    If they try updating their username, make sure it's unique and not already taken
-    Do this by filtering out rows in the database that have the same username as the one they're trying to update to
-    If there are no rows with the same username, then they can update it
-    If there are rows with the same username, then they can't update it
 
-    Their should also be an upload profile picture button that allows them to upload a profile picture
-    This profile picture should be stored in the database as a url (avatar column)
-    */
-}
+/* TODO: Update the users information inside the database 
+Basically, whenever they click the button, take whatever state is currently in the form,
+and update it. This is pretty much the same exact thing as the application form, except
+you are updating the user information instead of the application information.
+Remember, to update the user information, you will need to use the supabase client to
+update the user information in the database. Get the user id from the user object,
+then update the user information in the database, based on the state. For example,
+if the user changes their avatar url ONLY, then you only need to update the avatar url,
+NOTHING ELSE. If the user changes their username, then you only need to update the username,
+NOTHING ELSE, and so on. This is done by checking the length of the state object, and if it is 0,
+this means they don't have anything.
+*/
+
 export const ProfileForm: React.FC<ProfileFormProps> = ({
   className,
   initialProfile,
@@ -37,16 +41,20 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 }) => {
   const [profile, setProfile] = useState(
     initialProfile || {
+      avatar: '',
+      username: '',
       firstName: '',
       lastName: '',
       age: '',
       college: '',
       gradYear: '',
       major: '',
+      bio: '',
     }
   );
 
   const [isDirty, setIsDirty] = useState(false);
+  const [isFormEmpty, setIsFormEmpty] = useState(true);
 
   useEffect(() => {
     const isChanged = Object.keys(profile).some(
@@ -54,6 +62,9 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
         profile[key as keyof typeof profile] !== initialProfile?.[key as keyof typeof profile]
     );
     setIsDirty(isChanged);
+
+    const isEmpty = Object.values(profile).every((value) => value === '');
+    setIsFormEmpty(isEmpty);
   }, [profile, initialProfile]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,9 +74,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here you would typically send the updated profile to your backend
     console.log('Updated profile:', profile);
-    // Reset the dirty state after saving
     setIsDirty(false);
   };
 
@@ -78,6 +87,26 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
       <CardContent>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="avatar">Avatar URL</Label>
+              <Input
+                id="avatar"
+                name="avatar"
+                value={profile.avatar}
+                onChange={handleInputChange}
+                placeholder="https://example.com/avatar.jpg"
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="username">Username</Label>
+              <Input
+                id="username"
+                name="username"
+                value={profile.username}
+                onChange={handleInputChange}
+                placeholder="johndoe"
+              />
+            </div>
             <div className="grid gap-2">
               <Label htmlFor="firstName">First Name</Label>
               <Input
@@ -140,14 +169,17 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
                 placeholder="Computer Science"
               />
             </div>
-            <div>
-              <Link href={'/settings/update-profile'}>
-                <Button type="button" className="w-full" disabled={!isDirty}>
-                  Back
-                </Button>
-              </Link>
+            <div className="grid gap-2">
+              <Label htmlFor="bio">Biography</Label>
+              <Input
+                id="bio"
+                name="bio"
+                value={profile.bio}
+                onChange={handleInputChange}
+                placeholder="Hello, I'm John Doe!"
+              />
             </div>
-            <Button type="submit" className="w-full" disabled={!isDirty}>
+            <Button type="submit" className="w-full" disabled={!isDirty || isFormEmpty}>
               Save Changes
             </Button>
           </div>

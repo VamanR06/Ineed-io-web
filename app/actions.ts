@@ -110,7 +110,7 @@ export const resetPasswordAction = async (formData: FormData) => {
   }
 
   if (password !== confirmPassword) {
-    return encodedRedirect('error', '/settings/reset-password/error', 'Passwords do not match');
+    return encodedRedirect('error', '/settings/account', 'Passwords do not match');
   }
 
   const { error } = await supabase.auth.updateUser({
@@ -118,14 +118,10 @@ export const resetPasswordAction = async (formData: FormData) => {
   });
 
   if (error) {
-    return encodedRedirect('error', '/settings/reset-password', error.message);
+    return encodedRedirect('error', '/settings/account', error.message);
   }
 
-  return encodedRedirect(
-    'success',
-    '/settings/reset-password/complete',
-    'Password updated successfully'
-  );
+  return encodedRedirect('success', '/settings/account', 'Password updated successfully');
 };
 
 export const signOutAction = async () => {
