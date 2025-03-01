@@ -9,6 +9,13 @@ import { createClient } from '@/utils/supabase/client';
 import { User } from '@/types/user';
 import { redirect } from 'next/navigation';
 
+// TODO: Get the user's avatar URL and display it in the navbar
+// This is done by using the supabase client to get the user's information
+// from the database, and then displaying the user's avatar URL in the navbar
+// by using the Image component from next/image. The user's avatar URL is stored
+// in the user object, which is returned from the supabase client. You can access
+// the user's avatar URL by using user.avatar_url. If the user does not have an
+// avatar URL, you can display a default avatar image instead.
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -85,46 +92,46 @@ const NavBar = () => {
               <div className="flex space-x-4">
                 <Link
                   href="/"
-                  className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                  className="rounded-md bg-gray-900 px-3 py-2 text-lg font-medium text-white"
                   aria-current="page"
                 >
                   Home
                 </Link>
                 <Link
                   href="/dashboard"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className="rounded-md px-3 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
                   Dashboard
                 </Link>
                 <Link
                   href="/profile"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className="rounded-md px-3 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
                   Profile
                 </Link>
                 <Link
-                  href="/settings"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  Settings
-                </Link>
-                <Link
                   href="/explore"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className="rounded-md px-3 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
                   Explore
                 </Link>
                 <Link
-                  href="/faq"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  href="/settings"
+                  className="rounded-md px-3 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
-                  FAQ
+                  Settings
                 </Link>
                 <Link
                   href="/team"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className="rounded-md px-3 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
                   Team
+                </Link>
+                <Link
+                  href="/faq"
+                  className="rounded-md px-3 py-2 text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
+                  FAQ
                 </Link>
               </div>
             </div>

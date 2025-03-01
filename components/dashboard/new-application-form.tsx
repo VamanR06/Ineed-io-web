@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -10,29 +10,50 @@ import { Calendar as CalendarComponent } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { TimePickerDemo } from './time-picker';
-//import { createClient } from '@/utils/supabase/client';
+import { createClient } from '@/utils/supabase/client';
+import { User } from '@/types/user';
+import { redirect } from 'next/navigation';
 
 export function NewApplicationForm() {
   const [reminder, setReminder] = useState(false);
   const [date, setDate] = useState<Date>();
-  // const [time, setTime] = useState<string>('');
-  // const handleAddApplication = async (company_name: string, link: string, location: string) => {
-  //   event?.preventDefault();
-  //   console.log(company_name, link, location);
-  //   const supabase = await createClient();
-  //   const { error } = await supabase.from('applications').insert([
-  //     {
-  //       user_id: (await supabase.auth.getUser()).data?.user?.id,
-  //       company_name: company_name,
-  //       status: 'pending',
-  //       link: link,
-  //       location: location,
-  //     },
-  //   ]);
-  //   if (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const [companyName, setCompanyName] = useState('');
+  const [role, setRole] = useState('');
+  const [link, setLink] = useState('');
+  const [location, setLocation] = useState('');
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const fetchUser = async () => {
+        const supabase = await createClient();
+        const { data, error } = await supabase.auth.getUser();
+        if (error) {
+          redirect('/');
+        }
+        setUser(data.user as User);
+      };
+      fetchUser();
+    }
+  }, []);
+
+  const handleAddApplication = async () => {
+    if (user) {
+      const supabase = await createClient();
+      const { error } = await supabase.from('internships').insert({
+        user_id: user.id,
+        company_name: companyName,
+        role: role,
+        status: 'Pending',
+        link: link,
+        location: location,
+        reminder: date,
+      });
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <Card className="p-6">
@@ -41,20 +62,42 @@ export function NewApplicationForm() {
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="company">Company Name</Label>
-            <Input id="company" placeholder="Enter company name" />
+            <Input
+              id="company"
+              placeholder="Enter company name"
+              required
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+            />
           </div>
-          {/* TODO: Add more input boxes, specifically link and location */}
           <div className="space-y-2">
             <Label htmlFor="role">Role</Label>
-            <Input id="role" placeholder="Enter role/position" />
+            <Input
+              id="role"
+              placeholder="Enter role/position"
+              required
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="link">Link</Label>
-            <Input id="link" placeholder="Enter link" />
+            <Input
+              id="link"
+              placeholder="Enter link"
+              required
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="location">Location</Label>
-            <Input id="location" placeholder="Enter location" />
+            <Input
+              id="location"
+              placeholder="Enter location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
           </div>
         </div>
         <div className="flex items-center space-x-2">
@@ -94,18 +137,7 @@ export function NewApplicationForm() {
             </div>
           </div>
         )}
-        {/* TODO: Create function called handleAddApplication at the top of this component, which will insert data into the databse
-        LINK: https://supabase.com/docs/reference/javascript/insert
-        Data that you need to insert (these are the column names): user_id (call supabase.auth.getUser(), and get the id), company_name,
-        status (default to 'pending'), link, location
-    */}
-        <Button
-          onClick={() => {
-            //handleAddApplication(company_name, link, location);
-          }}
-          className="w-full bg-[#00ac4f] hover:bg-[#008f42]"
-        >
-          {' '}
+        <Button onClick={handleAddApplication} className="w-full bg-[#00ac4f] hover:bg-[#008f42]">
           Add Application
         </Button>
       </form>

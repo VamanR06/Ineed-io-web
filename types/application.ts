@@ -7,4 +7,5 @@ export interface Application {
   status: string;
   link: string;
   location: string;
+  role: string;
 }
