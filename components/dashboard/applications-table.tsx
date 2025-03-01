@@ -85,6 +85,7 @@ export function ApplicationsTable({
             <TableHead>Applied Date</TableHead>
             <TableHead>Location</TableHead>
             <TableHead>Application Link</TableHead>
+            <TableHead>Role</TableHead>
             <TableHead>Status</TableHead>
             <TableHead className="w-[50px]"></TableHead>
           </TableRow>
@@ -97,11 +98,12 @@ export function ApplicationsTable({
               </TableCell>
               <TableCell className="font-medium">{app.company_name}</TableCell>
               <TableCell>{app.company_name}</TableCell>
-              <TableCell>{dayjs(app.reminder).format('MMMM Do YYYY h:mm A')}</TableCell>
+              <TableCell>{dayjs(app.created_at).format('MMMM Do YYYY h:mm A')}</TableCell>
               <TableCell>{app.location}</TableCell>
               <TableCell>
                 <a href={app.link}>{app.link}</a>
               </TableCell>
+              <TableCell>{app.role}</TableCell>
               <TableCell>
                 <span
                   className={`rounded-full px-3 py-1 text-sm ${
