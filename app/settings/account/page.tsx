@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { SidebarNav } from '@/components/settings/sidebar-nav';
 import { Separator } from '@/components/ui/separator';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -25,6 +25,25 @@ const AccountSettingsPage: React.FC = () => {
   const [resetPasswordStatus, setResetPasswordStatus] = useState<'idle' | 'success' | 'error'>(
     'idle'
   );
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AccountSettingsContent
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        resetPasswordStatus={resetPasswordStatus}
+        setResetPasswordStatus={setResetPasswordStatus}
+      />
+    </Suspense>
+  );
+};
+
+const AccountSettingsContent: React.FC<{
+  activeSection: 'profile' | 'password' | 'delete';
+  setActiveSection: React.Dispatch<React.SetStateAction<'profile' | 'password' | 'delete'>>;
+  resetPasswordStatus: 'idle' | 'success' | 'error';
+  setResetPasswordStatus: React.Dispatch<React.SetStateAction<'idle' | 'success' | 'error'>>;
+}> = ({ activeSection, setActiveSection, resetPasswordStatus, setResetPasswordStatus }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -36,7 +55,7 @@ const AccountSettingsPage: React.FC = () => {
       setResetPasswordStatus('error');
       router.replace('/settings/account');
     }
-  }, [searchParams, router]);
+  }, [searchParams, router, setResetPasswordStatus]);
 
   return (
     <div className="space-y-6 p-10 pb-16">
