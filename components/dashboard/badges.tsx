@@ -7,13 +7,16 @@ import Image from 'next/image';
   /* TODO: Scour the internet for more badges, and come up with ideas for badges!*/
 }
 const badgeImages: { [key: string]: string } = {
+  'Applied to any internship(s)': '/images/new.png',
   'Applied to 10+ internships': '/images/10plus.png',
   'Applied to 25+ internships': '/images/25plus.png',
+  'Applied to 50+ internships': '/images/50plus.png',
   'Applied to 100+ internships': '/images/100plus.png',
   'Applied to 200+ internships': '/images/200plus.png',
   'Accepted to an internship': '/images/accepted.png',
+  'Accepted to 5 internships': '/images/accepted5.png',
+  'Accepted to 10 internships': '/images/accepted10.png',
   'Active 7 days in a row': '/images/best.png',
-  'Applied to any internship(s)': '/images/new.png',
   'Active 30 days in a row': '/images/second.png',
   'Active 365 days in a row': '/images/third.png',
   '100 Rejections': '/images/100rejections_badge-min.png',
