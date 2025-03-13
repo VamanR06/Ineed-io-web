@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 //TODO: Add functionality to get the total amount of users from the database, and then display it in the text below
+// Check out how to get row count here: https://stackoverflow.com/questions/65612167/how-to-get-count-in-supabase
 export function LeaderboardHeader() {
   return (
     <div className="flex items-center justify-between">
