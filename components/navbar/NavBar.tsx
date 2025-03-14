@@ -36,7 +36,7 @@ const NavBar = () => {
       };
       fetchUser();
     }
-  }, [user]);
+  }, []);
 
   return (
     <nav className="bg-black">
