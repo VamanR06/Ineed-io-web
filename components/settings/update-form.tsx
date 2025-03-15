@@ -38,6 +38,9 @@ NOTHING ELSE, and so on. This is done by checking the length of the state object
 this means they don't have anything.
 */
 
+/*NOTE: currently age is not in the table in supabase, 
+not sure how to add more rows or if theres a cap or anything*/
+
 export const ProfileForm: React.FC<ProfileFormProps> = ({
   className,
   initialProfile,
