@@ -12,12 +12,12 @@ import {
 import { signOutAction } from '@/app/actions';
 import Link from 'next/link';
 
-export function UserDropdownMenu() {
+export function UserDropdownMenu({avatar}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar>
-          <AvatarImage src="" />
+          <AvatarImage src={avatar} />
           <AvatarFallback>EV</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
