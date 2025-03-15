@@ -58,18 +58,30 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 
   const [isDirty, setIsDirty] = useState(false);
   const [isFormEmpty, setIsFormEmpty] = useState(true);
-  const [user, setUser] = useState<Profile | null>();
+  const [user, setUser] = useState<Profile | null>(null);
+
+  //fetch user info from SupaBase client on initial render
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    console.log('User:', user);
+  }, [user]);
 
   const fetchUser = async () => {
+    console.log('fetchUser called');
     const supabase = createClient();
     const { data, error } = await supabase.auth.getUser();
+    if (error) {
+      console.error(error);
+    }
 
     const dbUser = await supabase.from('profiles').select('*').eq('id', data.user?.id);
     setUser(dbUser.data?.at(0));
   };
 
   useEffect(() => {
-    fetchUser();
     const isChanged = Object.keys(profile).some(
       (key) =>
         profile[key as keyof typeof profile] !== initialProfile?.[key as keyof typeof profile]
@@ -90,7 +102,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 
     console.log('Updated profile:', profile);
     //need to "upsert" data (allows you to insert a new row if it does not exist, or update it if it does.)
-    for (const key in profile) setIsDirty(false);
+    //for (const key in profile) setIsDirty(false);
   };
 
   return (
