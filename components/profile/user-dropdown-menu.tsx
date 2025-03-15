@@ -12,12 +12,16 @@ import {
 import { signOutAction } from '@/app/actions';
 import Link from 'next/link';
 
-export function UserDropdownMenu() {
+interface DropdownMenuProps {
+  avatar: string | null;
+}
+
+export function UserDropdownMenu({ avatar }: DropdownMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar>
-          <AvatarImage src="" />
+          <AvatarImage src={avatar ? avatar : undefined} />
           <AvatarFallback>EV</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

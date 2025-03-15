@@ -13,14 +13,37 @@ const badgeImages: { [key: string]: string } = {
   'Applied to 50+ internships': '/images/50plus.png',
   'Applied to 100+ internships': '/images/100plus.png',
   'Applied to 200+ internships': '/images/200plus.png',
-  'Accepted to an internship': '/images/accepted.png',
+  'Breaking In: Accepted to an internship': '/images/accepted.png',
   'Accepted to 5 internships': '/images/accepted5.png',
   'Accepted to 10 internships': '/images/accepted10.png',
-  'Active 7 days in a row': '/images/best.png',
+  'Active 7 days in a row': '/images/third.png',
   'Active 30 days in a row': '/images/second.png',
-  'Active 365 days in a row': '/images/third.png',
+  'Active 365 days in a row': '/images/best.png',
+  'First Bruise': '/images/firstbruise.webp',
   '100 Rejections': '/images/100rejections_badge-min.png',
   '1000 Rejections': '/images/1000rejections_badge-min.png',
+  'Applied to a FAANG company': '/images/cash.png',
+  'Accepted by a FAANG company': '/images/party.svg',
+  'Applied to all FAANG companies': '/images/please.svg',
+  'Accepted by all FAANG companies': '/images/demon.png',
+  'Rejected by all FAANG companies': '/images/sad.png',
+
+  // Profile Achievements (maybe include joining a group)
+  'Profile Pioneer': '/images/logo.png',
+  'Joining a Group': '/images/teamwork.webp',
+
+  // Special Scenarios
+  'High Roller: Accepted by 3 internships in one day': '/images/highroller.webp', // 3 in the same day
+  'Bouncing Back: Applying after 50 rejections': '/images/bouncingback.webp', // applying even after 50 rejections
+
+  // Event Achievements
+  'Early bird gets the worm: Apply at the start of internship season': '/images/earlybird.webp',
+
+  // Rank Achievements
+  // 'Achieve Top 10% Appliers': '/images/top10percent.webp',
+  // 'Achieve Top 1% Appliers': '/images/top1percent.webp',
+  // 'Achieve Top 10 Appliers': '/images/top10.webp',
+  'Achieve the Number 1 Applier': '/images/top1.webp',
 };
 
 export function Badges() {

@@ -23,6 +23,8 @@ const NavBar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const [user, setUser] = useState<User | null>(null);
+  // TODO create the state for the avatar image
+  const [avatarImage, setAvatarImage] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -34,10 +36,33 @@ const NavBar = () => {
           redirect('/');
         }
         setUser(data.user as User);
+        // const client = createClient();
+        //}
       };
       fetchUser();
     }
+  }, []);
+
+  useEffect(() => {
+    if (!user) return; // only fetch avatar if user exists
+    const fetchAvatar = async () => {
+      const supabase = await createClient();
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('avatar')
+        .eq('id', user.id)
+        .single();
+      if (error) {
+        console.error('Error fetching avatar:', error);
+      } else {
+        setAvatarImage(data?.avatar || null);
+        console.log('Avatar fetched:', data?.avatar);
+      }
+    };
+
+    fetchAvatar();
   }, [user]);
+  //console.log(avatarImage);
 
   return (
     <nav className="bg-black">
@@ -139,7 +164,7 @@ const NavBar = () => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <ModeToggle />
-            {user ? <UserDropdownMenu /> : <></>}
+            {user ? <UserDropdownMenu avatar={avatarImage} /> : <></>}
           </div>
         </div>
       </div>
