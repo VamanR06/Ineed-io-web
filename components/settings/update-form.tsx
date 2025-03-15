@@ -109,22 +109,23 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 
     //need to "upsert" data (allows you to insert a new row if it does not exist, or update it if it does.)
     const profileFields = Object.keys(profile);
-    for (let i = 0; i < profileFields.length; i++) {
-      const key = profileFields[i] as keyof typeof profile;
-      if (profile[key] === '') {
-        continue;
+    if (user) {
+      for (let i = 0; i < profileFields.length; i++) {
+        const key = profileFields[i] as keyof typeof profile;
+        if (profile[key] === '') {
+          continue;
+        }
+
+        const { data, error } = await supabase
+          .from('profiles')
+          .upsert({ id: user.id, [key]: profile[key] });
+
+        if (error) {
+          console.log(error.message);
+          console.error(error);
+        }
+        console.log(`${key}: ${profile[key]}`);
       }
-
-      const { data, error } = await supabase
-        .from('profiles')
-        .upsert({ id: [i], [key]: profile[key] });
-
-      if (error) {
-        console.log(error.message);
-        console.error(error);
-      }
-
-      console.log(`${key}: ${profile[key]}`);
     }
   };
 
