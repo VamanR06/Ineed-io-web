@@ -31,38 +31,36 @@ const NavBar = () => {
       const fetchUser = async () => {
         const supabase = await createClient();
         const { data, error } = await supabase.auth.getUser();
-        let avatarData = "";
         if (error) {
           redirect('/');
         }
         setUser(data.user as User);
         // const client = createClient();
-      //}
-
+        //}
       };
       fetchUser();
     }
   }, []);
 
   useEffect(() => {
-    const fetchAvatar = async() => {
+    if (!user) return; // only fetch avatar if user exists
+    const fetchAvatar = async () => {
       const supabase = await createClient();
-      const { data, error} = await supabase
+      const { data, error } = await supabase
         .from('profiles')
         .select('avatar')
-        .eq('id', user?.id)
+        .eq('id', user.id)
         .single();
-        if (error) {
-          console.error('Error fetching avatar:', error);
-        } 
-        else {
-          setAvatarImage(data?.avatar || null);
-          console.log("Avatar fetched:", data?.avatar);
-        }
-      };
+      if (error) {
+        console.error('Error fetching avatar:', error);
+      } else {
+        setAvatarImage(data?.avatar || null);
+        console.log('Avatar fetched:', data?.avatar);
+      }
+    };
 
-      fetchAvatar();
-    }, []);
+    fetchAvatar();
+  }, [user]);
   //console.log(avatarImage);
 
   return (

@@ -46,14 +46,15 @@ export function LeaderboardTable() {
   useEffect(() => {
     const fetchProfiles = async () => {
       const client = await createClient();
-
       const { data, error } = await client
         .from('profiles')
-        .select('id, first_name, last_name, total_applications')
-        .order('total_applications', { ascending: false });
+        .select('id, firstName, lastName, total_applications')
+        .order('total_applications', { ascending: false })
+        .limit(50);
 
+      console.log(data);
       if (error) {
-        console.error(error);
+        console.error(error.message || error); // improved logging
         setError(error);
         return;
       } else {
@@ -66,7 +67,7 @@ export function LeaderboardTable() {
         ? data.map((item) => {
             const newItem: Profile = {
               id: item.id,
-              name: `${item.first_name} ${item.last_name}`,
+              name: `${item.firstName} ${item.lastName}`,
               avatar: '/placeholder.svg',
               score: users[idx].score,
               age: users[idx].age,

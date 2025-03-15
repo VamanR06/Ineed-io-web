@@ -39,13 +39,11 @@ const badgeImages: { [key: string]: string } = {
   // Event Achievements
   'Early bird gets the worm: Apply at the start of internship season': '/images/earlybird.webp',
 
-
   // Rank Achievements
   // 'Achieve Top 10% Appliers': '/images/top10percent.webp',
   // 'Achieve Top 1% Appliers': '/images/top1percent.webp',
   // 'Achieve Top 10 Appliers': '/images/top10.webp',
   'Achieve the Number 1 Applier': '/images/top1.webp',
-
 };
 
 export function Badges() {

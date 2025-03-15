@@ -19,10 +19,10 @@ export function LeaderboardHeader() {
       console.log('Fetching user count...');
 
       const { data, count, error } = await supabase
-        .from('profiles') 
-        .select('*', { count: 'exact', head: true }); 
+        .from('profiles')
+        .select('*', { count: 'exact', head: true });
 
-      console.log('Raw response:', { data, count, error }); 
+      console.log('Raw response:', { data, count, error });
 
       if (error) {
         console.error('Error fetching user count:', error);
