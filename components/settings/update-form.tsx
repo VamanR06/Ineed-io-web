@@ -88,6 +88,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
   };
 
   useEffect(() => {
+    fetchUser();
     const isChanged = Object.keys(profile).some(
       (key) =>
         profile[key as keyof typeof profile] !== initialProfile?.[key as keyof typeof profile]
@@ -104,7 +105,9 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
 
     console.log('Updated profile:', profile);
 
