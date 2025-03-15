@@ -62,10 +62,8 @@ const NavBar = () => {
       };
 
       fetchAvatar();
-    }, [user]);
+    }, []);
   //console.log(avatarImage);
-
-
 
   return (
     <nav className="bg-black">
