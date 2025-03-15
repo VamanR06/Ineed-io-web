@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { createClient } from '@/utils/supabase/client';
 //import { User } from '@/types/user';
 import { Profile } from '@/types/profile';
+import { SupabaseClient } from '@supabase/supabase-js';
 
 interface ProfileFormProps extends React.ComponentPropsWithoutRef<'div'> {
   initialProfile?: {
@@ -59,6 +60,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
   const [isDirty, setIsDirty] = useState(false);
   const [isFormEmpty, setIsFormEmpty] = useState(true);
   const [user, setUser] = useState<Profile | null>(null);
+  const [supabaseClient, setSupabaseClient] = useState<SupabaseClient | null>(null);
 
   //fetch user info from SupaBase client on initial render
   useEffect(() => {
@@ -72,6 +74,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
   const fetchUser = async () => {
     console.log('fetchUser called');
     const supabase = createClient();
+    setSupabaseClient(supabase);
     const { data, error } = await supabase.auth.getUser();
     if (error) {
       console.error(error);
@@ -101,8 +104,28 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
     e.preventDefault();
 
     console.log('Updated profile:', profile);
+
+    const supabase = createClient();
+
     //need to "upsert" data (allows you to insert a new row if it does not exist, or update it if it does.)
-    //for (const key in profile) setIsDirty(false);
+    const profileFields = Object.keys(profile);
+    for (let i = 0; i < profileFields.length; i++) {
+      const key = profileFields[i] as keyof typeof profile;
+      if (profile[key] === '') {
+        continue;
+      }
+
+      const { data, error } = await supabase
+        .from('profiles')
+        .upsert({ id: [i], [key]: profile[key] });
+
+      if (error) {
+        console.log(error.message);
+        console.error(error);
+      }
+
+      console.log(`${key}: ${profile[key]}`);
+    }
   };
 
   return (
