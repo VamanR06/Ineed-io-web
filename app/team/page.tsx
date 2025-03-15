@@ -19,8 +19,7 @@ const TeamPage: React.FC = () => {
             </p>
           </div>
           <div className="mb-6 grid gap-8 md:grid-cols-2 lg:mb-16">
-
-          <div className="items-center rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 sm:flex">
+            <div className="items-center rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 sm:flex">
               <a href="#">
                 {/*Lets have this be the image each person's account pfp*/}
                 <Image
@@ -40,37 +39,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -109,37 +122,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -178,37 +205,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -247,37 +288,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -316,37 +371,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -385,37 +454,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -454,37 +537,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -503,7 +600,7 @@ const TeamPage: React.FC = () => {
               </div>
             </div>
 
-          <div className="items-center rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 sm:flex">
+            <div className="items-center rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 sm:flex">
               <a href="#">
                 {/*Lets have this be the image each person's account pfp*/}
                 <Image
@@ -523,37 +620,51 @@ const TeamPage: React.FC = () => {
                   Computer Science and Mathematics
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="https://www.linkedin.com/in/davidt-nguyen/" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="https://www.linkedin.com/in/davidt-nguyen/"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="https://github.com/dtnguyen0" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="https://github.com/dtnguyen0"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="https://davidn.netlify.app/" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="https://davidn.netlify.app/"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -592,37 +703,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -640,7 +765,7 @@ const TeamPage: React.FC = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="items-center rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 sm:flex">
               <a href="#">
                 {/*Lets have this be the image each person's account pfp*/}
@@ -661,37 +786,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -730,37 +869,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -799,37 +952,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -868,37 +1035,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -937,37 +1118,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -1006,37 +1201,51 @@ const TeamPage: React.FC = () => {
                   {/*Write your major and minor and delete the {}, /*, */}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
-
                   <li>
-                    <a href="Paste your LinkedIn URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"/>
+                    <a
+                      href="Paste your LinkedIn URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.5c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.5h-3v-5.5c0-1.104-.896-2-2-2s-2 .896-2 2v5.5h-3v-10h3v1.235c.837-1.26 2.51-1.996 4-1.996 2.209 0 4 1.791 4 4v6.761z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your GitHub URL here" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                      <svg className="h-5 w-5" 
-                           fill="currentColor" 
-                           viewBox="0 0 24 24" 
-                           aria-hidden="true">
-                        <path 
-                            fillRule="evenodd" 
-                            clipRule="evenodd" 
-                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    <a
+                      href="Paste your GitHub URL here"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
+                      <svg
+                        className="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.84c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        />
                       </svg>
                     </a>
                   </li>
 
                   <li>
-                    <a href="Paste your Website URL here, delete this section if you don't" className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
+                    <a
+                      href="Paste your Website URL here, delete this section if you don't"
+                      className="text-gray-500 transition duration-300 ease-in-out hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                    >
                       <svg
                         className="h-5 w-5"
                         fill="currentColor"
@@ -1054,7 +1263,6 @@ const TeamPage: React.FC = () => {
                 </ul>
               </div>
             </div>
-
           </div>
         </div>
       </section>
