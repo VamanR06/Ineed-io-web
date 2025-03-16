@@ -25,22 +25,6 @@ interface ProfileFormProps extends React.ComponentPropsWithoutRef<'div'> {
   };
 }
 
-/* TODO: Update the users information inside the database 
-Basically, whenever they click the button, take whatever state is currently in the form,
-and update it. This is pretty much the same exact thing as the application form, except
-you are updating the user information instead of the application information.
-Remember, to update the user information, you will need to use the supabase client to
-update the user information in the database. Get the user id from the user object,
-then update the user information in the database, based on the state. For example,
-if the user changes their avatar url ONLY, then you only need to update the avatar url,
-NOTHING ELSE. If the user changes their username, then you only need to update the username,
-NOTHING ELSE, and so on. This is done by checking the length of the state object, and if it is 0,
-this means they don't have anything.
-*/
-
-/* NOTE: currently age is not in the table in supabase, 
-not sure how to add more rows or if theres a cap or anything */
-
 export const ProfileForm: React.FC<ProfileFormProps> = ({
   className,
   initialProfile,
@@ -102,11 +86,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
     setProfile((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    console.log('Updated profile:', profile);
-
+  const handleSubmit = async () => {
     const supabase = createClient();
 
     // need to "upsert" data (allows you to insert a new row if it does not exist, or update it if it does.)
@@ -118,16 +98,13 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
           continue;
         }
 
-        const { data, error } = await supabase
+        const { error } = await supabase
           .from('profiles')
           .upsert({ id: user.id, [key]: profile[key] });
 
-        console.log(data);
         if (error) {
-          console.log(error.message);
           console.error(error);
         }
-        console.log(`${key}: ${profile[key]}`);
       }
     }
   };

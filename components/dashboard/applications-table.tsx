@@ -57,6 +57,10 @@ export function ApplicationsTable({
     setApplications(applications.filter((app) => `${app.id}` !== id));
   };
 
+  //TODO: Add functionality such that users can update the status of an internship!
+  //Check out https://ui.shadcn.com/docs/components/dialog for the popup
+  //(i.e, they can click on the status, and it should bring a popup where they can change the status.)
+
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between">

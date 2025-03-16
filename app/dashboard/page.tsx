@@ -12,9 +12,15 @@ import { User } from '@/types/user';
 import { redirect } from 'next/navigation';
 import { Application } from '@/types/application';
 
+interface ProfileData {
+  username: string;
+  firstName: string;
+}
+
 const DashboardPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [applications, setApplications] = useState<Application[]>([]);
+  const [profileUser, setProfileUser] = useState<ProfileData | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -31,28 +37,44 @@ const DashboardPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchInternships = async () => {
       const client = createClient();
-      const user = await client.auth.getUser();
-
+      const authUser = await client.auth.getUser();
       const { data, error } = await client
         .from('internships')
         .select('*')
-        .eq('user_id', user.data.user?.id);
-
+        .eq('user_id', authUser.data.user?.id);
       if (error) {
         console.error('Error fetching data:', error);
       } else {
         setApplications(data);
       }
     };
-
-    fetchData();
+    fetchInternships();
   }, []);
 
+  useEffect(() => {
+    if (!user) return;
+    const fetchProfile = async () => {
+      const client = createClient();
+      const { data, error } = await client
+        .from('profiles')
+        .select('username, firstName')
+        .eq('id', user.id);
+      if (error) {
+        console.error('Error fetching profile:', error);
+      } else if (data && data.length > 0) {
+        setProfileUser({
+          username: data[0].username,
+          firstName: data[0].firstName,
+        });
+      }
+    };
+    fetchProfile();
+  }, [user]);
   return (
     <div className="ineed.io-dashboard.page min-h-screen bg-background p-6">
-      <DashboardHeader user={user} />
+      <DashboardHeader user={user} profile={profileUser || undefined} />
       <div className="">
         <DashboardMetrics applications={applications} />
         <NewApplicationForm />
