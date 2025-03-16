@@ -7,8 +7,6 @@ import Image from 'next/image';
 import { createClient } from '@/utils/supabase/client';
 import { useState, useEffect } from 'react';
 
-//TODO: Add functionality to get the total amount of users from the database, and then display it in the text below
-// Check out how to get row count here: https://stackoverflow.com/questions/65612167/how-to-get-count-in-supabase
 export function LeaderboardHeader() {
   const [userCount, setUserCount] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -18,17 +16,14 @@ export function LeaderboardHeader() {
       const supabase = createClient();
       console.log('Fetching user count...');
 
-      const { data, count, error } = await supabase
+      const { count, error } = await supabase
         .from('profiles')
         .select('*', { count: 'exact', head: true });
-
-      console.log('Raw response:', { data, count, error });
 
       if (error) {
         console.error('Error fetching user count:', error);
         setUserCount(null);
       } else {
-        console.log('User count fetched:', count);
         setUserCount(count);
       }
       setLoading(false);
@@ -49,8 +44,14 @@ export function LeaderboardHeader() {
             <Image src="/images/logo.png" alt="Ineed.io" width={32} height={32} />
           </div>
           <h1 className="text-xl font-semibold">Ineed.io Leaderboard</h1>
-          <div className="ml-2 text-sm text-gray-400">
-            {loading ? 'Loading...' : userCount !== null ? userCount.toLocaleString() : 'Error'}
+          <div className="ml-2 text-lg text-gray-400">
+            {loading ? (
+              'Loading...'
+            ) : userCount !== null ? (
+              <b>Across {userCount.toLocaleString()} profiles</b>
+            ) : (
+              'Error'
+            )}
           </div>
         </div>
       </div>

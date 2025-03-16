@@ -14,8 +14,7 @@ const TeamPage: React.FC = () => {
               Our Team
             </h2>
             <p className="font-light text-gray-500 dark:text-gray-400 sm:text-xl lg:mb-16">
-              Explore the whole collection of open-source web components and elements built with the
-              utility classes from Tailwind
+              Explore the team here at Ineed.io!
             </p>
           </div>
           <div className="mb-6 grid gap-8 md:grid-cols-2 lg:mb-16">
