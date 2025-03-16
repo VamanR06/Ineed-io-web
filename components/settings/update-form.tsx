@@ -6,6 +6,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { createClient } from '@/utils/supabase/client';
+// import { User } from '@/types/user';
+import { Profile } from '@/types/profile';
+//import { SupabaseClient } from '@supabase/supabase-js';
 
 interface ProfileFormProps extends React.ComponentPropsWithoutRef<'div'> {
   initialProfile?: {
@@ -34,6 +38,9 @@ NOTHING ELSE, and so on. This is done by checking the length of the state object
 this means they don't have anything.
 */
 
+/* NOTE: currently age is not in the table in supabase, 
+not sure how to add more rows or if theres a cap or anything */
+
 export const ProfileForm: React.FC<ProfileFormProps> = ({
   className,
   initialProfile,
@@ -55,6 +62,29 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
 
   const [isDirty, setIsDirty] = useState(false);
   const [isFormEmpty, setIsFormEmpty] = useState(true);
+  const [user, setUser] = useState<Profile | null>(null);
+  //const [supabaseClient, setSupabaseClient] = useState<SupabaseClient | null>(null);
+
+  // fetch user info from SupaBase client on initial render
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    console.log('User:', user);
+  }, [user]);
+
+  const fetchUser = async () => {
+    console.log('fetchUser called');
+    const supabase = createClient();
+    const { data, error } = await supabase.auth.getUser();
+    if (error) {
+      console.error(error);
+    }
+
+    const dbUser = await supabase.from('profiles').select('*').eq('id', data.user?.id);
+    setUser(dbUser.data?.at(0));
+  };
 
   useEffect(() => {
     const isChanged = Object.keys(profile).some(
@@ -72,10 +102,34 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
     setProfile((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     console.log('Updated profile:', profile);
-    setIsDirty(false);
+
+    const supabase = createClient();
+
+    // need to "upsert" data (allows you to insert a new row if it does not exist, or update it if it does.)
+    const profileFields = Object.keys(profile);
+    if (user) {
+      for (let i = 0; i < profileFields.length; i++) {
+        const key = profileFields[i] as keyof typeof profile;
+        if (profile[key] === '') {
+          continue;
+        }
+
+        const { data, error } = await supabase
+          .from('profiles')
+          .upsert({ id: user.id, [key]: profile[key] });
+
+        console.log(data);
+        if (error) {
+          console.log(error.message);
+          console.error(error);
+        }
+        console.log(`${key}: ${profile[key]}`);
+      }
+    }
   };
 
   return (
