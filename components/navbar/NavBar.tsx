@@ -128,10 +128,10 @@ const NavBar = () => {
                   Profile
                 </Link>
                 <Link
-                  href="/explore"
+                  href="/leaderboard"
                   className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
-                  Explore
+                  Leaderboard
                 </Link>
                 <Link
                   href="/settings"
@@ -144,12 +144,6 @@ const NavBar = () => {
                   className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
                   Team
-                </Link>
-                <Link
-                  href="/faq"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  FAQ
                 </Link>
               </div>
             </div>

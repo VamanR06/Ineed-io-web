@@ -27,11 +27,6 @@ const Footer: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="/explore" className="me-4 hover:underline md:me-6">
-                Explore
-              </Link>
-            </li>
-            <li>
               <Link href="/settings" className="me-4 hover:underline md:me-6">
                 Settings
               </Link>

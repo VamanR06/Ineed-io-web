@@ -1,9 +1,9 @@
 'use client';
 
-import { ChevronLeft, Users, BarChart3 } from 'lucide-react';
+import { Users, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { createClient } from '@/utils/supabase/client';
 import { useState, useEffect } from 'react';
 
@@ -34,16 +34,11 @@ export function LeaderboardHeader() {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-4">
-        <Link href="/dashboard">
-          <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
-            <ChevronLeft className="h-5 w-5" />
-          </Button>
-        </Link>
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full">
-            <Image src="/images/logo.png" alt="Ineed.io" width={32} height={32} />
+          <div className="flex items-center gap-4">
+            <FontAwesomeIcon className="text-xl text-primary" icon={faAngleRight} />
+            <h1 className="text-xl font-semibold">Leaderboard</h1>
           </div>
-          <h1 className="text-xl font-semibold">Ineed.io Leaderboard</h1>
           <div className="ml-2 text-lg text-gray-400">
             {loading ? (
               'Loading...'
