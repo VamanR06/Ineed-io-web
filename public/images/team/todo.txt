@@ -1,0 +1,3 @@
+TODO: Add your profile pics in this file
+
+then link it in app/team/page.tsx with this path: /images/team/nameOfFile

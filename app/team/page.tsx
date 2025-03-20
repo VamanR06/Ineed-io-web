@@ -24,7 +24,7 @@ const teamMembers: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/praveshkunwar/',
     github: 'https://github.com/PraveshKunwar',
     website: 'https://praveshk.vercel.app/',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/praveshk.jpg',
   },
   {
     name: 'Ali Monthana',
@@ -139,8 +139,8 @@ const TeamMember = ({
         className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
         src={profilePic ? profilePic : ''} // Placeholder for now
         alt={imageAlt}
-        width={128}
-        height={128}
+        width={256}
+        height={256}
       />
     </a>
     <div className="p-5">
