@@ -57,7 +57,8 @@ export function NewApplicationForm() {
 
   return (
     <Card className="p-6">
-      <h2 className="mb-6 text-xl font-semibold">Add New Application</h2>
+      <h2 className="mb-6 text-3xl font-semibold">Add New Application</h2>
+      <h2 className="text-md mb-6 text-gray-500">Fill out the form to add a new application:</h2>
       <form className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">

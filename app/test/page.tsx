@@ -42,7 +42,6 @@ const Test: React.FC = () => {
     if (error) {
       console.error('Error inserting data:', error);
     } else {
-      console.log('Data inserted successfully');
       fetchData(); // Refresh data after insertion
     }
   };

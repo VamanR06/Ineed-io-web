@@ -14,7 +14,6 @@ export function LeaderboardHeader() {
   useEffect(() => {
     async function fetchUserCount() {
       const supabase = createClient();
-      console.log('Fetching user count...');
 
       const { count, error } = await supabase
         .from('profiles')

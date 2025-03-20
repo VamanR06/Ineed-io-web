@@ -54,12 +54,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
     fetchUser();
   }, []);
 
-  useEffect(() => {
-    console.log('User:', user);
-  }, [user]);
-
   const fetchUser = async () => {
-    console.log('fetchUser called');
     const supabase = createClient();
     const { data, error } = await supabase.auth.getUser();
     if (error) {

@@ -131,7 +131,6 @@ export const signOutAction = async () => {
 };
 
 export const deleteAccountAction = async () => {
-  console.log('delete Account triggered');
   const supabase = await createClient();
   const {
     data: { user },
