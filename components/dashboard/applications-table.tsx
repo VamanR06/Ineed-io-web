@@ -133,7 +133,24 @@ export function ApplicationsTable({
           {filteredApplications.map((app) => (
             <TableRow key={app.id}>
               <TableCell>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      /* 
+                      TODO: this will log everytime the checkbox is checked on
+                      Make it such that a user can check multiple (or just even 1)
+                      checkboxes, and create a delete button (next to the export to csv button)
+                      that allows them to delete checkboxes that are currently checked.
+                      you will need to store which checkboxes are currently checked somewhere,
+                      and then create a function called handleDelete, which the delete button will
+                      trigger, and use the stored checkboxes to delete those checkBoxes only.
+                      If they check it off, then remove it from the place where you are storing them.
+                      */
+                      console.log(`Checked internship id: ${app.id}`);
+                    }
+                  }}
+                />
               </TableCell>
               <TableCell className="font-medium">{app.company_name}</TableCell>
               <TableCell>{app.company_name}</TableCell>

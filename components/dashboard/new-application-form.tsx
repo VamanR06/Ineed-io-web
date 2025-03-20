@@ -58,11 +58,12 @@ export function NewApplicationForm() {
   return (
     <Card className="p-6">
       <h2 className="mb-6 text-3xl font-semibold">Add New Application</h2>
-      <h2 className="text-md mb-6 text-gray-500">Fill out the form to add a new application:</h2>
       <form className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="company">Company Name</Label>
+            <Label htmlFor="company" className="text-md">
+              Company Name
+            </Label>
             <Input
               id="company"
               placeholder="Enter company name"
@@ -72,7 +73,9 @@ export function NewApplicationForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="role">Role</Label>
+            <Label htmlFor="role" className="text-md">
+              Role
+            </Label>
             <Input
               id="role"
               placeholder="Enter role/position"
@@ -82,7 +85,9 @@ export function NewApplicationForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="link">Link</Label>
+            <Label htmlFor="link" className="text-md">
+              Link
+            </Label>
             <Input
               id="link"
               placeholder="Enter link"
@@ -92,7 +97,9 @@ export function NewApplicationForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="location">Location</Label>
+            <Label htmlFor="location" className="text-md">
+              Location
+            </Label>
             <Input
               id="location"
               placeholder="Enter location"
@@ -138,9 +145,15 @@ export function NewApplicationForm() {
             </div>
           </div>
         )}
-        <Button onClick={handleAddApplication} className="w-full bg-[#00ac4f] hover:bg-[#008f42]">
-          Add Application
-        </Button>
+
+        <div className="flex flex-col items-center justify-center">
+          <Button
+            onClick={handleAddApplication}
+            className="w-56 bg-[#121212] text-white hover:bg-[#222020]"
+          >
+            Add Application
+          </Button>
+        </div>
       </form>
     </Card>
   );
