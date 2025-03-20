@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Search } from 'lucide-react';
+import { X, Search, Download } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -28,6 +28,7 @@ import { Application } from '@/types/application';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { createClient } from '@/utils/supabase/client';
+import { mkConfig, generateCsv, asString } from 'export-to-csv'; // Updated imports
 
 dayjs.extend(advancedFormat);
 
@@ -53,26 +54,65 @@ export function ApplicationsTable({
       return;
     }
 
-    console.log('Application deleted successfully');
     setApplications(applications.filter((app) => `${app.id}` !== id));
   };
 
+  const exportToCsv = () => {
+    const csvConfig = mkConfig({
+      useKeysAsHeaders: true,
+      filename: `applications_${new Date().toISOString().split('T')[0]}`,
+    });
+
+    const data = applications.map((app) => ({
+      company: app.company_name,
+      position: app.company_name,
+      appliedDate: dayjs(app.created_at).format('MMMM Do YYYY h:mm A'),
+      location: app.location,
+      link: app.link,
+      role: app.role,
+      status: app.status.charAt(0).toUpperCase() + app.status.slice(1),
+    }));
+
+    const csvOutput = generateCsv(csvConfig)(data);
+    const csvString = asString(csvOutput);
+
+    const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${csvConfig.filename}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
   //TODO: Add functionality such that users can update the status of an internship!
   //Check out https://ui.shadcn.com/docs/components/dialog for the popup
   //(i.e, they can click on the status, and it should bring a popup where they can change the status.)
-
+  /*
+  Recommended steps:
+  1. console.log() the status each time you change it, and see if its actually changing
+  2. query the database (remember to only update the internship that they are changing the status of, use the unique id)
+  3. verify changes are being made
+  */
   return (
     <Card className="p-6">
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Recent Applications</h2>
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
-          <Input
-            placeholder="Search..."
-            className="w-[300px] border-[#374151] pl-10 text-white"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+        <h2 className="text-3xl font-semibold">Recent Applications</h2>
+        <div className="flex items-center gap-4">
+          <Button onClick={exportToCsv} variant="outline">
+            Export to CSV
+            <Download />
+          </Button>
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
+            <Input
+              placeholder="Search..."
+              className="w-[300px] border-[#374151] pl-10 text-white"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
         </div>
       </div>
       <Table id="applications-table">
@@ -93,7 +133,24 @@ export function ApplicationsTable({
           {filteredApplications.map((app) => (
             <TableRow key={app.id}>
               <TableCell>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      /* 
+                      TODO: this will log everytime the checkbox is checked on
+                      Make it such that a user can check multiple (or just even 1)
+                      checkboxes, and create a delete button (next to the export to csv button)
+                      that allows them to delete checkboxes that are currently checked.
+                      you will need to store which checkboxes are currently checked somewhere,
+                      and then create a function called handleDelete, which the delete button will
+                      trigger, and use the stored checkboxes to delete those checkBoxes only.
+                      If they check it off, then remove it from the place where you are storing them.
+                      */
+                      console.log(`Checked internship id: ${app.id}`);
+                    }
+                  }}
+                />
               </TableCell>
               <TableCell className="font-medium">{app.company_name}</TableCell>
               <TableCell>{app.company_name}</TableCell>

@@ -44,13 +44,10 @@ export function LeaderboardTable() {
         .order('total_applications', { ascending: false })
         .limit(50);
 
-      console.log(data);
       if (error) {
         console.error(error.message || error); // improved logging
         setError(error);
         return;
-      } else {
-        console.log(data);
       }
 
       console.log('working till this point');

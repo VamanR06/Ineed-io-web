@@ -72,6 +72,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
         ) / 10
       : 100;
 
+  // TODO: Change these icons to match the description of the header (check out the link to get icons): https://lucide.dev/icons/
   const metrics = [
     {
       title: 'Active Applications',
@@ -100,7 +101,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
         <Card key={metric.title} className="p-6">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#e8faf3]">
-              <metric.icon className="h-6 w-6 text-[#00ac4f]" />
+              <metric.icon className="h-6 w-6 text-[#121212]" />
             </div>
             <div>
               <p className="text-sm text-gray-500">{metric.title}</p>

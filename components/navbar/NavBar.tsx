@@ -23,7 +23,7 @@ const NavBar = () => {
       const fetchUser = async () => {
         const supabase = await createClient();
         const { data, error } = await supabase.auth.getUser();
-        console.log(data.user?.id);
+
         if (error) {
           redirect('/');
         }
@@ -48,13 +48,11 @@ const NavBar = () => {
         console.error('Error fetching avatar:', error);
       } else {
         setAvatarImage(data?.avatar || null);
-        console.log('Avatar fetched:', data?.avatar);
       }
     };
 
     fetchAvatar();
   }, [user]);
-  //console.log(avatarImage);
 
   return (
     <nav className="bg-black">
