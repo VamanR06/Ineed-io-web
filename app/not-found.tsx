@@ -1,7 +1,8 @@
 import './globals.css';
 import React from 'react';
 
-// TODO: Create the not found page
+// TODO: Create the not found page, a page that will be displayed
+// when a user tries to access a page that doesn't exist
 // Feel free to use this as inspiration: https://flowbite.com/blocks/marketing/404/
 
 const NotFound: React.FC = () => {
