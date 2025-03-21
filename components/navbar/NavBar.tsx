@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ModeToggle } from './ModeToggle';
 import { UserDropdownMenu } from '../profile/user-dropdown-menu';
 import { createClient } from '@/utils/supabase/client';
@@ -10,6 +11,7 @@ import { User } from '@/types/user';
 import { redirect } from 'next/navigation';
 
 const NavBar = () => {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -121,8 +123,10 @@ const NavBar = () => {
                 </Link>
                 <Link
                   href="/profile"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
+                  className={`rounded-md px-3 py-2 text-sm font-medium ${
+                    pathname === '/profile' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
+               >
                   Profile
                 </Link>
                 <Link
