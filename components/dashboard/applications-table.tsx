@@ -28,6 +28,7 @@ import { Application } from '@/types/application';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { createClient } from '@/utils/supabase/client';
+import {} from 'export-to-csv';
 import { mkConfig, generateCsv, asString } from 'export-to-csv'; // Updated imports
 
 dayjs.extend(advancedFormat);

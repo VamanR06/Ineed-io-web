@@ -108,9 +108,9 @@ const teamMembers: TeamMember[] = [
     profilePic: '/images/logo.png',
   },
   {
-    name: 'Tyler Arcinaga',
+    name: 'Tyler Arciniaga',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Engineering',
     imageAlt: 'Tyler Avatar',
     profilePic: '/images/logo.png',
   },
