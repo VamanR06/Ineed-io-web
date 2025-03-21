@@ -110,40 +110,63 @@ const NavBar = () => {
               <div className="flex space-x-4">
                 <Link
                   href="/"
-                  className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                  aria-current="page"
+                  className={`rounded-md px-3 py-2 text-sm font-medium ${
+                    pathname === '/'
+                      ? 'bg-gray-700 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
                 >
                   Home
                 </Link>
                 <Link
                   href="/dashboard"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className={`rounded-md px-3 py-2 text-sm font-medium ${
+                    pathname === '/dashboard'
+                      ? 'bg-gray-700 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
                 >
                   Dashboard
                 </Link>
                 <Link
                   href="/profile"
                   className={`rounded-md px-3 py-2 text-sm font-medium ${
-                    pathname === '/profile' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    pathname === '/profile'
+                      ? 'bg-gray-700 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                   }`}
-               >
+                >
                   Profile
                 </Link>
                 <Link
                   href="/leaderboard"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className={`rounded-md px-3 py-2 text-sm font-medium ${
+                    pathname === '/leaderboard'
+                      ? 'bg-gray-700 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
+  
                 >
                   Leaderboard
                 </Link>
                 <Link
                   href="/settings"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className={`rounded-md px-3 py-2 text-sm font-medium ${
+                    pathname === '/settings'
+                      ? 'bg-gray-700 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
+                
                 >
                   Settings
                 </Link>
                 <Link
                   href="/team"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  className={`rounded-md px-3 py-2 text-sm font-medium ${
+                    pathname === '/team'
+                      ? 'bg-gray-700 text-white'
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                  }`}
                 >
                   Team
                 </Link>
@@ -167,31 +190,51 @@ const NavBar = () => {
           </Link>
           <Link
             href="/dashboard"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+            className={`rounded-md px-3 py-2 text-sm font-medium ${
+              pathname === '/dashboard'
+                ? 'bg-gray-700 text-white'
+                : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+            }`}
           >
             Dashboard
           </Link>
           <Link
             href="/profile"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+            className={`rounded-md px-3 py-2 text-sm font-medium ${
+              pathname === '/profile'
+                ? 'bg-gray-700 text-white'
+                : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+            }`}
           >
             Profile
           </Link>
           <Link
             href="/settings"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+            className={`rounded-md px-3 py-2 text-sm font-medium ${
+              pathname === '/settings'
+                ? 'bg-gray-700 text-white'
+                : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+            }`}
+          >
+            Leaderboard
+          </Link>
+          <Link
+            href="/leaderboard"
+            className={`rounded-md px-3 py-2 text-sm font-medium ${
+              pathname === '/leaderboard'
+                ? 'bg-gray-700 text-white'
+                : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+            }`}
           >
             Settings
           </Link>
           <Link
-            href="/explore"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-          >
-            Explore
-          </Link>
-          <Link
-            href="/faq"
-            className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+            href="/team"
+            className={`rounded-md px-3 py-2 text-sm font-medium ${
+              pathname === '/team'
+                ? 'bg-gray-700 text-white'
+                : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+            }`}
           >
             FAQ
           </Link>
