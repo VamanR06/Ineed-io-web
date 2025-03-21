@@ -23,10 +23,10 @@ const DashboardPage: React.FC = () => {
   const [applications, setApplications] = useState<Application[]>([]);
   const [profileUser, setProfileUser] = useState<ProfileData | null>(null);
   const router = useRouter();
-  
+
   const refreshApps = async () => {
     router.refresh();
-  }
+  };
 
   const fetchInternships = async () => {
     const client = createClient();
@@ -57,7 +57,6 @@ const DashboardPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-
     fetchInternships();
   }, []);
 
@@ -86,7 +85,11 @@ const DashboardPage: React.FC = () => {
       <div className="">
         <DashboardMetrics applications={applications} />
         <NewApplicationForm />
-        <ApplicationsTable applications={applications} setApplications={setApplications} refreshApplications={refreshApps}/>
+        <ApplicationsTable
+          applications={applications}
+          setApplications={setApplications}
+          refreshApplications={refreshApps}
+        />
       </div>
     </div>
   );

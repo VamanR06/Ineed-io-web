@@ -33,7 +33,6 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { StatusDialog } from './statusdialog'; // <--- Import the new component
 import { useRouter } from 'next/navigation';
 
-
 dayjs.extend(advancedFormat);
 
 export function ApplicationsTable({
@@ -85,9 +84,7 @@ export function ApplicationsTable({
     if (result) {
       // Update local state so the UI changes immediately
       setApplications((prevApps) =>
-        prevApps.map((app) =>
-          app.id === appId ? { ...app, status: newStatus } : app
-        )
+        prevApps.map((app) => (app.id === appId ? { ...app, status: newStatus } : app))
       );
       await refreshApplications();
     }
@@ -144,9 +141,7 @@ export function ApplicationsTable({
               </TableCell>
               <TableCell className="font-medium">{app.company_name}</TableCell>
               <TableCell>{app.company_name}</TableCell>
-              <TableCell>
-                {dayjs(app.created_at).format('MMMM Do YYYY h:mm A')}
-              </TableCell>
+              <TableCell>{dayjs(app.created_at).format('MMMM Do YYYY h:mm A')}</TableCell>
               <TableCell>{app.location}</TableCell>
               <TableCell>
                 <a href={app.link}>{app.link}</a>
@@ -174,8 +169,8 @@ export function ApplicationsTable({
                     <AlertDialogHeader>
                       <AlertDialogTitle>Delete Application</AlertDialogTitle>
                       <AlertDialogDescription>
-                        Are you sure you want to delete the application for{' '}
-                        {app.company_name}? This action cannot be undone.
+                        Are you sure you want to delete the application for {app.company_name}? This
+                        action cannot be undone.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>

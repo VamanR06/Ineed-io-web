@@ -26,16 +26,13 @@ export function StatusDialog({ app, handleUpdateStatus }: StatusDialogProps) {
       <DialogTrigger asChild>
         <button
           onClick={() => setOpen(true)}
-          className={`
-            rounded-full px-3 py-1 text-sm 
-            ${
-              app.status === 'Accepted'
-                ? 'bg-[#e8faf3] text-[#00ac4f]'
-                : app.status === 'Rejected'
+          className={`rounded-full px-3 py-1 text-sm ${
+            app.status === 'Accepted'
+              ? 'bg-[#e8faf3] text-[#00ac4f]'
+              : app.status === 'Rejected'
                 ? 'bg-red-100 text-red-600'
                 : 'bg-yellow-100 text-yellow-600'
-            }
-          `}
+          } `}
         >
           {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
         </button>
@@ -57,12 +54,7 @@ export function StatusDialog({ app, handleUpdateStatus }: StatusDialogProps) {
               await handleUpdateStatus(app.id, 'Pending');
               setOpen(false); // close the dialog
             }}
-            className={`
-            rounded-full px-3 py-1 text-sm 
-            ${
-              'bg-yellow-100 text-yellow-600'
-            }
-          `}
+            className={`rounded-full px-3 py-1 text-sm ${'bg-yellow-100 text-yellow-600'} `}
           >
             Pending
           </Button>
@@ -72,12 +64,7 @@ export function StatusDialog({ app, handleUpdateStatus }: StatusDialogProps) {
               await handleUpdateStatus(app.id, 'Accepted');
               setOpen(false);
             }}
-            className={`
-            rounded-full px-3 py-1 text-sm 
-            ${
-                'bg-[#e8faf3] text-[#00ac4f]'
-            }
-          `}
+            className={`rounded-full px-3 py-1 text-sm ${'bg-[#e8faf3] text-[#00ac4f]'} `}
           >
             Accepted
           </Button>
@@ -87,12 +74,7 @@ export function StatusDialog({ app, handleUpdateStatus }: StatusDialogProps) {
               await handleUpdateStatus(app.id, 'Rejected');
               setOpen(false);
             }}
-            className={`
-            rounded-full px-3 py-1 text-sm 
-            ${
-                'bg-red-100 text-red-600'
-            }
-          `}
+            className={`rounded-full px-3 py-1 text-sm ${'bg-red-100 text-red-600'} `}
           >
             Rejected
           </Button>
