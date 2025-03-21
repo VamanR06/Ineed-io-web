@@ -131,13 +131,38 @@ export const signOutAction = async () => {
 };
 
 export const deleteAccountAction = async () => {
-  const supabase = await createClient();
+  const supabase = await createClient('deleteAccount');
   const {
     data: { user },
+    error,
   } = await supabase.auth.getUser();
+  if (error) {
+    console.log('Error fetching user:', user);
+  }
+  let returnData = null;
+  if (user) {
+    const { data, error } = await supabase.auth.admin.deleteUser(user.id);
+    console.log('Data from deleting user:', data);
+    returnData = error;
+    if (error) {
+      console.log('Error deleting user from Supabase:', error);
+    }
+  }
+  return returnData;
+};
+
+/*const supabase = await createClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+  console.log('User:', user);
+  if (error) {
+    console.log('Error getting current user:', user);
+  }
   if (user) {
     const userID = user.id;
     await supabase.auth.admin.deleteUser(userID);
     return redirect('/');
   }
-};
+  */
