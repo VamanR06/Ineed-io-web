@@ -24,7 +24,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { DialogContent } from '@/components/ui/dialog';
 import { Application } from '@/types/application';
 import { createClient } from '@/utils/supabase/client';
 import { mkConfig, generateCsv, asString } from 'export-to-csv';
@@ -61,7 +60,33 @@ export function ApplicationsTable({
   };
 
   const exportToCsv = () => {
-    // ...
+    const csvConfig = mkConfig({
+      useKeysAsHeaders: true,
+      filename: `applications_${new Date().toISOString().split('T')[0]}`,
+    });
+
+    const data = applications.map((app) => ({
+      company: app.company_name,
+      position: app.company_name,
+      appliedDate: dayjs(app.created_at).format('MMMM Do YYYY h:mm A'),
+      location: app.location,
+      link: app.link,
+      role: app.role,
+      status: app.status.charAt(0).toUpperCase() + app.status.slice(1),
+    }));
+
+    const csvOutput = generateCsv(csvConfig)(data);
+    const csvString = asString(csvOutput);
+
+    const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${csvConfig.filename}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   async function updateStatusInSupabase(id: number, newStatus: string) {
@@ -87,6 +112,7 @@ export function ApplicationsTable({
         prevApps.map((app) => (app.id === appId ? { ...app, status: newStatus } : app))
       );
       await refreshApplications();
+      router.refresh();
     }
   };
 
@@ -147,13 +173,9 @@ export function ApplicationsTable({
                 <a href={app.link}>{app.link}</a>
               </TableCell>
               <TableCell>{app.role}</TableCell>
-
-              {/* <-- Use the StatusDialog here instead of an inline Dialog --> */}
               <TableCell>
                 <StatusDialog app={app} handleUpdateStatus={handleUpdateStatus} />
               </TableCell>
-
-              {/* Existing AlertDialog for deleting */}
               <TableCell>
                 <AlertDialog>
                   <AlertDialogTrigger asChild>

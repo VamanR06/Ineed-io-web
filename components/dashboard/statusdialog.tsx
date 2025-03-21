@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Application } from '@/types/application';
-import dayjs from 'dayjs';
 
 interface StatusDialogProps {
   app: Application;
