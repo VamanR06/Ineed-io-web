@@ -30,15 +30,6 @@ import { SubmitButton } from '../submit-button';
 //seems to be some issue console logging from the action function, however if you return the object and
 //console log in this file everything seems to work
 
-//possible way to do it is to have deleteFunction add user to the table and then have a trigger delete all users
-//in that table
-
-const testing = async () => {
-  console.log('Running deleteAccountAction...');
-  const deleteReturn = await deleteAccountAction();
-  console.log(deleteReturn);
-};
-
 export function DeleteAccount() {
   const [isDeleting] = useState(false);
   return (
@@ -76,7 +67,7 @@ export function DeleteAccount() {
               <SubmitButton
                 variant="destructive"
                 type="submit"
-                onClick={testing}
+                onClick={deleteAccountAction}
                 disabled={isDeleting}
               >
                 {isDeleting ? 'Deleting...' : 'Yes, delete my account'}
