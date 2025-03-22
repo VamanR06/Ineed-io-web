@@ -1,8 +1,9 @@
 'use client';
 
 import { DashboardHeader as ProfileHeader } from '@/components/dashboard/header';
+/* 
 import { DashboardMetrics } from '@/components/dashboard/metrics';
-/* import { SubmissionsCalendar } from '@/components/dashboard/submissions-calendar';
+import { SubmissionsCalendar } from '@/components/dashboard/submissions-calendar';
 import { ActivityChart } from '@/components/dashboard/activity-chart'; */
 // import { TimePickerDemo } from '@/components/dashboard/time-picker';
 import '../globals.css';
@@ -29,7 +30,8 @@ const ProfilePage: React.FC = () => {
       fetchUser();
     }
   }, []);
-
+  // TODO #17: GET RID OF ME AFTER FINISHING TODO #3
+  console.log(applications);
   useEffect(() => {
     const fetchData = async () => {
       const client = createClient();

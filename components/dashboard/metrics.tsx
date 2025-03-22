@@ -95,6 +95,12 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
     },
   ];
 
+  /* 
+  TODO #16: Replace these cards with the cards from components/leaderboard/metrics.tsx
+  and, make sure you add accurate descriptions, should look just like the leaderboard page,
+  except this is for dashboard 
+  */
+
   return (
     <div className="grid gap-6 md:grid-cols-3">
       {metrics.map((metric) => (

@@ -104,6 +104,14 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
     }
   };
 
+  /* 
+  TODO #14: Add the following links and columns in the database:
+  1. LinkedIn
+  2. GitHub
+  3. Portfolio
+  Should be able to update this as well (store this information in the profiles table)
+  */
+
   return (
     <Card className={className} {...props}>
       <CardHeader>
