@@ -8,10 +8,9 @@ import { ModeToggle } from './ModeToggle';
 import { UserDropdownMenu } from '../profile/user-dropdown-menu';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@/types/user';
-import { redirect } from 'next/navigation';
-import { Item } from '@radix-ui/react-dropdown-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Button } from '../ui/button';
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -28,20 +27,15 @@ const NavBar = () => {
       const fetchUser = async () => {
         const supabase = await createClient();
         const { data, error } = await supabase.auth.getUser();
-
-        if (error) {
-          redirect('/');
-        }
-        setUser(data.user as User);
-        // const client = createClient();
-        //}
+        if (error) console.log('Error fetching user:', error);
+        setUser(data.user as User | null);
       };
       fetchUser();
     }
   }, []);
 
   useEffect(() => {
-    if (!user) return; // only fetch avatar if user exists
+    if (!user) return;
     const fetchAvatar = async () => {
       const supabase = await createClient();
       const { data, error } = await supabase
@@ -52,10 +46,9 @@ const NavBar = () => {
       if (error) {
         console.error('Error fetching avatar:', error);
       } else {
-        setAvatarImage(data?.avatar || null);
+        setAvatarImage(data?.avatar);
       }
     };
-
     fetchAvatar();
   }, [user]);
 
@@ -64,7 +57,6 @@ const NavBar = () => {
     { name: 'Leaderboard', route: '/leaderboard' },
     { name: 'About Us', route: '/aboutus' },
     { name: 'Dashboard', route: '/dashboard' },
-    { name: 'Profile', route: '/profile' },
   ];
 
   return (
@@ -85,7 +77,7 @@ const NavBar = () => {
         className={`${isMenuOpen ? 'block' : 'hidden'} absolute left-[-2] top-20 z-10 w-[50%] sm:hidden`}
         id="mobile-menu"
       >
-        <div className="flex flex-col space-y-1 bg-primary px-2 pb-3 pt-2">
+        <div className="flex flex-col space-y-1 bg-neutral-800 px-2 pb-3 pt-2">
           {links.map((item, idx) => (
             <Link
               key={`navbar-mobile-${idx}`}
@@ -129,7 +121,13 @@ const NavBar = () => {
       </div>
       <div className="ml-auto flex items-center gap-2 sm:gap-4">
         <ModeToggle />
-        {user ? <UserDropdownMenu avatar={avatarImage} /> : <></>}
+        {user ? (
+          <UserDropdownMenu avatar={avatarImage} />
+        ) : (
+          <Link href="/login">
+            <Button>Login</Button>
+          </Link>
+        )}
       </div>
     </nav>
   );
