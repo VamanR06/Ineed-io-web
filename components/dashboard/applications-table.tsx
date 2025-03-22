@@ -116,6 +116,8 @@ export function ApplicationsTable({
     }
   };
 
+  /* TODO #10: Make links clickable, the application link, should open in a new tab */
+
   return (
     <Card className="p-6">
       {/* Search and Export UI */}

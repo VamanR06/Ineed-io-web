@@ -5,10 +5,8 @@ import { useParams, redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import '../../globals.css';
 
-// DO NOT WORK ON THIS YET!!! --- Need to update database columns
-
 /* 
-TODO (Large TODO): This is going to be the profile page to view other users.
+TODO #1 (Large TODO): This is going to be the profile page to view other users.
 Essentially, a user can go to like /profile/123 (for now, we will refer to users by their unique id, later usernames)
 The "123" portion is going to be a users UNIQUE ID. Essentially, this is what's going to happen
 1. Grab the 123 out of the url (look into dynamic routing, one of the key features of next.js: https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)
@@ -18,6 +16,13 @@ The "123" portion is going to be a users UNIQUE ID. Essentially, this is what's 
 5. IF USER DOESN"T EXIST (error), then SAY USER WASN'T FOUND (don't worry about styliing for now, just functionality)
 6. ELSE, display all their stats, like the app/profile/page.tsx, except WITHOUT THE PROFILE HEADER COMPONENT (which would say something like "Hello John")
 
+
+Note: there is an issue, basically, an id is a uuid (universally unique identifier)
+which is what uniquely identifies each user (for now, usernames will be later)
+this is the "id" column in profiles basically
+so when you are testing, FOR NOW
+test /profiles/uuid, not /profiles/username
+and remember that uuid is unique to each user...
 */
 
 const UserProfilePage: React.FC = () => {
@@ -31,7 +36,8 @@ const UserProfilePage: React.FC = () => {
         redirect('/profile');
       }
     };
-  }, []);
+    fetchData();
+  }, [id]);
   return (
     <div className="ineed.io-profile.page min-h-screen bg-background p-6">
       User profile page (to be implemented)

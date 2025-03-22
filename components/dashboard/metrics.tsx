@@ -72,7 +72,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
         ) / 10
       : 100;
 
-  // TODO: Change these icons to match the description of the header (check out the link to get icons): https://lucide.dev/icons/
+  // TODO #8: Change these icons to match the description of the header (check out the link to get icons): https://lucide.dev/icons/
   const metrics = [
     {
       title: 'Active Applications',
@@ -94,6 +94,12 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
       icon: TrendingUp,
     },
   ];
+
+  /* 
+  TODO #16: Replace these cards with the cards from components/leaderboard/metrics.tsx
+  and, make sure you add accurate descriptions, should look just like the leaderboard page,
+  except this is for dashboard 
+  */
 
   return (
     <div className="grid gap-6 md:grid-cols-3">
