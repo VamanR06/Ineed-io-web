@@ -89,9 +89,11 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Forest Qin',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Science',
+    linkedin: 'https://www.linkedin.com/in/forest-qin/',
+    github: 'https://github.com/forestq24',
     imageAlt: 'Forest Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/forestq.jpg',
   },
   {
     name: 'Kedar Bulusu',
