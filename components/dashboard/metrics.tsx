@@ -72,7 +72,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
         ) / 10
       : 100;
 
-  // TODO: Change these icons to match the description of the header (check out the link to get icons): https://lucide.dev/icons/
+  // TODO #8: Change these icons to match the description of the header (check out the link to get icons): https://lucide.dev/icons/
   const metrics = [
     {
       title: 'Active Applications',

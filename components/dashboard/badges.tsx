@@ -4,14 +4,12 @@ import Image from 'next/image';
 
 // Map badge names to image filenames
 {
-  /* TODO #1: Scour the internet for more badges, and come up with ideas for badges!*/
+  /* TODO #6: Scour the internet for more badges, and come up with ideas for badges!*/
 }
 
-/* TODO #2: Add badge functionality. Think about a clever way to store which user has
-what badge unlocked in the database. We shouldn't have to create a column for each badge, and have that
-set to false initially until they unlock it, this causes way too much redudancy and extra storage that's not needed.
-Once that is figured out, implement badge functionality here. Remember, all badges should be set to false initially,
-and once they've unlocked a badge (once "something" is set to true), then it should be unlocked.
+/* TODO #7: Add badge functionality. There is a "badges" table, which has a user_id column,
+and then the badges that the user has. Fetch all of those badges, and based on whether they are
+false or true, accordingly display the badges based on those values.
 */
 
 const badgeImages: { [key: string]: string } = {

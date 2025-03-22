@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import '../globals.css';
 
-// TODO: Team member data array (each person fills their info here)
+// TODO #4: Team member data array (each person fills their info here)
 
 interface TeamMember {
   name: string;
@@ -136,7 +136,7 @@ const TeamMember = ({
   <div className="items-center rounded-lg shadow dark:border-gray-700 sm:flex">
     <a href="#">
       <Image
-        className="w-[150px] h-[150px] rounded-full object-cover"
+        className="h-[150px] w-[150px] rounded-full object-cover"
         src={profilePic ? profilePic : ''} // Placeholder for now
         alt={imageAlt}
         width={150}
