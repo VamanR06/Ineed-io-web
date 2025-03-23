@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/dialog';
 import { SubmitButton } from '../submit-button';
 
-// TODO: Add delete account functionality, need to do research on how
+// TODO #9: Add delete account functionality, need to do research on how
 // to do delete an account in supabase, and then call that function here,
 // might be a little complicated due to authentication issues
 

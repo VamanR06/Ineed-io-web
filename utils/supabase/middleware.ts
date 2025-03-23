@@ -40,7 +40,8 @@ export const updateSession = async (request: NextRequest) => {
       return NextResponse.redirect(new URL('/login', request.url));
     }
     if (
-      (request.nextUrl.pathname.startsWith('/login') ||
+      (request.nextUrl.pathname == '/' ||
+        request.nextUrl.pathname.startsWith('/login') ||
         request.nextUrl.pathname.startsWith('/signup') ||
         request.nextUrl.pathname.startsWith('/forgot-password')) &&
       !user.error

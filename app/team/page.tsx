@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import '../globals.css';
 
-// TODO: Team member data array (each person fills their info here)
+// TODO #4: Team member data array (each person fills their info here)
 
 interface TeamMember {
   name: string;
@@ -69,7 +69,7 @@ const teamMembers: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/davidt-nguyen/',
     github: 'https://github.com/dtnguyen0',
     website: 'https://davidn.netlify.app/',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/DavidProfHeadshot2.jpg',
   },
   {
     name: 'Dylan Kim',
@@ -138,11 +138,11 @@ const TeamMember = ({
   <div className="items-center rounded-lg shadow dark:border-gray-700 sm:flex">
     <a href="#">
       <Image
-        className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+        className="h-[150px] w-[150px] rounded-full object-cover"
         src={profilePic ? profilePic : ''} // Placeholder for now
         alt={imageAlt}
-        width={256}
-        height={256}
+        width={150}
+        height={150}
       />
     </a>
     <div className="p-5">

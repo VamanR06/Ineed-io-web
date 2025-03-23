@@ -1,8 +1,9 @@
 'use client';
 
 import { DashboardHeader as ProfileHeader } from '@/components/dashboard/header';
+/* 
 import { DashboardMetrics } from '@/components/dashboard/metrics';
-/* import { SubmissionsCalendar } from '@/components/dashboard/submissions-calendar';
+import { SubmissionsCalendar } from '@/components/dashboard/submissions-calendar';
 import { ActivityChart } from '@/components/dashboard/activity-chart'; */
 // import { TimePickerDemo } from '@/components/dashboard/time-picker';
 import '../globals.css';
@@ -33,7 +34,8 @@ const ProfilePage: React.FC = () => {
       fetchUser();
     }
   }, []);
-
+  // TODO #17: GET RID OF ME AFTER FINISHING TODO #3
+  console.log(applications);
   useEffect(() => {
     const fetchData = async () => {
       const client = createClient();
@@ -98,12 +100,13 @@ const ProfilePage: React.FC = () => {
 
     fetchAvatar();
   }, [user]);
+  //TODO #2:Add an avatar that will be displayed under the dashboard header (get the avatar_url from the profiles table)
 
-  /*TODO #2: Add the following stats: Total applications, 
+  /*TODO #3: Add the following stats: Total applications, 
   success rate, pending / total, success / total, rejected / total.
   USE THE EXPLORE PAGE CARDS (they are pre-styled already) to display stats
   REPLACE THE DASHBOARD METRICS WITH A NEW COMPONENT CALLED: ProfileMetrics, and create that in the components/profile folder
-  Copy paste the cards from the app/explore/page.tsx page, and fetch and calculate all the statistics from the database 
+  Copy paste the cards from the app/leaderboard/page.tsx page, and fetch and calculate all the statistics from the database 
   */
   return (
     <div className="ineed.io-profile.page min-h-screen bg-background p-6">
@@ -115,6 +118,7 @@ const ProfilePage: React.FC = () => {
       {/* TODO #3: Standardized the dark mode background color at next team discussion*/}
 
       {/* FIXME: There is a bug here, when the user changes their first name, it still uses the
+      {/* FIXME #12: There is a bug here, when the user changes their first name, it still uses the
       first name they signed up with (but this works in the dashboard page, fix this.)
 
       3/22: attempted fix with line 57 and updates from lines 70-78
@@ -141,8 +145,11 @@ const ProfilePage: React.FC = () => {
       </Avatar> */}
 
       <div className="shadow-lg shadow-teal-900/10">
+      <ProfileHeader user={user} />
+      <div className="">
+        {/* 
         <DashboardMetrics applications={applications} />
-        {/* <ActivityChart />
+        <ActivityChart />
         <SubmissionsCalendar /> */}
         <Badges />
       </div>

@@ -31,6 +31,12 @@ interface Profile {
   activity: number;
 }
 
+/* 
+TODO #15: Make names clickable
+this should route to /profile/uuid (hint: use next/link)
+(remember that uuid is the unique id for each user, this is the "id" column in the profiles table)
+*/
+
 export function LeaderboardTable() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [error, setError] = useState<PostgrestError | null>(null);
