@@ -154,6 +154,7 @@ const ProfilePage: React.FC = () => {
         <Badges />
       </div>
     </div>
+    </div>
   );
 };
 
