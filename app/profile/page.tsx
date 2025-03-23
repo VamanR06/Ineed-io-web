@@ -8,7 +8,7 @@ import { ActivityChart } from '@/components/dashboard/activity-chart'; */
 import '../globals.css';
 import { createClient } from '@/utils/supabase/client';
 import React, { useState, useEffect } from 'react';
-import { User } from '@/types/user';
+import { UserMetadata, User } from '@/types/user';
 import { redirect } from 'next/navigation';
 import { Badges } from '@/components/dashboard/badges';
 import { Application } from '@/types/application';
@@ -17,7 +17,9 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'; //
 const ProfilePage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [applications, setApplications] = useState<Application[]>([]);
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);  //avatar img const
+  const [avatarImage, setAvatarImage] = useState<string | null>(null);
+  const [firstName, setFirstName] = useState<string | null>(null);
+  // const [avatarUrl, setAvatarUrl] = useState<string | null>(null); //avatar img const
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const fetchUser = async () => {
@@ -52,9 +54,6 @@ const ProfilePage: React.FC = () => {
   }, []);
 
   //COMPLETED :Added an avatar that will be displayed under the dashboard header
-
-  const [avatarImage, setAvatarImage] = useState<string | null>(null);
-  const [firstName, setFirstName] = useState<string | null>(null);
   //avatar fetching:
   useEffect(() => {
     if (!user) return; // only fetch avatar if user exists
@@ -70,17 +69,35 @@ const ProfilePage: React.FC = () => {
       } else {
         // Set the avatar image
         setAvatarImage(data?.avatar || null);
-        
-        // Update the user object with the latest firstName
+
+        // Update the firstName state for UI use
         if (data?.firstName) {
           setFirstName(data.firstName);
+
+          // Update the user object with proper typing
+          setUser((prevUser) => {
+            if (!prevUser) return null;
+
+            // Create a properly typed metadata object that includes all required fields
+            const updatedMetadata: UserMetadata = {
+              // Keep existing metadata values if they exist
+              first_name: data.firstName,
+              last_name: prevUser.user_metadata?.last_name || '',
+              timestamp: prevUser.user_metadata?.timestamp || new Date().toISOString(),
+            };
+
+            // Return updated user with new metadata
+            return {
+              ...prevUser,
+              user_metadata: updatedMetadata,
+            };
+          });
         }
       }
     };
 
     fetchAvatar();
   }, [user]);
-
 
   /*TODO #2: Add the following stats: Total applications, 
   success rate, pending / total, success / total, rejected / total.
@@ -104,16 +121,16 @@ const ProfilePage: React.FC = () => {
       */}
 
       {/* 3/22: Centered photo, added teal shadow to avatar and dashboard metrics */}
-        <div className='flex flex-col items-center'>
-          <ProfileHeader user={user} />
-          <div className="mb-1"></div>
-          <div className="group relative">
+      <div className="flex flex-col items-center">
+        <ProfileHeader user={user} />
+        <div className="mb-1"></div>
+        <div className="group relative">
           <Avatar className="h-60 w-60 shadow-lg shadow-teal-500/50 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-teal-400/60">
             <AvatarImage src={avatarImage || ''} />
-            <AvatarFallback>EV</AvatarFallback>
+            <AvatarFallback>{firstName ? firstName.charAt(0) : 'U'}</AvatarFallback>
           </Avatar>
-          </div>
         </div>
+      </div>
 
       {/* <ProfileHeader user={user} /> */}
 
