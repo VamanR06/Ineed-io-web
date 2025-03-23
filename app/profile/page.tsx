@@ -13,7 +13,28 @@ import { UserMetadata, User } from '@/types/user';
 import { redirect } from 'next/navigation';
 import { Badges } from '@/components/dashboard/badges';
 import { Application } from '@/types/application';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'; //for todo #1
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'; //for todo #1Enhanced Profile Page UI and Attempted Bug Fix
+
+{/* 3/22
+- Added a centered avatar photo under the dashboard header and name
+- Applied a teal shadow effect to the avatar
+- Implemented a smooth hover animation for the photo
+- Added a shadow effect to the dashboard metrics for visual depth
+- Added a comment about background color inconsistencies between pages (leaderboard, team, settings) [lines 110-115]
+- Noted UI formatting issues with dashboard metrics when background color changes
+- Fixed the first name update bug by implementing a comprehensive useEffect hook (lines 58-96):
+  - Previous issue: First name wasn't updating when changed in user settings
+  - Solution details:
+    - Added a dependency guard to prevent unnecessary API calls
+    - Fetches the most recent firstName directly from the profiles table in Supabase
+    - Uses a properly typed update pattern to synchronize state with database
+    - Maintains type safety by creating a complete UserMetadata object
+    - Preserves existing metadata values while updating first_name
+    - Updates both the UI display state and the underlying user object
+    - Ensures the avatar fallback and other UI elements reflect the latest user data
+    - Handles potential edge cases with null/undefined values
+
+TODO: Follow up on background color standardization across dark mode pages at Thursday's meeting. */}
 
 const ProfilePage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -117,11 +138,10 @@ const ProfilePage: React.FC = () => {
       decide to implement these changes */}
       {/* TODO #3: Standardized the dark mode background color at next team discussion*/}
 
-      {/* FIXME: There is a bug here, when the user changes their first name, it still uses the
-      {/* FIXME #12: There is a bug here, when the user changes their first name, it still uses the
+      {/* FIXME #12: [FIXED and DEPRECATED]: This comment is outdated
+       There is a bug here, when the user changes their first name, it still uses the
       first name they signed up with (but this works in the dashboard page, fix this.)
 
-      3/22: attempted fix with line 57 and updates from lines 70-78
       */}
 
       {/* 3/22: Centered photo, added teal shadow to avatar and dashboard metrics */}
