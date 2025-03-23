@@ -15,7 +15,8 @@ import { Badges } from '@/components/dashboard/badges';
 import { Application } from '@/types/application';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'; //for todo #1Enhanced Profile Page UI and Attempted Bug Fix
 
-{/* 3/22
+{
+  /* 3/22
 - Added a centered avatar photo under the dashboard header and name
 - Applied a teal shadow effect to the avatar
 - Implemented a smooth hover animation for the photo
@@ -34,7 +35,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'; //
     - Ensures the avatar fallback and other UI elements reflect the latest user data
     - Handles potential edge cases with null/undefined values
 
-TODO: Follow up on background color standardization across dark mode pages at Thursday's meeting. */}
+TODO: Follow up on background color standardization across dark mode pages at Thursday's meeting. */
+}
 
 const ProfilePage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -165,15 +167,15 @@ const ProfilePage: React.FC = () => {
       </Avatar> */}
 
       <div className="shadow-lg shadow-teal-900/10">
-      <ProfileHeader user={user} />
-      <div className="">
-        {/* 
+        <ProfileHeader user={user} />
+        <div className="">
+          {/* 
         <DashboardMetrics applications={applications} />
         <ActivityChart />
         <SubmissionsCalendar /> */}
-        <Badges />
+          <Badges />
+        </div>
       </div>
-    </div>
     </div>
   );
 };
