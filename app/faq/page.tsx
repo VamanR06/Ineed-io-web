@@ -9,7 +9,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
-const Explore: React.FC = (): JSX.Element => {
+const FAQ: React.FC = (): JSX.Element => {
   return (
     <div className="ineed.io-faq-page">
       <section>
@@ -47,4 +47,4 @@ const Explore: React.FC = (): JSX.Element => {
   );
 };
 
-export default Explore;
+export default FAQ;

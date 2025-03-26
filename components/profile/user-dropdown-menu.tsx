@@ -12,11 +12,7 @@ import {
 import { signOutAction } from '@/app/actions';
 import Link from 'next/link';
 
-interface DropdownMenuProps {
-  avatar: string | null;
-}
-
-export function UserDropdownMenu({ avatar }: DropdownMenuProps) {
+export function UserDropdownMenu({ avatar }: { avatar: string | null }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
