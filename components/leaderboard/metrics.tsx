@@ -2,7 +2,7 @@ import { Card } from '@/components/ui/card';
 import { Mail, Twitter, Users } from 'lucide-react';
 
 /* 
-TODO #11: Add metrics for the following:
+TODO #8 (Large TODO): Add metrics for the following:
 1. total users
 2. total applications
 3. overall rejection rate

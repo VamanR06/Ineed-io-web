@@ -3,7 +3,7 @@
 import { Users, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import { createClient } from '@/utils/supabase/client';
 import { useState, useEffect } from 'react';
 
@@ -35,7 +35,7 @@ export function LeaderboardHeader() {
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-4">
-            <FontAwesomeIcon className="text-xl text-primary" icon={faAngleRight} />
+            <FontAwesomeIcon className="text-xl text-primary" icon={faChartLine} />
             <h1 className="text-xl font-semibold">Leaderboard</h1>
           </div>
           <div className="ml-2 text-lg text-gray-400">

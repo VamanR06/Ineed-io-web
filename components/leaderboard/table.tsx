@@ -2,7 +2,7 @@
 
 import { createClient } from '@/utils/supabase/client';
 import { useEffect, useState } from 'react';
-import { Search, Filter, Columns, HelpCircle, MoreHorizontal } from 'lucide-react';
+import { /* Filter, Columns */ HelpCircle, MoreHorizontal } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -32,6 +32,11 @@ interface Profile {
   activity: number;
 }
 
+/* 
+TODO #11: Remove rank, labels, balanace, and activity for now
+add these columns: success rate, rejection rate (should know how to calulcate this)
+*/
+
 export function LeaderboardTable() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [error, setError] = useState<PostgrestError | null>(null);
@@ -41,7 +46,7 @@ export function LeaderboardTable() {
       const client = await createClient();
       const { data, error } = await client
         .from('profiles')
-        .select('id, firstName, lastName, total_applications')
+        .select('id, firstName, lastName, total_applications, age, avatar')
         .order('total_applications', { ascending: false })
         .limit(50);
 
@@ -51,24 +56,20 @@ export function LeaderboardTable() {
         return;
       }
 
-      console.log('working till this point');
-      let idx = 0;
       const mappedData: Profile[] = data
         ? data.map((item) => {
             const newItem: Profile = {
               id: item.id,
               name: `${item.firstName} ${item.lastName}`,
-              avatar: '/placeholder.svg',
-              score: users[idx].score,
-              age: users[idx].age,
-              labels: users[idx].labels,
-              balance: users[idx].balance,
+              avatar: item.avatar || '/placeholder.svg',
+              score: 0, // ignored field, default value
+              age: item.age,
+              labels: [], // ignored field, default value
+              balance: '', // ignored field, default value
               applications: item.total_applications,
-              linkedin: users[idx].linkedin,
-              activity: users[idx].activity,
+              linkedin: '', // ignored field, default value
+              activity: 0, // ignored field, default value
             };
-            idx++;
-            idx = idx >= users.length ? 0 : idx;
             return newItem;
           })
         : [];
@@ -78,6 +79,7 @@ export function LeaderboardTable() {
 
     fetchProfiles();
   }, []);
+  console.log(profiles);
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -115,7 +117,6 @@ export function LeaderboardTable() {
     <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-[#374151]">
       <div className="flex items-center justify-between p-4">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400 dark:text-gray-400" />
           <Input
             placeholder="Search..."
             className="w-[300px] border-gray-200 text-black placeholder-gray-400 dark:border-[#374151] dark:text-white dark:placeholder-gray-400"
@@ -124,10 +125,11 @@ export function LeaderboardTable() {
           />
         </div>
         <div className="flex items-center gap-2">
+          {/* 
           <Button
             variant="outline"
             size="sm"
-            className="border-gray-200 bg-white text-black hover:bg-gray-100 dark:border-[#374151] dark:bg-[#1f2937] dark:text-white dark:hover:bg-[#374151]"
+            className="border-gray-200 bg-white text-black hover:bg-gray-100 dark:border-[#121212] dark:bg-[#292828] dark:text-white dark:hover:bg-[#121212]"
           >
             <Filter className="mr-2 h-4 w-4" />
             Filters
@@ -135,25 +137,28 @@ export function LeaderboardTable() {
           <Button
             variant="outline"
             size="sm"
-            className="border-gray-200 bg-white text-black hover:bg-gray-100 dark:border-[#374151] dark:bg-[#1f2937] dark:text-white dark:hover:bg-[#374151]"
+            className="border-gray-200 bg-white text-black hover:bg-gray-100 dark:border-[#121212] dark:bg-[#292828] dark:text-white dark:hover:bg-[#121212]"
           >
             <Columns className="mr-2 h-4 w-4" />
             Columns
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            className="border-gray-200 bg-white text-black hover:bg-gray-100 dark:border-[#374151] dark:bg-[#1f2937] dark:text-white dark:hover:bg-[#374151]"
-          >
-            <HelpCircle className="mr-2 h-4 w-4" />
-            FAQ
-          </Button>
+        */}
+          <Link href={'/faq'}>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-gray-200 bg-white text-black hover:bg-gray-100 dark:border-[#374151] dark:bg-[#292828] dark:text-white dark:hover:bg-[#121212]"
+            >
+              <HelpCircle className="mr-2 h-4 w-4" />
+              FAQ
+            </Button>
+          </Link>
         </div>
       </div>
 
       <Table>
         <TableHeader>
-          <TableRow className="border-gray-200 hover:bg-gray-100 dark:border-[#374151] dark:hover:bg-[#1f2937]">
+          <TableRow className="border-gray-200 hover:bg-gray-100 dark:border-[#374151] dark:hover:bg-[#121212]">
             <TableHead className="w-12 text-gray-600 dark:text-gray-400">#</TableHead>
             <TableHead className="text-gray-600 dark:text-gray-400">User</TableHead>
             <TableHead className="text-gray-600 dark:text-gray-400">Rank</TableHead>
@@ -170,7 +175,7 @@ export function LeaderboardTable() {
           {filteredUsers.map((user, index) => (
             <TableRow
               key={user.id}
-              className="border-gray-200 hover:bg-gray-100 dark:border-[#374151] dark:hover:bg-[#1f2937]"
+              className="border-gray-200 hover:bg-gray-100 dark:border-[#374151] dark:hover:bg-[#292828]"
             >
               <TableCell className="text-gray-600 dark:text-gray-400">{index + 1}</TableCell>
               <TableCell>
@@ -193,7 +198,9 @@ export function LeaderboardTable() {
                   {user.score}
                 </div>
               </TableCell>
-              <TableCell className="text-gray-900 dark:text-gray-300">{user.age}</TableCell>
+              <TableCell className="text-gray-900 dark:text-gray-300">
+                {user.age ? user.age : ''}
+              </TableCell>
               <TableCell>
                 <div className="flex flex-wrap gap-1">
                   {user.labels.map((label, index) => (

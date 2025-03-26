@@ -89,7 +89,7 @@ const ProfilePage: React.FC = () => {
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
       <div className="ineed.io-profile.page min-h-screen bg-background p-6">
-        {/* TODO #22: Discuss and standardize dark mode background color across pages (profile, leaderboard, team, settings) at Thursday's meeting */}
+        {/* TODO #2: Discuss and standardize dark mode background color across pages (profile, leaderboard, team, settings) at Thursday's meeting */}
         <div className="flex flex-col items-center">
           <ProfileHeader user={user} />
           <div className="mb-1"></div>

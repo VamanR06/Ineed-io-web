@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 // Map badge names to image filenames
 {
-  /* TODO #6: Scour the internet for more badges, and come up with ideas for badges!*/
+  /* TODO #4: Scour the internet for more badges, and come up with ideas for badges!*/
 }
 
-/* TODO #7: Add badge functionality. There is a "badges" table, which has a user_id column,
+/* TODO #5: Add badge functionality. There is a "badges" table, which has a user_id column,
 and then the badges that the user has. Fetch all of those badges, and based on whether they are
 false or true, accordingly display the badges based on those values.
 */
