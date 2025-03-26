@@ -1,10 +1,20 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { motion } from 'framer-motion';
+
+const fadeInVariants = { initial: { opacity: 0 }, animate: { opacity: 1 } };
 
 const Landing = () => {
   return (
-    <div className="">
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={fadeInVariants}
+      transition={{ duration: 1, ease: 'easeInOut' }}
+    >
       {/* Landing section */}
       <section className="relative">
         <div className="mx-auto max-w-7xl px-4 pt-10 md:pt-16">
@@ -67,8 +77,9 @@ const Landing = () => {
               <p className="text-gray-500 dark:text-gray-400">
                 <span>
                   <strong>Stay on top of your applications </strong>
-                  <br></br>Easily track every internship application, from submission to follow-ups,
-                  all in one organized dashboard.
+                  <br />
+                  Easily track every internship application, from submission to follow-ups, all in
+                  one organized dashboard.
                 </span>
               </p>
             </div>
@@ -87,8 +98,9 @@ const Landing = () => {
               <p className="text-gray-500 dark:text-gray-400">
                 <span>
                   <strong>Never miss an opportunity</strong>
-                  <br></br>Set reminders for application deadlines, interview dates, and important
-                  follow-ups to stay ahead in your job search.
+                  <br />
+                  Set reminders for application deadlines, interview dates, and important follow-ups
+                  to stay ahead in your job search.
                 </span>
               </p>
             </div>
@@ -112,8 +124,9 @@ const Landing = () => {
               <p className="text-gray-500 dark:text-gray-400">
                 <span>
                   <strong>Analyze your journey</strong>
-                  <br></br>Get valuable insights into your applications—see response rates, track
-                  trends, and refine your approach for better results.
+                  <br />
+                  Get valuable insights into your applications—see response rates, track trends, and
+                  refine your approach for better results.
                 </span>
               </p>
             </div>
@@ -139,8 +152,9 @@ const Landing = () => {
               <p className="text-gray-500 dark:text-gray-400">
                 <span>
                   <strong>Keep your materials ready</strong>
-                  <br></br>Store and manage multiple versions of your resume and cover letter for
-                  easy access and quick customization.
+                  <br />
+                  Store and manage multiple versions of your resume and cover letter for easy access
+                  and quick customization.
                 </span>
               </p>
             </div>
@@ -159,8 +173,9 @@ const Landing = () => {
               <p className="text-gray-500 dark:text-gray-400">
                 <span>
                   <strong>Build meaningful connections</strong>
-                  <br></br>Keep track of networking efforts, recruiter contacts, and informational
-                  interviews to strengthen your job search.
+                  <br />
+                  Keep track of networking efforts, recruiter contacts, and informational interviews
+                  to strengthen your job search.
                 </span>
               </p>
             </div>
@@ -183,8 +198,9 @@ const Landing = () => {
               <p className="text-gray-500 dark:text-gray-400">
                 <span>
                   <strong>Ace your interviews</strong>
-                  <br></br>Organize interview dates, take notes, and review common questions to
-                  boost your confidence and performance.
+                  <br />
+                  Organize interview dates, take notes, and review common questions to boost your
+                  confidence and performance.
                 </span>
               </p>
             </div>
@@ -198,15 +214,15 @@ const Landing = () => {
             className="w-full dark:hidden"
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg"
             alt="dashboard image"
-            width={1200} // Set the width of the image
-            height={800} // Set the height of the image
+            width={1200}
+            height={800}
           />
           <Image
             className="hidden w-full dark:block"
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg"
             alt="dashboard image"
-            width={1200} // Set the width of the image
-            height={800} // Set the height of the image
+            width={1200}
+            height={800}
           />
           <div className="mt-4 md:mt-0">
             <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
@@ -216,9 +232,8 @@ const Landing = () => {
               Searching for internships can be overwhelming, but it doesn’t have to be. Our platform
               helps you track applications, set reminders, and stay on top of deadlines
               effortlessly. Get insights into your progress, manage your networking efforts, and
-              streamline your job search—all in one place. Whether you&lsquo;re applying to your
-              first internship or refining your career path, we’re here to keep you focused and on
-              track.
+              streamline your job search—all in one place. Whether you‘re applying to your first
+              internship or refining your career path, we’re here to keep you focused and on track.
             </p>
             <Link
               href="/login"
@@ -241,7 +256,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 

@@ -23,13 +23,6 @@ import {
 } from '@/components/ui/dialog';
 import { SubmitButton } from '../submit-button';
 
-// TODO #9: Add delete account functionality, need to do research on how
-// to do delete an account in supabase, and then call that function here,
-// might be a little complicated due to authentication issues
-
-//seems to be some issue console logging from the action function, however if you return the object and
-//console log in this file everything seems to work
-
 export function DeleteAccount() {
   const [isDeleting] = useState(false);
   return (

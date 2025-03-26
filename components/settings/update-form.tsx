@@ -105,7 +105,7 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
   };
 
   /* 
-  TODO #14: Add the following links and columns in the database:
+  TODO #9: Add the following links and columns in the database:
   1. LinkedIn
   2. GitHub
   3. Portfolio

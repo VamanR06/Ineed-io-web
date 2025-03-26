@@ -1,6 +1,11 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import '../globals.css';
+import { motion } from 'framer-motion';
+
+const fadeInVariants = { initial: { opacity: 0 }, animate: { opacity: 1 } };
 
 // TODO #4: Team member data array (each person fills their info here)
 
@@ -212,25 +217,32 @@ const TeamMember = ({
 
 const TeamPage = () => {
   return (
-    <div className="ineed.io-team-page">
-      <section className="relative">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
-          <div className="mx-auto mb-8 max-w-screen-sm text-center lg:mb-16">
-            <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-              Our Team
-            </h2>
-            <p className="font-light text-gray-500 dark:text-gray-400 sm:text-xl lg:mb-16">
-              Explore the team here at Ineed.io!
-            </p>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={fadeInVariants}
+      transition={{ duration: 1, ease: 'easeInOut' }}
+    >
+      <div className="ineed.io-team-page">
+        <section className="relative">
+          <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
+            <div className="mx-auto mb-8 max-w-screen-sm text-center lg:mb-16">
+              <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                Our Team
+              </h2>
+              <p className="font-light text-gray-500 dark:text-gray-400 sm:text-xl lg:mb-16">
+                Explore the team here at Ineed.io!
+              </p>
+            </div>
+            <div className="mb-6 grid gap-8 md:grid-cols-2 lg:mb-16">
+              {teamMembers.map((member, index) => (
+                <TeamMember key={index} {...member} />
+              ))}
+            </div>
           </div>
-          <div className="mb-6 grid gap-8 md:grid-cols-2 lg:mb-16">
-            {teamMembers.map((member, index) => (
-              <TeamMember key={index} {...member} />
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </motion.div>
   );
 };
 

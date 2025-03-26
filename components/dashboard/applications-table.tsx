@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Search, Download } from 'lucide-react';
+import { X, Download } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -120,7 +120,7 @@ export function ApplicationsTable({
     }
   };
 
-  /* TODO #10: Make links clickable, the application link, should open in a new tab */
+  /* TODO #3: Make links clickable, the application link, should open in a new tab */
 
   return (
     <Card className="p-6">
@@ -133,7 +133,6 @@ export function ApplicationsTable({
             <Download />
           </Button>
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
             <Input
               placeholder="Search..."
               className="w-[300px] border-[#374151] pl-10 text-white"

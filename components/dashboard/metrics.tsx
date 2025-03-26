@@ -2,6 +2,12 @@ import { Users2, UserPlus, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Application } from '@/types/application';
 
+/*
+TODO #10: Replace the metrics down below with the cards used in the leaderboard,
+will eventually look the same for the dashboard once that is complete,
+feel free to copy paste
+*/
+
 export function DashboardMetrics({ applications = [] }: { applications: Application[] }) {
   const filterLast30Days = (applications: Application[]): Application[] => {
     const now = new Date();
@@ -72,7 +78,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
         ) / 10
       : 100;
 
-  // TODO #8: Change these icons to match the description of the header (check out the link to get icons): https://lucide.dev/icons/
+  // TODO #6: Change these icons to match the description of the header (check out the link to get icons): https://lucide.dev/icons/
   const metrics = [
     {
       title: 'Active Applications',
@@ -96,7 +102,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
   ];
 
   /* 
-  TODO #16: Replace these cards with the cards from components/leaderboard/metrics.tsx
+  TODO #7: Replace these cards with the cards from components/leaderboard/metrics.tsx
   and, make sure you add accurate descriptions, should look just like the leaderboard page,
   except this is for dashboard 
   */

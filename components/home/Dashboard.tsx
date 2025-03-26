@@ -10,6 +10,9 @@ import React, { useState, useEffect } from 'react';
 import { Application } from '@/types/application';
 import { useRouter } from 'next/navigation';
 import { User } from '@supabase/supabase-js';
+import { motion } from 'framer-motion';
+
+const fadeInVariants = { initial: { opacity: 0 }, animate: { opacity: 1 } };
 
 interface ProfileData {
   username: string;
@@ -52,18 +55,25 @@ const Dashboard = ({ user }: { user: User }) => {
   }, [user]);
 
   return (
-    <div className="ineed.io-dashboard.page min-h-screen bg-background p-6">
-      <DashboardHeader user={user} profile={profileUser || undefined} />
-      <div className="">
-        <DashboardMetrics applications={applications} />
-        <NewApplicationForm />
-        <ApplicationsTable
-          applications={applications}
-          setApplications={setApplications}
-          refreshApplications={refreshApps}
-        />
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={fadeInVariants}
+      transition={{ duration: 1, ease: 'easeInOut' }}
+    >
+      <div className="ineed.io-dashboard.page min-h-screen bg-background p-6">
+        <DashboardHeader user={user} profile={profileUser || undefined} />
+        <div className="">
+          <DashboardMetrics applications={applications} />
+          <NewApplicationForm />
+          <ApplicationsTable
+            applications={applications}
+            setApplications={setApplications}
+            refreshApplications={refreshApps}
+          />
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
