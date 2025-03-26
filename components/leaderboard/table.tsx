@@ -15,7 +15,6 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { users } from './sample-data';
 import { PostgrestError } from '@supabase/supabase-js';
 import Link from 'next/link';
 
