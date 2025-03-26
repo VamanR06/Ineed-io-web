@@ -5,11 +5,9 @@ import NavBar from '@/components/navbar/NavBar';
 import { ToastProvider } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import Footer from '@/components/footer/Footer';
+import './globals.css';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-});
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 interface RootLayoutProps {
   children: ReactNode;

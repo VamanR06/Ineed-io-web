@@ -7,32 +7,31 @@ import { usePathname } from 'next/navigation';
 import { ModeToggle } from './ModeToggle';
 import { UserDropdownMenu } from '../profile/user-dropdown-menu';
 import { createClient } from '@/utils/supabase/client';
-import { User } from '@/types/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../ui/button';
+import { User } from '@supabase/supabase-js';
 
 const NavBar = () => {
-  const pathname = usePathname();
+  const [user, setUser] = useState<User | null>(null);
+  const [avatarImage, setAvatarImage] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.getUser();
+      if (error) console.error('Something wrong happened when getting user: ', error);
+      setUser(data.user);
+    };
+
+    fetchUser();
+  }, [pathname]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const [user, setUser] = useState<User | null>(null);
-  const [avatarImage, setAvatarImage] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const fetchUser = async () => {
-        const supabase = await createClient();
-        const { data, error } = await supabase.auth.getUser();
-        if (error) console.log('Error fetching user:', error);
-        setUser(data.user as User | null);
-      };
-      fetchUser();
-    }
-  }, []);
 
   useEffect(() => {
     if (!user) return;
@@ -43,11 +42,8 @@ const NavBar = () => {
         .select('avatar')
         .eq('id', user.id)
         .single();
-      if (error) {
-        console.error('Error fetching avatar:', error);
-      } else {
-        setAvatarImage(data?.avatar);
-      }
+      if (error) console.error('Error fetching avatar:', error);
+      else setAvatarImage(data?.avatar);
     };
     fetchAvatar();
   }, [user]);
@@ -56,7 +52,6 @@ const NavBar = () => {
     { name: 'Home', route: '/' },
     { name: 'Leaderboard', route: '/leaderboard' },
     { name: 'About Us', route: '/aboutus' },
-    { name: 'Dashboard', route: '/dashboard' },
   ];
 
   return (
