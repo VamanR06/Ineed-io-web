@@ -3,10 +3,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Home } from 'lucide-react';
 
-// TODO #5: Create the not found page, a page that will be displayed
-// when a user tries to access a page that doesn't exist
-// Feel free to use this as inspiration: https://flowbite.com/blocks/marketing/404/
-
 const NotFound: React.FC = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 text-center">
