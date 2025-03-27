@@ -120,7 +120,9 @@ const NavBar = () => {
           <UserDropdownMenu avatar={avatarImage} />
         ) : (
           <Link href="/login">
-            <Button>Login</Button>
+            <Button className="bg-neutral-50 text-neutral-900 shadow hover:bg-neutral-50/90">
+              Login
+            </Button>
           </Link>
         )}
       </div>
