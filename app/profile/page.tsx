@@ -92,7 +92,7 @@ const ProfilePage: React.FC = () => {
       variants={fadeInVariants}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <div className="ineed.io-profile.page min-h-screen bg-background p-6">
+      <div className="ineed.io-profile.page min-h-screen  p-6">
         <div className="flex flex-col items-center">
           <ProfileHeader user={user} />
           <div className="mb-1"></div>
