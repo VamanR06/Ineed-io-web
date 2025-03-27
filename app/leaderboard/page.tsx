@@ -48,7 +48,7 @@ const Explore: React.FC = (): JSX.Element => {
       variants={fadeInVariants}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <div className="ineed.io-explore-page min-h-screen p-6 text-white">
+      <div className="ineed.io-explore-page min-h-screen p-6">
         <LeaderboardHeader />
         <div className="mt-6 space-y-6">
           <LeaderboardMetrics />

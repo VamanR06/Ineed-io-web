@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import '../globals.css';
 import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
 
 const fadeInVariants = { initial: { opacity: 0 }, animate: { opacity: 1 } };
 
@@ -143,16 +144,14 @@ const TeamMember = ({
   website,
   profilePic,
 }: TeamMember) => (
-  <div className="items-center rounded-lg shadow dark:border-gray-700 sm:flex">
-    <a href="#">
-      <Image
-        className="h-[150px] w-[150px] rounded-full object-cover"
+  <Card className="flex h-48 bg-muted p-4 md:w-[32%]">
+    <div className="flex min-w-[30%] items-center justify-center">
+      <img
+        className="size-24 rounded-full object-cover md:size-32"
         src={profilePic ? profilePic : ''} // Placeholder for now
         alt={imageAlt}
-        width={150}
-        height={150}
       />
-    </a>
+    </div>
     <div className="p-5">
       <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
         <p>{name}</p>
@@ -213,7 +212,7 @@ const TeamMember = ({
         )}
       </ul>
     </div>
-  </div>
+  </Card>
 );
 
 const TeamPage = () => {
@@ -224,25 +223,19 @@ const TeamPage = () => {
       variants={fadeInVariants}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <div className="ineed.io-team-page">
-        <section className="relative">
-          <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
-            <div className="mx-auto mb-8 max-w-screen-sm text-center lg:mb-16">
-              <h2 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-                Our Team
-              </h2>
-              <p className="font-light text-gray-500 dark:text-gray-400 sm:text-xl lg:mb-16">
-                Explore the team here at Ineed.io!
-              </p>
-            </div>
-            <div className="mb-6 grid gap-8 md:grid-cols-2 lg:mb-16">
-              {teamMembers.map((member, index) => (
-                <TeamMember key={index} {...member} />
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
+      <section id="aboutus-section" className="flex flex-col p-6">
+        <div className="my-16 flex flex-col items-center justify-center gap-4">
+          <h1 className="text-4xl font-extrabold">Meet Our Team</h1>
+          <p className="text-gray-500 dark:text-gray-400 sm:text-xl">
+            Explore the team here at Ineed.io!
+          </p>
+        </div>
+        <div className="flex flex-col flex-wrap gap-4 md:flex-row md:items-center">
+          {teamMembers.map((member, index) => (
+            <TeamMember key={index} {...member} />
+          ))}
+        </div>
+      </section>
     </motion.div>
   );
 };
