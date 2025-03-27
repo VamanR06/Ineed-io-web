@@ -81,6 +81,10 @@ const ProfilePage: React.FC = () => {
     fetchAvatar();
   }, [user]);
 
+  /*
+  TODO #12: If a user has a bio in their profiles table, display it under their avatar
+  */
+
   return (
     <motion.div
       initial="initial"
@@ -89,19 +93,18 @@ const ProfilePage: React.FC = () => {
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
       <div className="ineed.io-profile.page min-h-screen bg-background p-6">
-        {/* TODO #2: Discuss and standardize dark mode background color across pages (profile, leaderboard, team, settings) at Thursday's meeting */}
         <div className="flex flex-col items-center">
           <ProfileHeader user={user} />
           <div className="mb-1"></div>
           <div className="group relative">
-            <Avatar className="h-60 w-60 shadow-lg shadow-teal-500/50 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-teal-400/60">
+            <Avatar className="h-60 w-60 shadow-lg shadow-teal-500/50">
               <AvatarImage src={avatarImage || ''} />
               <AvatarFallback>{firstName ? firstName.charAt(0) : 'U'}</AvatarFallback>
             </Avatar>
           </div>
         </div>
         <div className="shadow-lg shadow-teal-900/10">
-          <div className="">
+          <div>
             <ProfileMetrics applications={applications} />
             <Badges />
           </div>

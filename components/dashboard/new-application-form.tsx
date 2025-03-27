@@ -15,6 +15,15 @@ import { User } from '@/types/user';
 import { redirect } from 'next/navigation';
 import { Separator } from '../ui/separator';
 
+/* 
+TODO #12: Add functionality so that user's cannot add empty spaces
+to all input boxes (basically, if you click spaces a couple times in 
+each input box, and click submit, then it counts as valid, which it shouldn't)
+When this happens, use https://ui.shadcn.com/docs/components/alert to 
+make an alert appear on the page, and prevent it from submitting an internship to
+the database.
+*/
+
 export function NewApplicationForm() {
   const [reminder, setReminder] = useState(false);
   const [date, setDate] = useState<Date>();

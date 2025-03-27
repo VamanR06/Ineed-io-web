@@ -49,24 +49,6 @@ export function LeaderboardHeader() {
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-3">
-        <Button
-          variant="outline"
-          size="sm"
-          className="border-[#374151] bg-[#1f2937] text-white hover:bg-[#374151]"
-        >
-          <Users className="mr-2 h-4 w-4" />
-          Users
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className="border-[#374151] bg-[#1f2937] text-white hover:bg-[#374151]"
-        >
-          <BarChart3 className="mr-2 h-4 w-4" />
-          Insights
-        </Button>
-      </div>
     </div>
   );
 }
