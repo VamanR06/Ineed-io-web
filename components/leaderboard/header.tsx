@@ -1,7 +1,5 @@
 'use client';
 
-import { Users, BarChart3 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import { createClient } from '@/utils/supabase/client';
