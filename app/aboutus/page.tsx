@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import '../globals.css';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
@@ -144,7 +143,7 @@ const TeamMember = ({
   website,
   profilePic,
 }: TeamMember) => (
-  <Card className="flex h-48 bg-muted p-4 md:w-[32%]">
+  <Card className="flex h-48 bg-muted p-4 shadow-md shadow-muted-foreground md:w-[32%]">
     <div className="flex min-w-[30%] items-center justify-center">
       <img
         className="size-24 rounded-full object-cover md:size-32"

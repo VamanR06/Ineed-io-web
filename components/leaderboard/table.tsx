@@ -17,6 +17,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { PostgrestError } from '@supabase/supabase-js';
 import Link from 'next/link';
+import { Card } from '../ui/card';
 
 interface Profile {
   id: number;
@@ -113,7 +114,7 @@ export function LeaderboardTable() {
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-[#374151]">
+    <Card className="overflow-hidden rounded-lg border border-gray-200 p-4 shadow-md shadow-foreground dark:border-[#374151]">
       <div className="flex items-center justify-between p-4">
         <div className="relative">
           <Input
@@ -237,6 +238,6 @@ export function LeaderboardTable() {
           ))}
         </TableBody>
       </Table>
-    </div>
+    </Card>
   );
 }

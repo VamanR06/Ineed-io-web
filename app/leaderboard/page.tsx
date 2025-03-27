@@ -48,13 +48,14 @@ const Explore: React.FC = (): JSX.Element => {
       variants={fadeInVariants}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <div className="ineed.io-explore-page min-h-screen p-6">
+      <section
+        id="leaderboard-section"
+        className="ineed.io-explore-page flex min-h-screen flex-col gap-6 p-6"
+      >
         <LeaderboardHeader />
-        <div className="mt-6 space-y-6">
-          <LeaderboardMetrics />
-          <LeaderboardTable />
-        </div>
-      </div>
+        <LeaderboardMetrics />
+        <LeaderboardTable />
+      </section>
     </motion.div>
   );
 };
