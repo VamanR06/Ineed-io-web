@@ -1,6 +1,7 @@
 import { Users2, UserPlus, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Application } from '@/types/application';
+import { Separator } from '../ui/separator';
 
 /*
 TODO #10: Replace the metrics down below with the cards used in the leaderboard,
@@ -108,26 +109,28 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
   */
 
   return (
-    <div className="grid gap-6 md:grid-cols-3">
+    <div className="flex flex-col justify-between gap-6 md:flex-row">
       {metrics.map((metric) => (
-        <Card key={metric.title} className="p-6">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#e8faf3]">
-              <metric.icon className="h-6 w-6 text-[#121212]" />
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">{metric.title}</p>
-              <p className="text-2xl font-semibold">{metric.value}</p>
-              {metric.title !== 'Active Applications' ? (
-                <p
-                  className={`text-sm ${metric.trend >= 0 ? (metric.title === 'Total Applications this Month' ? 'text-[#00ac4f]' : 'text-red-500') : metric.title === 'Total Applications this Month' ? 'text-red-500' : 'text-[#00ac4f]'}`}
-                >
-                  {metric.trend >= 0 ? '↑' : '↓'} {Math.abs(metric.trend)}% from previous
-                </p>
-              ) : (
-                <p className={`text-sm text-gray-500`}>{Math.abs(metric.trend)}% of total</p>
-              )}
-            </div>
+        <Card
+          key={metric.title}
+          className="flex flex-1 items-center gap-4 p-6 shadow-md shadow-primary"
+        >
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#e8faf3]">
+            <metric.icon className="h-6 w-6 text-[#121212]" />
+          </div>
+          <div className="flex flex-1 flex-col gap-1">
+            <h2 className="text-lg font-semibold">{metric.title}</h2>
+            <Separator className="w-full bg-primary" />
+            <p className="text-md">{metric.value}</p>
+            {metric.title !== 'Active Applications' ? (
+              <p
+                className={`text-sm ${metric.trend >= 0 ? (metric.title === 'Total Applications this Month' ? 'text-[#00ac4f]' : 'text-red-500') : metric.title === 'Total Applications this Month' ? 'text-red-500' : 'text-[#00ac4f]'}`}
+              >
+                {metric.trend >= 0 ? '↑' : '↓'} {Math.abs(metric.trend)}% from previous
+              </p>
+            ) : (
+              <p className={`text-sm text-gray-500`}>{Math.abs(metric.trend)}% of total</p>
+            )}
           </div>
         </Card>
       ))}

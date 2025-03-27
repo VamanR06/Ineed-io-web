@@ -86,10 +86,11 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Felix Shen',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Science',
+    linkedin: 'https://www.linkedin.com/in/felix-shen-a40195299',
+    github: 'https://github.com/Blank-FS',
     imageAlt: 'Felix Avatar',
-
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/felixTemp.png',
   },
   {
     name: 'Forest Qin',
