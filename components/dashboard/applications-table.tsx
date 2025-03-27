@@ -121,8 +121,6 @@ export function ApplicationsTable({
     }
   };
 
-  /* TODO #3: Make links clickable, the application link, should open in a new tab */
-
   return (
     <Card className="flex flex-col gap-6 p-6 shadow-md shadow-primary">
       {/* Search and Export UI */}

@@ -4,6 +4,7 @@ import React from 'react';
 import '../globals.css';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
+import Image from 'next/image';
 
 const fadeInVariants = { initial: { opacity: 0 }, animate: { opacity: 1 } };
 
@@ -145,10 +146,12 @@ const TeamMember = ({
 }: TeamMember) => (
   <Card className="flex h-48 bg-muted p-4 shadow-md shadow-muted-foreground md:w-[32%]">
     <div className="flex min-w-[30%] items-center justify-center">
-      <img
+      <Image
         className="size-24 rounded-full object-cover md:size-32"
         src={profilePic ? profilePic : ''} // Placeholder for now
         alt={imageAlt}
+        width={128}
+        height={128}
       />
     </div>
     <div className="p-5">
