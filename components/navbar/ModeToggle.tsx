@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
-import { Laptop, Moon, Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
@@ -35,7 +35,7 @@ const ModeToggle = () => {
           variant="ghost"
           size="icon"
           value={theme}
-          className="border-2 border-white bg-transparent"
+          className="bg-transparent shadow-sm shadow-white"
         >
           <Sun
             className={cn(
@@ -58,9 +58,6 @@ const ModeToggle = () => {
         </DropdownMenuItem>
         <DropdownMenuItem className="flex gap-2" onClick={() => setTheme('dark')}>
           <Moon size={ICON_SIZE} className="text-muted-foreground" /> <span>Dark</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="flex gap-2" onClick={() => setTheme('system')}>
-          <Laptop size={ICON_SIZE} className="text-muted-foreground" /> <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

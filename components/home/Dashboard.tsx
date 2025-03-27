@@ -61,17 +61,15 @@ const Dashboard = ({ user }: { user: User }) => {
       variants={fadeInVariants}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <div className="ineed.io-dashboard.page min-h-screen bg-background p-6">
+      <div id="dashboard-section" className="flex min-h-screen flex-col gap-6 p-6">
         <DashboardHeader user={user} profile={profileUser || undefined} />
-        <div className="">
-          <DashboardMetrics applications={applications} />
-          <NewApplicationForm />
-          <ApplicationsTable
-            applications={applications}
-            setApplications={setApplications}
-            refreshApplications={refreshApps}
-          />
-        </div>
+        <DashboardMetrics applications={applications} />
+        <NewApplicationForm />
+        <ApplicationsTable
+          applications={applications}
+          setApplications={setApplications}
+          refreshApplications={refreshApps}
+        />
       </div>
     </motion.div>
   );

@@ -35,6 +35,7 @@ import { mkConfig, generateCsv, asString } from 'export-to-csv'; // Updated impo
 //import { useRouter } from 'next/router';
 import { useRouter } from 'next/navigation'; //believe this should be next/navigation not next/router
 import { StatusDialog } from './statusdialog';
+import { Separator } from '../ui/separator';
 
 dayjs.extend(advancedFormat);
 
@@ -123,25 +124,25 @@ export function ApplicationsTable({
   /* TODO #3: Make links clickable, the application link, should open in a new tab */
 
   return (
-    <Card className="p-6">
+    <Card className="flex flex-col gap-6 p-6 shadow-md shadow-primary">
       {/* Search and Export UI */}
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-3xl font-semibold">Recent Applications</h2>
-        <div className="flex items-center gap-4">
-          <Button onClick={exportToCsv} variant="outline">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center">
+        <h2 className="text-xl font-semibold md:text-3xl">Recent Applications</h2>
+        <div className="flex flex-col gap-4 md:ml-auto md:flex-row md:items-center">
+          <Button onClick={exportToCsv} variant="default">
             Export to CSV
             <Download />
           </Button>
-          <div className="relative">
-            <Input
-              placeholder="Search..."
-              className="w-[300px] border-[#374151] pl-10 text-white"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
+          <Input
+            placeholder="Search..."
+            className="w-[300px] border-[#374151] pl-10 text-white"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
       </div>
+
+      <Separator className="bg-primary" />
 
       <Table id="applications-table">
         <TableHeader>

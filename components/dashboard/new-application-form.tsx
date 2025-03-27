@@ -13,6 +13,7 @@ import { TimePickerDemo } from './time-picker';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@/types/user';
 import { redirect } from 'next/navigation';
+import { Separator } from '../ui/separator';
 
 export function NewApplicationForm() {
   const [reminder, setReminder] = useState(false);
@@ -56,14 +57,16 @@ export function NewApplicationForm() {
   };
 
   return (
-    <Card className="p-6">
-      <h2 className="mb-6 text-3xl font-semibold">Add New Application</h2>
-      <form className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
+    <Card className="flex flex-col gap-4 p-6 shadow-md shadow-primary">
+      <h2 className="text-xl font-semibold md:text-3xl">Add New Application</h2>
+      <Separator className="bg-primary" />
+      <form className="flex flex-col gap-4">
+        <div className="flex flex-col flex-wrap md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-2 md:w-[48%]">
             <Label htmlFor="company" className="text-md">
               Company Name
             </Label>
+            <Separator className="w-[50%] bg-primary" />
             <Input
               id="company"
               placeholder="Enter company name"
@@ -72,10 +75,11 @@ export function NewApplicationForm() {
               onChange={(e) => setCompanyName(e.target.value)}
             />
           </div>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2 md:w-[48%]">
             <Label htmlFor="role" className="text-md">
               Role
             </Label>
+            <Separator className="w-[50%] bg-primary" />
             <Input
               id="role"
               placeholder="Enter role/position"
@@ -84,10 +88,11 @@ export function NewApplicationForm() {
               onChange={(e) => setRole(e.target.value)}
             />
           </div>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2 md:w-[48%]">
             <Label htmlFor="link" className="text-md">
               Link
             </Label>
+            <Separator className="w-[50%] bg-primary" />
             <Input
               id="link"
               placeholder="Enter link"
@@ -96,26 +101,30 @@ export function NewApplicationForm() {
               onChange={(e) => setLink(e.target.value)}
             />
           </div>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2 md:w-[48%]">
             <Label htmlFor="location" className="text-md">
               Location
             </Label>
-            <Input
-              id="location"
-              placeholder="Enter location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
+            <Separator className="w-[50%] bg-primary" />
+            <div className="border border-red-500">
+              <Input
+                id="location"
+                placeholder="Enter location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </div>
           </div>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <Switch id="reminder" checked={reminder} onCheckedChange={setReminder} />
           <Label htmlFor="reminder">Set Reminder</Label>
         </div>
         {reminder && (
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label>Date</Label>
+          <div className="flex flex-col md:flex-row md:justify-between">
+            <div className="flex flex-col gap-2 md:w-[48%]">
+              <Label className="text-md">Date</Label>
+              <Separator className="w-[50%] bg-primary" />
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
@@ -139,18 +148,16 @@ export function NewApplicationForm() {
                 </PopoverContent>
               </Popover>
             </div>
-            <div className="space-y-2">
-              <Label>Time</Label>
+            <div className="flex flex-col gap-2 md:w-[48%]">
+              <Label className="text-md">Time</Label>
+              <Separator className="w-[50%] bg-primary" />
               <TimePickerDemo />
             </div>
           </div>
         )}
-
-        <div className="flex flex-col items-center justify-center">
-          <Button
-            onClick={handleAddApplication}
-            className="w-56 bg-[#121212] text-white hover:bg-[#222020]"
-          >
+        <Separator className="bg-primary" />
+        <div className="flex items-center justify-center">
+          <Button onClick={handleAddApplication} className="w-56">
             Add Application
           </Button>
         </div>

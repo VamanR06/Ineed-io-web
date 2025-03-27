@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
       variants={fadeInVariants}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <footer className="flex flex-col gap-4 px-4 sm:px-12">
+      <footer className="flex flex-col gap-4 px-4 py-6 sm:px-12">
         <div className="flex items-center gap-4">
           <Link href="/" className="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
             <Image src="/images/logo.png" alt="Logo" width={32} height={32} />
