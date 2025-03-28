@@ -74,6 +74,11 @@ export function ApplicationsTable({
     setApplications(applications.filter((app) => !app_ids.includes(app.id)));
 
     setCheckedApplications([]);
+
+    const select_all = document.querySelector(
+      'input[type="checkbox"][name="select-all"]'
+    );
+    (select_all as HTMLInputElement).checked = false;
   }
 
   const exportToCsv = () => {
