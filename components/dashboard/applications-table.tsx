@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { X, Download } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { X, Search, Download } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -54,6 +54,8 @@ export function ApplicationsTable({
     app.company_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const [checkedApplications, setCheckedApplications] = useState<Application[]>([]);
+
   const handleDelete = async (id: string) => {
     const supabase = await createClient();
     const { error } = await supabase.from('internships').delete().eq('id', id);
@@ -63,6 +65,28 @@ export function ApplicationsTable({
     }
     setApplications(applications.filter((app) => `${app.id}` !== id));
   };
+
+  const handleDeleteMultiple = async (apps: Application[]) => {
+    const supabase = await createClient();
+
+    const app_ids = apps.map((app) => app.id);
+
+    const { error } = await supabase.from('internships').delete().eq('user_id', apps[0].user_id).in('id', app_ids);
+
+    if (error) {
+      console.error('Error deleting application:', error.message);
+      return;
+    }
+
+    setApplications(applications.filter((app) => !app_ids.includes(app.id)));
+
+    setCheckedApplications([]);
+
+    const select_all = document.querySelector(
+      'input[type="checkbox"][name="select-all"]'
+    );
+    (select_all as HTMLInputElement).checked = false;
+  }
 
   const exportToCsv = () => {
     const csvConfig = mkConfig({
@@ -94,6 +118,31 @@ export function ApplicationsTable({
     window.URL.revokeObjectURL(url);
   };
 
+  useEffect(() => {
+    filteredApplications.forEach((app) => {
+      const checkbox = document.querySelector(`input[type="checkbox"][name="${app.id}"]`);
+      if (checkbox?.ariaChecked) {
+        setCheckedApplications((prev) => [...prev, app]);
+      }
+    });
+
+    if (checkedApplications.length === applications.length && checkedApplications.length > 0) {
+      const select_all = document.querySelector(
+        'input[type="checkbox"][name="select-all"]'
+      );
+      (select_all as HTMLInputElement).checked = true;
+    }
+  }, [filteredApplications]);
+
+  //TODO: Add functionality such that users can update the status of an internship!
+  //Check out https://ui.shadcn.com/docs/components/dialog for the popup
+  //(i.e, they can click on the status, and it should bring a popup where they can change the status.)
+  /*
+  Recommended steps:
+  1. console.log() the status each time you change it, and see if its actually changing
+  2. query the database (remember to only update the internship that they are changing the status of, use the unique id)
+  3. verify changes are being made
+  */
   async function updateStatusInSupabase(id: number, newStatus: string) {
     const supabase = await createClient();
     const { data, error } = await supabase
@@ -162,11 +211,35 @@ export function ApplicationsTable({
               <TableCell>
                 <input
                   type="checkbox"
+                  name={app.id.toString()}
                   onChange={(e) => {
                     if (e.target.checked) {
                       console.log(`Checked internship id: ${app.id}`);
+                      setCheckedApplications((prev) => [...prev, app]);
                     }
-                  }}
+
+                    else {
+                      console.log(`Unchecked internship id: ${app.id}`);
+                      const index = checkedApplications.indexOf(
+                        applications.find((application) => application.id === app.id)!
+                      );
+
+                      if (index > -1) {
+                        setCheckedApplications((prev) => {
+                          const newChecked = [...prev];
+                          newChecked.splice(index, 1);
+                          return newChecked;
+                        });
+                      }
+
+
+                      const select_all = document.querySelector(
+                        'input[type="checkbox"][name="select-all"]'
+                      );
+                      (select_all as HTMLInputElement).checked = false;
+                    }
+                  }
+                  }
                 />
               </TableCell>
               <TableCell className="font-medium">{app.company_name}</TableCell>
@@ -178,6 +251,16 @@ export function ApplicationsTable({
               </TableCell>
               <TableCell>{app.role}</TableCell>
               <TableCell>
+                <span
+                  className={`rounded-full px-3 py-1 text-sm ${app.status === 'Accepted'
+                    ? 'bg-[#e8faf3] text-[#00ac4f]'
+                    : app.status === 'Rejected'
+                      ? 'bg-red-100 text-red-600'
+                      : 'bg-yellow-100 text-yellow-600'
+                    }`}
+                >
+                  {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
+                </span>
                 <StatusDialog app={app} handleUpdateStatus={handleUpdateStatus} />
               </TableCell>
               <TableCell>
@@ -213,6 +296,56 @@ export function ApplicationsTable({
               </TableCell>
             </TableRow>
           ))}
+          <TableRow>
+            <TableCell>
+              <input
+                type="checkbox"
+                name="select-all"
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setCheckedApplications(filteredApplications);
+                  } else {
+                    setCheckedApplications([]);
+                  }
+
+                  const all_checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                  all_checkboxes.forEach((checkbox) => {
+                    (checkbox as HTMLInputElement).checked = e.target.checked;
+                  });
+                  console.log(`${e.target.checked ? 'C' : 'Unc'}hecked all internships`);
+                }}
+              />
+            </TableCell>
+            <TableCell colSpan={8}>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    disabled={checkedApplications.length == 0 || applications.length == 0}
+                  >
+                    Delete Selected
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Delete Application</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      Are you sure you want to delete the following applications:
+                      {checkedApplications.map((app) => (
+                        <li key={app.id}>{app.company_name}</li>
+                      ))}
+                      This action cannot be undone.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction className="bg-red-600 hover:bg-red-700" onClick={() => handleDeleteMultiple(checkedApplications)}>
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </Card>
