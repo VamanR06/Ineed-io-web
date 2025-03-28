@@ -12,11 +12,7 @@ import {
 import { signOutAction } from '@/app/actions';
 import Link from 'next/link';
 
-interface DropdownMenuProps {
-  avatar: string | null;
-}
-
-export function UserDropdownMenu({ avatar }: DropdownMenuProps) {
+export function UserDropdownMenu({ avatar }: { avatar: string | null }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -30,7 +26,7 @@ export function UserDropdownMenu({ avatar }: DropdownMenuProps) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <Link href={'/dashboard'}>Dashboard</Link>
+            <Link href={'/profile'}>Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link href={'/settings'}>Settings</Link>

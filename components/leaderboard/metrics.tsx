@@ -1,10 +1,22 @@
 import { Card } from '@/components/ui/card';
 import { Mail, Twitter, Users } from 'lucide-react';
 
+/* 
+TODO #8 (Large TODO): Add metrics for the following:
+1. total users
+2. total applications
+3. overall rejection rate
+4. overall success rate
+5. overall pending rate (which is 1 - rejection rate - success rate)
+
+There is an "admin_metrics" table which has this information, fetch the data from there and display it in these cards
+Remove any additional cards that aren't needed as well, think about other metrics, which we can implement later.
+*/
+
 export function LeaderboardMetrics() {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <Card className="border-[#374151] p-4">
+      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-sm text-gray-400">Active last 30d</span>
@@ -18,7 +30,7 @@ export function LeaderboardMetrics() {
         </div>
       </Card>
 
-      <Card className="border-[#374151] p-4">
+      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-sm text-gray-400">Total applications</span>
@@ -32,7 +44,7 @@ export function LeaderboardMetrics() {
         </div>
       </Card>
 
-      <Card className="border-[#374151] p-4">
+      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-sm text-gray-400">Success rate</span>
@@ -46,7 +58,7 @@ export function LeaderboardMetrics() {
         </div>
       </Card>
 
-      <Card className="border-[#374151] p-4">
+      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-sm text-gray-400">Avg. response time</span>
@@ -69,7 +81,7 @@ export function LeaderboardMetrics() {
         </div>
       </Card>
 
-      <Card className="border-[#374151] p-4">
+      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-sm text-gray-400">Email</span>
@@ -81,7 +93,7 @@ export function LeaderboardMetrics() {
         </div>
       </Card>
 
-      <Card className="border-[#374151] p-4">
+      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-sm text-gray-400">LinkedIn</span>
@@ -93,7 +105,7 @@ export function LeaderboardMetrics() {
         </div>
       </Card>
 
-      <Card className="border-[#374151] p-4">
+      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
             <span className="text-sm text-gray-400">Referrals</span>

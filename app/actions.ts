@@ -31,10 +31,7 @@ export const signUpAction = async (formData: FormData) => {
     password,
     options: {
       emailRedirectTo: `${origin}/auth/callback`,
-      data: {
-        first_name: firstName,
-        last_name: lastName,
-      },
+      data: { first_name: firstName, last_name: lastName },
     },
   });
 
@@ -59,10 +56,7 @@ export const signInAction = async (formData: FormData) => {
     return encodedRedirect('error', '/login', 'Email and password are required');
   }
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
     return encodedRedirect('error', '/login/error', error.message);
@@ -113,9 +107,7 @@ export const resetPasswordAction = async (formData: FormData) => {
     return encodedRedirect('error', '/settings/account', 'Passwords do not match');
   }
 
-  const { error } = await supabase.auth.updateUser({
-    password: password,
-  });
+  const { error } = await supabase.auth.updateUser({ password: password });
 
   if (error) {
     return encodedRedirect('error', '/settings/account', error.message);
@@ -131,13 +123,8 @@ export const signOutAction = async () => {
 };
 
 export const deleteAccountAction = async () => {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (user) {
-    const userID = user.id;
-    await supabase.auth.admin.deleteUser(userID);
-    return redirect('/');
-  }
+  const supabase = await createClient('deleteAccount');
+  await supabase.rpc('delete_user');
+  await supabase.auth.signOut();
+  return redirect('/');
 };

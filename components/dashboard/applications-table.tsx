@@ -25,22 +25,31 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Application } from '@/types/application';
+//import { createClient } from '@/utils/supabase/client';
+//import { mkConfig, generateCsv, asString } from 'export-to-csv';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { createClient } from '@/utils/supabase/client';
+import {} from 'export-to-csv';
 import { mkConfig, generateCsv, asString } from 'export-to-csv'; // Updated imports
+//import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'; //believe this should be next/navigation not next/router
+import { StatusDialog } from './statusdialog';
+import { Separator } from '../ui/separator';
 
 dayjs.extend(advancedFormat);
 
 export function ApplicationsTable({
   applications,
   setApplications,
+  refreshApplications,
 }: {
   applications: Application[];
   setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
+  refreshApplications: () => Promise<void>;
 }) {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
-
   const filteredApplications = applications.filter((app) =>
     app.company_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -50,12 +59,10 @@ export function ApplicationsTable({
   const handleDelete = async (id: string) => {
     const supabase = await createClient();
     const { error } = await supabase.from('internships').delete().eq('id', id);
-
     if (error) {
       console.error('Error deleting application:', error.message);
       return;
     }
-
     setApplications(applications.filter((app) => `${app.id}` !== id));
   };
 
@@ -131,26 +138,54 @@ export function ApplicationsTable({
   2. query the database (remember to only update the internship that they are changing the status of, use the unique id)
   3. verify changes are being made
   */
+  async function updateStatusInSupabase(id: number, newStatus: string) {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from('internships')
+      .update({ status: newStatus })
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error updating status:', error.message);
+      return null;
+    }
+    return data;
+  }
+
+  const handleUpdateStatus = async (appId: number, newStatus: string) => {
+    console.log('About to update status:', newStatus);
+    const result = await updateStatusInSupabase(appId, newStatus);
+    if (result) {
+      // Update local state so the UI changes immediately
+      setApplications((prevApps) =>
+        prevApps.map((app) => (app.id === appId ? { ...app, status: newStatus } : app))
+      );
+      await refreshApplications();
+      router.refresh();
+    }
+  };
+
   return (
-    <Card className="p-6">
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-3xl font-semibold">Recent Applications</h2>
-        <div className="flex items-center gap-4">
-          <Button onClick={exportToCsv} variant="outline">
+    <Card className="flex flex-col gap-6 p-6 shadow-md shadow-primary">
+      {/* Search and Export UI */}
+      <div className="flex flex-col gap-4 md:flex-row md:items-center">
+        <h2 className="text-xl font-semibold md:text-3xl">Recent Applications</h2>
+        <div className="flex flex-col gap-4 md:ml-auto md:flex-row md:items-center">
+          <Button onClick={exportToCsv} variant="default">
             Export to CSV
             <Download />
           </Button>
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
-            <Input
-              placeholder="Search..."
-              className="w-[300px] border-[#374151] pl-10 text-white"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
+          <Input
+            placeholder="Search..."
+            className="w-[300px] border-[#374151] pl-10 text-white"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
       </div>
+
+      <Separator className="bg-primary" />
+
       <Table id="applications-table">
         <TableHeader>
           <TableRow>
@@ -221,6 +256,7 @@ export function ApplicationsTable({
                 >
                   {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
                 </span>
+                <StatusDialog app={app} handleUpdateStatus={handleUpdateStatus} />
               </TableCell>
               <TableCell>
                 <AlertDialog>

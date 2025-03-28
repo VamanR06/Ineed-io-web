@@ -3,11 +3,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 export const updateSession = async (request: NextRequest) => {
   try {
-    let response = NextResponse.next({
-      request: {
-        headers: request.headers,
-      },
-    });
+    let response = NextResponse.next({ request: { headers: request.headers } });
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -18,9 +14,7 @@ export const updateSession = async (request: NextRequest) => {
           },
           setAll(cookiesToSet) {
             cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-            response = NextResponse.next({
-              request,
-            });
+            response = NextResponse.next({ request });
             cookiesToSet.forEach(({ name, value, options }) =>
               response.cookies.set(name, value, options)
             );
@@ -40,7 +34,8 @@ export const updateSession = async (request: NextRequest) => {
       return NextResponse.redirect(new URL('/login', request.url));
     }
     if (
-      (request.nextUrl.pathname.startsWith('/login') ||
+      (request.nextUrl.pathname == '/' ||
+        request.nextUrl.pathname.startsWith('/login') ||
         request.nextUrl.pathname.startsWith('/signup') ||
         request.nextUrl.pathname.startsWith('/forgot-password')) &&
       !user.error
@@ -49,10 +44,6 @@ export const updateSession = async (request: NextRequest) => {
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-    return NextResponse.next({
-      request: {
-        headers: request.headers,
-      },
-    });
+    return NextResponse.next({ request: { headers: request.headers } });
   }
 };
