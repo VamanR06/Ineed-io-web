@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { X, Search, Download } from 'lucide-react';
+import { X, Download } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -71,7 +71,11 @@ export function ApplicationsTable({
 
     const app_ids = apps.map((app) => app.id);
 
-    const { error } = await supabase.from('internships').delete().eq('user_id', apps[0].user_id).in('id', app_ids);
+    const { error } = await supabase
+      .from('internships')
+      .delete()
+      .eq('user_id', apps[0].user_id)
+      .in('id', app_ids);
 
     if (error) {
       console.error('Error deleting application:', error.message);
@@ -82,11 +86,9 @@ export function ApplicationsTable({
 
     setCheckedApplications([]);
 
-    const select_all = document.querySelector(
-      'input[type="checkbox"][name="select-all"]'
-    );
+    const select_all = document.querySelector('input[type="checkbox"][name="select-all"]');
     (select_all as HTMLInputElement).checked = false;
-  }
+  };
 
   const exportToCsv = () => {
     const csvConfig = mkConfig({
@@ -127,9 +129,7 @@ export function ApplicationsTable({
     });
 
     if (checkedApplications.length === applications.length && checkedApplications.length > 0) {
-      const select_all = document.querySelector(
-        'input[type="checkbox"][name="select-all"]'
-      );
+      const select_all = document.querySelector('input[type="checkbox"][name="select-all"]');
       (select_all as HTMLInputElement).checked = true;
     }
   }, [filteredApplications]);
@@ -216,9 +216,7 @@ export function ApplicationsTable({
                     if (e.target.checked) {
                       console.log(`Checked internship id: ${app.id}`);
                       setCheckedApplications((prev) => [...prev, app]);
-                    }
-
-                    else {
+                    } else {
                       console.log(`Unchecked internship id: ${app.id}`);
                       const index = checkedApplications.indexOf(
                         applications.find((application) => application.id === app.id)!
@@ -232,14 +230,12 @@ export function ApplicationsTable({
                         });
                       }
 
-
                       const select_all = document.querySelector(
                         'input[type="checkbox"][name="select-all"]'
                       );
                       (select_all as HTMLInputElement).checked = false;
                     }
-                  }
-                  }
+                  }}
                 />
               </TableCell>
               <TableCell className="font-medium">{app.company_name}</TableCell>
@@ -251,16 +247,6 @@ export function ApplicationsTable({
               </TableCell>
               <TableCell>{app.role}</TableCell>
               <TableCell>
-                <span
-                  className={`rounded-full px-3 py-1 text-sm ${app.status === 'Accepted'
-                    ? 'bg-[#e8faf3] text-[#00ac4f]'
-                    : app.status === 'Rejected'
-                      ? 'bg-red-100 text-red-600'
-                      : 'bg-yellow-100 text-yellow-600'
-                    }`}
-                >
-                  {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
-                </span>
                 <StatusDialog app={app} handleUpdateStatus={handleUpdateStatus} />
               </TableCell>
               <TableCell>
@@ -319,9 +305,7 @@ export function ApplicationsTable({
             <TableCell colSpan={8}>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button
-                    disabled={checkedApplications.length == 0 || applications.length == 0}
-                  >
+                  <Button disabled={checkedApplications.length == 0 || applications.length == 0}>
                     Delete Selected
                   </Button>
                 </AlertDialogTrigger>
@@ -338,7 +322,10 @@ export function ApplicationsTable({
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction className="bg-red-600 hover:bg-red-700" onClick={() => handleDeleteMultiple(checkedApplications)}>
+                    <AlertDialogAction
+                      className="bg-red-600 hover:bg-red-700"
+                      onClick={() => handleDeleteMultiple(checkedApplications)}
+                    >
                       Delete
                     </AlertDialogAction>
                   </AlertDialogFooter>
