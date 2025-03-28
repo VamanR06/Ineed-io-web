@@ -172,6 +172,11 @@ export function ApplicationsTable({
     }
   };
 
+  // TODO
+  // Create button to import csv file with application data
+  // Probably show user a standard format to import csv as
+  // Read the file and populate database with data
+
   return (
     <Card className="flex flex-col gap-6 p-6 shadow-md shadow-primary">
       {/* Search and Export UI */}
