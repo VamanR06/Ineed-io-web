@@ -15,14 +15,7 @@ import { User } from '@/types/user';
 import { redirect } from 'next/navigation';
 import { Separator } from '../ui/separator';
 
-/* 
-TODO #12: Add functionality so that user's cannot add empty spaces
-to all input boxes (basically, if you click spaces a couple times in 
-each input box, and click submit, then it counts as valid, which it shouldn't)
-When this happens, use https://ui.shadcn.com/docs/components/alert to 
-make an alert appear on the page, and prevent it from submitting an internship to
-the database.
-*/
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 export function NewApplicationForm() {
   const [reminder, setReminder] = useState(false);
@@ -32,6 +25,8 @@ export function NewApplicationForm() {
   const [link, setLink] = useState('');
   const [location, setLocation] = useState('');
   const [user, setUser] = useState<User | null>(null);
+
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -48,19 +43,43 @@ export function NewApplicationForm() {
   }, []);
 
   const handleAddApplication = async () => {
+    // Reset error before each submission attempt
+    setError('');
+
+    // Validate inputs (must have non-whitespace content)
+    if (
+      !companyName.trim() ||
+      !role.trim() ||
+      !link.trim() ||
+      !location.trim()
+    ) {
+      setError('Please fill out all fields with valid, non-empty values.');
+      return;
+    }
+
+    // If user is present and we pass validation, insert the data
     if (user) {
       const supabase = await createClient();
       const { error } = await supabase.from('internships').insert({
         user_id: user.id,
-        company_name: companyName,
-        role: role,
+        company_name: companyName.trim(),
+        role: role.trim(),
         status: 'Pending',
-        link: link,
-        location: location,
+        link: link.trim(),
+        location: location.trim(),
         reminder: date,
       });
       if (error) {
         console.log(error);
+        setError('An error occurred while adding the application. Please try again.');
+      } else {
+        // Optionally clear the form on successful submission
+        setCompanyName('');
+        setRole('');
+        setLink('');
+        setLocation('');
+        setReminder(false);
+        setDate(undefined);
       }
     }
   };
@@ -69,6 +88,15 @@ export function NewApplicationForm() {
     <Card className="flex flex-col gap-4 p-6 shadow-md shadow-primary">
       <h2 className="text-xl font-semibold md:text-3xl">Add New Application</h2>
       <Separator className="bg-primary" />
+
+      {/* Conditionally show error alert if error state is set */}
+      {error && (
+        <Alert variant="destructive">
+          <AlertTitle>Submission Error</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
       <form className="flex flex-col gap-4">
         <div className="flex flex-col flex-wrap md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-2 md:w-[48%]">
@@ -115,14 +143,13 @@ export function NewApplicationForm() {
               Location
             </Label>
             <Separator className="w-[50%] bg-primary" />
-            <div className="border border-red-500">
-              <Input
-                id="location"
-                placeholder="Enter location"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-            </div>
+            <Input
+              id="location"
+              placeholder="Enter location"
+              required
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
           </div>
         </div>
         <div className="flex items-center gap-2">
