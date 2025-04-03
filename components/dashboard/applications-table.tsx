@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { X, Search, Download } from 'lucide-react';
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { X, Download } from 'lucide-react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 import {
   Table,
@@ -32,7 +32,7 @@ import { Application } from '@/types/application';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { createClient } from '@/utils/supabase/client';
-import { } from 'export-to-csv';
+import {} from 'export-to-csv';
 import { mkConfig, generateCsv, asString } from 'export-to-csv'; // Updated imports
 //import { useRouter } from 'next/router';
 import { useRouter } from 'next/navigation'; //believe this should be next/navigation not next/router
@@ -73,7 +73,11 @@ export function ApplicationsTable({
 
     const app_ids = apps.map((app) => app.id);
 
-    const { error } = await supabase.from('internships').delete().eq('user_id', apps[0].user_id).in('id', app_ids);
+    const { error } = await supabase
+      .from('internships')
+      .delete()
+      .eq('user_id', apps[0].user_id)
+      .in('id', app_ids);
 
     if (error) {
       console.error('Error deleting application:', error.message);
@@ -84,11 +88,9 @@ export function ApplicationsTable({
 
     setCheckedApplications([]);
 
-    const select_all = document.querySelector(
-      'input[type="checkbox"][name="select-all"]'
-    );
+    const select_all = document.querySelector('input[type="checkbox"][name="select-all"]');
     (select_all as HTMLInputElement).checked = false;
-  }
+  };
 
   const exportToCsv = () => {
     const csvConfig = mkConfig({
@@ -129,12 +131,10 @@ export function ApplicationsTable({
     });
 
     if (checkedApplications.length === applications.length && checkedApplications.length > 0) {
-      const select_all = document.querySelector(
-        'input[type="checkbox"][name="select-all"]'
-      );
+      const select_all = document.querySelector('input[type="checkbox"][name="select-all"]');
       (select_all as HTMLInputElement).checked = true;
     }
-  }, [filteredApplications]);
+  }, [filteredApplications, applications.length, checkedApplications.length]);
 
   //TODO: Add functionality such that users can update the status of an internship!
   //Check out https://ui.shadcn.com/docs/components/dialog for the popup
@@ -223,9 +223,7 @@ export function ApplicationsTable({
                     if (e.target.checked) {
                       console.log(`Checked internship id: ${app.id}`);
                       setCheckedApplications((prev) => [...prev, app]);
-                    }
-
-                    else {
+                    } else {
                       console.log(`Unchecked internship id: ${app.id}`);
                       const index = checkedApplications.indexOf(
                         applications.find((application) => application.id === app.id)!
@@ -239,14 +237,12 @@ export function ApplicationsTable({
                         });
                       }
 
-
                       const select_all = document.querySelector(
                         'input[type="checkbox"][name="select-all"]'
                       );
                       (select_all as HTMLInputElement).checked = false;
                     }
-                  }
-                  }
+                  }}
                 />
               </TableCell>
               <TableCell className="font-medium">{app.company_name}</TableCell>
@@ -316,9 +312,7 @@ export function ApplicationsTable({
             <TableCell colSpan={8}>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button
-                    disabled={checkedApplications.length == 0 || applications.length == 0}
-                  >
+                  <Button disabled={checkedApplications.length == 0 || applications.length == 0}>
                     Delete Selected
                   </Button>
                 </AlertDialogTrigger>
@@ -326,20 +320,23 @@ export function ApplicationsTable({
                   <AlertDialogHeader>
                     <AlertDialogTitle>Delete Application</AlertDialogTitle>
                     <AlertDialogDescription>
-                      Are you sure you want to delete the following applications:
+                      <div>Are you sure you want to delete the following applications:</div>
                       <ScrollArea className="h-96 w-full rounded-md border p-4">
-                      <ul>
-                        {checkedApplications.map((app) => (
-                          <li key={app.id}>{app.company_name}</li>
-                        ))}
+                        <ul>
+                          {checkedApplications.map((app) => (
+                            <li key={app.id}>{app.company_name}</li>
+                          ))}
                         </ul>
                       </ScrollArea>
-                      This action cannot be undone.
+                      <div>This action cannot be undone.</div>
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction className="bg-red-600 hover:bg-red-700" onClick={() => handleDeleteMultiple(checkedApplications)}>
+                    <AlertDialogAction
+                      className="bg-red-600 hover:bg-red-700"
+                      onClick={() => handleDeleteMultiple(checkedApplications)}
+                    >
                       Delete
                     </AlertDialogAction>
                   </AlertDialogFooter>
