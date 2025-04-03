@@ -100,18 +100,17 @@ const ProfilePage: React.FC = () => {
           <ProfileHeader user={user} />
           <div className="mb-1"></div>
           <div className="group relative">
-            <Avatar className="h-60 w-60 shadow-md shadow-primary mb-8">
-
+            <Avatar className="mb-8 h-60 w-60 shadow-md shadow-primary">
               <AvatarImage src={avatarImage || ''} />
               <AvatarFallback>{firstName ? firstName.charAt(0) : 'U'}</AvatarFallback>
             </Avatar>
           </div>
         </div>
-        <div className="shadow-lg shadow-900/10">
+        <div className="shadow-900/10 shadow-lg">
           <div>
-            <ProfileMetrics applications={applications}/>
-            <div className = "mb-8"> </div>
-            <Badges/>
+            <ProfileMetrics applications={applications} />
+            <div className="mb-8"> </div>
+            <Badges />
           </div>
         </div>
       </div>

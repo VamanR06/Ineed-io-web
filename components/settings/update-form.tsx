@@ -237,18 +237,18 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
                 value={profile.github}
                 onChange={handleInputChange}
                 placeholder="https://github.com/yourusername"
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="portfolio">Portfolio</Label>
-                <Input
-                  id="portfolio"
-                  name="portfolio"
-                  value={profile.portfolio}
-                  onChange={handleInputChange}
-                  placeholder="https://your-portfolio.com"
-                  />
-                </div>
+              />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="portfolio">Portfolio</Label>
+              <Input
+                id="portfolio"
+                name="portfolio"
+                value={profile.portfolio}
+                onChange={handleInputChange}
+                placeholder="https://your-portfolio.com"
+              />
+            </div>
             <Button type="submit" className="w-full" disabled={!isDirty || isFormEmpty}>
               Save Changes
             </Button>
