@@ -4,6 +4,7 @@ import { encodedRedirect } from '@/utils/utils';
 import { createClient } from '@/utils/supabase/server';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { create } from 'domain';
 
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get('email')?.toString();
@@ -127,4 +128,24 @@ export const deleteAccountAction = async () => {
   await supabase.rpc('delete_user');
   await supabase.auth.signOut();
   return redirect('/');
+};
+
+export const fetchAdminMetrics = async () => {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from('metrics').select();
+  if (error) {
+    console.log(error);
+  } else {
+    return data;
+  }
+};
+
+export const fetchUserCount = async () => {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from('profiles').select();
+  if (error) {
+    console.log(error);
+  } else {
+    return data.length;
+  }
 };

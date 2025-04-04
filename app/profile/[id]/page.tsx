@@ -1,4 +1,4 @@
-'use client';
+/*'use client';
 
 import React, { useEffect } from 'react';
 import { useParams, redirect } from 'next/navigation';
@@ -23,7 +23,7 @@ this is the "id" column in profiles basically
 so when you are testing, FOR NOW
 test /profiles/uuid, not /profiles/username
 and remember that uuid is unique to each user...
-*/
+
 
 const UserProfilePage: React.FC = () => {
   const params = useParams();
@@ -42,6 +42,145 @@ const UserProfilePage: React.FC = () => {
     <div className="ineed.io-profile.page min-h-screen bg-background p-6">
       User profile page (to be implemented)
     </div>
+  );
+};
+
+export default UserProfilePage;*/
+
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { DashboardMetrics as ProfileMetrics } from '@/components/dashboard/metrics';
+import { Badges } from '@/components/dashboard/badges';
+import { createClient } from '@/utils/supabase/client';
+import { Application } from '@/types/application';
+import '../../globals.css';
+
+const fadeInVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+};
+
+const UserProfilePage: React.FC = () => {
+  const router = useRouter();
+  const { id } = useParams(); 
+
+
+  const [profile, setProfile] = useState<any>(null);
+  const [applications, setApplications] = useState<Application[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const supabase = createClient();
+        
+
+        const {
+          data: { user: currentUser },
+          error: userError,
+        } = await supabase.auth.getUser();
+        if (userError) {
+
+          console.error('Error fetching current user:', userError);
+          return router.push('/');
+        }
+        if (!currentUser) {
+
+          return router.push('/login');
+        }
+
+
+        if (currentUser.id === id) {
+          return router.push('/profile');
+        }
+
+
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('*') 
+          .eq('id', id)
+          .single();
+        if (profileError || !profileData) {
+          setError('User not found or error fetching profile.');
+          return;
+        }
+
+        setProfile(profileData);
+
+ 
+        const { data: applicationsData, error: appsError } = await supabase
+          .from('internships')
+          .select('*')
+          .eq('user_id', id);
+        if (appsError) {
+          console.error('Error fetching user applications:', appsError);
+        } else {
+          setApplications(applicationsData || []);
+        }
+      } catch (err) {
+        console.error('Unexpected error:', err);
+        setError('An unexpected error occurred.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfileData();
+  }, [id, router]);
+
+  if (loading) {
+    return <div className="p-6">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="p-6 text-red-500">{error}</div>;
+  }
+
+ 
+  const firstName = profile?.firstName ?? '';
+  const lastName = profile?.lastName ?? '';
+  const avatarImage = profile?.avatar ?? null;
+
+
+  return (
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={fadeInVariants}
+      transition={{ duration: 1, ease: 'easeInOut' }}
+    >
+      <div className="ineed.io-profile.page min-h-screen p-6">
+       
+        <div className="flex flex-col items-center">
+          
+          <div className="mb-1"></div>
+          <div className="group relative">
+            <Avatar className="mb-8 h-60 w-60 shadow-md shadow-primary">
+              <AvatarImage src={avatarImage || ''} />
+              <AvatarFallback>
+                {firstName ? firstName.charAt(0) : 'U'}
+              </AvatarFallback>
+            </Avatar>
+          </div>
+          
+          <h2 className="text-2xl font-semibold">
+            {firstName} {lastName}
+          </h2>
+
+        </div>
+
+        <div className="shadow-900/10 shadow-lg mt-6">
+          <ProfileMetrics applications={applications} />
+          <div className="mb-8"></div>
+          <Badges />
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
