@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import { Calendar } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -42,22 +42,20 @@ export function NewApplicationForm() {
     }
   }, []);
 
-  const handleAddApplication = async () => {
-    // Reset error before each submission attempt
+  const handleAddApplication = async (event: FormEvent) => {
     setError('');
 
-    // Validate inputs (must have non-whitespace content)
     if (
       !companyName.trim() ||
       !role.trim() ||
       !link.trim() ||
       !location.trim()
     ) {
+      event.preventDefault();
       setError('Please fill out all fields with valid, non-empty values.');
       return;
     }
 
-    // If user is present and we pass validation, insert the data
     if (user) {
       const supabase = await createClient();
       const { error } = await supabase.from('internships').insert({
@@ -73,7 +71,6 @@ export function NewApplicationForm() {
         console.log(error);
         setError('An error occurred while adding the application. Please try again.');
       } else {
-        // Optionally clear the form on successful submission
         setCompanyName('');
         setRole('');
         setLink('');
@@ -91,13 +88,14 @@ export function NewApplicationForm() {
 
       {/* Conditionally show error alert if error state is set */}
       {error && (
-        <Alert variant="destructive">
+        <Alert variant="destructive" className="bg-red-300 text-red-900">
           <AlertTitle>Submission Error</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
 
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={handleAddApplication}>
+
         <div className="flex flex-col flex-wrap md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-2 md:w-[48%]">
             <Label htmlFor="company" className="text-md">
