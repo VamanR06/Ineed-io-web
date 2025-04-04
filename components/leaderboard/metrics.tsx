@@ -1,5 +1,7 @@
+import { fetchAdminMetrics, fetchUserCount } from '@/app/actions';
 import { Card } from '@/components/ui/card';
 import { Mail, Twitter, Users } from 'lucide-react';
+import { use, useEffect, useState } from 'react';
 
 /* 
 TODO #8 (Large TODO): Add metrics for the following:
@@ -14,6 +16,27 @@ Remove any additional cards that aren't needed as well, think about other metric
 */
 
 export function LeaderboardMetrics() {
+  const [totalUserCount, setTotalUserCount] = useState<String>();
+  const [totalApplications, setApplications] = useState();
+  const [RejRate, setRejRate] = useState<String>();
+  const [SucRate, setSucRate] = useState<String>();
+  const [pendRate, setPendRate] = useState<String>();
+
+  const fetchMetrics = async () => {
+    const data = await fetchAdminMetrics();
+    const userCount = await fetchUserCount();
+    if (data && userCount) {
+      setTotalUserCount(String(userCount));
+      setApplications(data[0].total_applications);
+      setRejRate((data[0].rejection_rate * 100).toFixed(2));
+      setSucRate((data[0].success_rate * 100).toFixed(2));
+      setPendRate(data[0].pending_rate.toFixed(2));
+    }
+  };
+  useEffect(() => {
+    fetchMetrics();
+  }, []);
+
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
@@ -24,9 +47,9 @@ export function LeaderboardMetrics() {
               <span className="text-xs">i</span>
             </div>
           </div>
-          <div className="mb-1 text-2xl font-bold">370</div>
+          <div className="mb-1 text-2xl font-bold">{totalUserCount}</div>
           <div className="text-sm text-gray-400">Users made applications</div>
-          <div className="mt-4 text-sm text-gray-400">3% of all</div>
+          <div className="mt-4 text-sm text-gray-400">100% of all</div>
         </div>
       </Card>
 
@@ -38,7 +61,7 @@ export function LeaderboardMetrics() {
               <span className="text-xs">i</span>
             </div>
           </div>
-          <div className="mb-1 text-2xl font-bold">10,823</div>
+          <div className="mb-1 text-2xl font-bold">{totalApplications}</div>
           <div className="text-sm text-gray-400">Across all platforms</div>
           <div className="mt-4 text-sm text-gray-400">$694.7 average</div>
         </div>
@@ -47,12 +70,12 @@ export function LeaderboardMetrics() {
       <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-sm text-gray-400">Success rate</span>
+            <span className="text-sm text-gray-400">Total Success rate</span>
             <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#374151]">
               <span className="text-xs">i</span>
             </div>
           </div>
-          <div className="mb-1 text-2xl font-bold">28.4%</div>
+          <div className="mb-1 text-2xl font-bold">{String(SucRate)}%</div>
           <div className="text-sm text-gray-400">Total</div>
           <div className="mt-4 text-sm text-gray-400">95% have 10+ applications</div>
         </div>
@@ -61,59 +84,28 @@ export function LeaderboardMetrics() {
       <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-sm text-gray-400">Avg. response time</span>
+            <span className="text-sm text-gray-400">Total Rejection rate</span>
             <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#374151]">
               <span className="text-xs">i</span>
             </div>
           </div>
-          <div className="flex items-end gap-2">
-            <div className="h-16 w-6 rounded-sm bg-[#22c55e]"></div>
-            <div className="h-10 w-6 rounded-sm bg-[#22c55e]"></div>
-            <div className="h-6 w-6 rounded-sm bg-[#22c55e]"></div>
-            <div className="h-4 w-6 rounded-sm bg-[#22c55e]"></div>
-          </div>
-          <div className="mt-2 flex justify-between text-xs text-gray-400">
-            <span>&lt;1wk</span>
-            <span>1-2wk</span>
-            <span>2-4wk</span>
-            <span>&gt;4wk</span>
-          </div>
+          <div className="mb-1 text-2xl font-bold">{RejRate}%</div>
+          <div className="text-sm text-gray-400">Total</div>
+          <div className="mt-4 text-sm text-gray-400">95% have 10+ applications</div>
         </div>
       </Card>
 
       <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
         <div className="flex flex-col">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-sm text-gray-400">Email</span>
-            <Mail className="h-4 w-4 text-gray-400" />
+            <span className="text-sm text-gray-400">Total Pending rate</span>
+            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#374151]">
+              <span className="text-xs">i</span>
+            </div>
           </div>
-          <div className="mb-1 text-2xl font-bold">3,928</div>
-          <div className="text-sm text-gray-400">Contacts available</div>
-          <div className="mt-4 text-sm text-gray-400">4% of all</div>
-        </div>
-      </Card>
-
-      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
-        <div className="flex flex-col">
-          <div className="mb-2 flex items-center justify-between">
-            <span className="text-sm text-gray-400">LinkedIn</span>
-            <Twitter className="h-4 w-4 text-gray-400" />
-          </div>
-          <div className="mb-1 text-2xl font-bold">15,037</div>
-          <div className="text-sm text-gray-400">Contacts available</div>
-          <div className="mt-4 text-sm text-gray-400">23% of all</div>
-        </div>
-      </Card>
-
-      <Card className="border-[#374151] p-4 shadow-md shadow-foreground">
-        <div className="flex flex-col">
-          <div className="mb-2 flex items-center justify-between">
-            <span className="text-sm text-gray-400">Referrals</span>
-            <Users className="h-4 w-4 text-gray-400" />
-          </div>
-          <div className="mb-1 text-2xl font-bold">29,203</div>
-          <div className="text-sm text-gray-400">3k+ LinkedIn connections</div>
-          <div className="mt-4 text-sm text-gray-400">25% of all</div>
+          <div className="mb-1 text-2xl font-bold">{pendRate}%</div>
+          <div className="text-sm text-gray-400">Total</div>
+          <div className="mt-4 text-sm text-gray-400">95% have 10+ applications</div>
         </div>
       </Card>
     </div>
