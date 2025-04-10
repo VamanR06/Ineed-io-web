@@ -1,4 +1,4 @@
-import { Users2, UserPlus, TrendingUp,TrendingDown,NotebookPen,LayoutList } from 'lucide-react';
+import { Users2, UserPlus, TrendingUp, TrendingDown, NotebookPen, LayoutList } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Application } from '@/types/application';
 import { Separator } from '../ui/separator';
@@ -8,7 +8,6 @@ TODO #10: Replace the metrics down below with the cards used in the leaderboard,
 will eventually look the same for the dashboard once that is complete,
 feel free to copy paste
 */
-
 
 export function DashboardMetrics({ applications = [] }: { applications: Application[] }) {
   const filterLast30Days = (applications: Application[]): Application[] => {
@@ -21,7 +20,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
       return date >= thirtyDaysAgo && date <= now;
     });
   };
-  
+
   const filterPrev30Days = (applications: Application[]): Application[] => {
     const now = new Date();
     const thirtyDaysAgo = new Date();
@@ -63,7 +62,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
   const prevRejectionRate = prevRejectedApplications / prevTotalResults;
   const currTotalResults = currAcceptedApplications + currRejectedApplications;
   const currRejectionRate = currRejectedApplications / currTotalResults;
-  const currSuccessRate =  currAcceptedApplications / currTotalResults;
+  const currSuccessRate = currAcceptedApplications / currTotalResults;
   const ratePercentChange =
     Math.round(((currRejectionRate - prevRejectionRate) / prevRejectionRate) * 100 * 10) / 10;
 

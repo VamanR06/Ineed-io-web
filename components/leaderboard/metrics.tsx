@@ -1,7 +1,7 @@
 import { fetchAdminMetrics, fetchUserCount } from '@/app/actions';
 import { Card } from '@/components/ui/card';
-import { Mail, Twitter, Users } from 'lucide-react';
-import { use, useEffect, useState } from 'react';
+
+import { useEffect, useState } from 'react';
 
 /* 
 TODO #8 (Large TODO): Add metrics for the following:
@@ -16,11 +16,11 @@ Remove any additional cards that aren't needed as well, think about other metric
 */
 
 export function LeaderboardMetrics() {
-  const [totalUserCount, setTotalUserCount] = useState<String>();
+  const [totalUserCount, setTotalUserCount] = useState<string>();
   const [totalApplications, setApplications] = useState();
-  const [RejRate, setRejRate] = useState<String>();
-  const [SucRate, setSucRate] = useState<String>();
-  const [pendRate, setPendRate] = useState<String>();
+  const [RejRate, setRejRate] = useState<string>();
+  const [SucRate, setSucRate] = useState<string>();
+  const [pendRate, setPendRate] = useState<string>();
 
   const fetchMetrics = async () => {
     const data = await fetchAdminMetrics();

@@ -15,7 +15,7 @@ import { User } from '@/types/user';
 import { redirect } from 'next/navigation';
 import { Separator } from '../ui/separator';
 
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 export function NewApplicationForm() {
   const [reminder, setReminder] = useState(false);
@@ -45,12 +45,7 @@ export function NewApplicationForm() {
   const handleAddApplication = async (event: FormEvent) => {
     setError('');
 
-    if (
-      !companyName.trim() ||
-      !role.trim() ||
-      !link.trim() ||
-      !location.trim()
-    ) {
+    if (!companyName.trim() || !role.trim() || !link.trim() || !location.trim()) {
       event.preventDefault();
       setError('Please fill out all fields with valid, non-empty values.');
       return;
@@ -95,7 +90,6 @@ export function NewApplicationForm() {
       )}
 
       <form className="flex flex-col gap-4" onSubmit={handleAddApplication}>
-
         <div className="flex flex-col flex-wrap md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-2 md:w-[48%]">
             <Label htmlFor="company" className="text-md">

@@ -58,6 +58,7 @@ import { Badges } from '@/components/dashboard/badges';
 import { createClient } from '@/utils/supabase/client';
 import { Application } from '@/types/application';
 import '../../globals.css';
+import { Profile } from '@/types/profile';
 
 const fadeInVariants = {
   initial: { opacity: 0 },
@@ -66,10 +67,9 @@ const fadeInVariants = {
 
 const UserProfilePage: React.FC = () => {
   const router = useRouter();
-  const { id } = useParams(); 
+  const { id } = useParams();
 
-
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState<Profile | null>(null);
   const [applications, setApplications] = useState<Application[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -78,31 +78,26 @@ const UserProfilePage: React.FC = () => {
     const fetchProfileData = async () => {
       try {
         const supabase = createClient();
-        
 
         const {
           data: { user: currentUser },
           error: userError,
         } = await supabase.auth.getUser();
         if (userError) {
-
           console.error('Error fetching current user:', userError);
           return router.push('/');
         }
         if (!currentUser) {
-
           return router.push('/login');
         }
-
 
         if (currentUser.id === id) {
           return router.push('/profile');
         }
 
-
         const { data: profileData, error: profileError } = await supabase
           .from('profiles')
-          .select('*') 
+          .select('*')
           .eq('id', id)
           .single();
         if (profileError || !profileData) {
@@ -112,7 +107,6 @@ const UserProfilePage: React.FC = () => {
 
         setProfile(profileData);
 
- 
         const { data: applicationsData, error: appsError } = await supabase
           .from('internships')
           .select('*')
@@ -141,11 +135,9 @@ const UserProfilePage: React.FC = () => {
     return <div className="p-6 text-red-500">{error}</div>;
   }
 
- 
   const firstName = profile?.firstName ?? '';
   const lastName = profile?.lastName ?? '';
   const avatarImage = profile?.avatar ?? null;
-
 
   return (
     <motion.div
@@ -155,26 +147,21 @@ const UserProfilePage: React.FC = () => {
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
       <div className="ineed.io-profile.page min-h-screen p-6">
-       
         <div className="flex flex-col items-center">
-          
           <div className="mb-1"></div>
           <div className="group relative">
             <Avatar className="mb-8 h-60 w-60 shadow-md shadow-primary">
               <AvatarImage src={avatarImage || ''} />
-              <AvatarFallback>
-                {firstName ? firstName.charAt(0) : 'U'}
-              </AvatarFallback>
+              <AvatarFallback>{firstName ? firstName.charAt(0) : 'U'}</AvatarFallback>
             </Avatar>
           </div>
-          
+
           <h2 className="text-2xl font-semibold">
             {firstName} {lastName}
           </h2>
-
         </div>
 
-        <div className="shadow-900/10 shadow-lg mt-6">
+        <div className="shadow-900/10 mt-6 shadow-lg">
           <ProfileMetrics applications={applications} />
           <div className="mb-8"></div>
           <Badges />
