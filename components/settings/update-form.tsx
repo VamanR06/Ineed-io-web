@@ -1,82 +1,91 @@
-"use client"
+'use client';
 
-import type React from "react"
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { createClient } from "@/utils/supabase/client"
+import type React from 'react';
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { createClient } from '@/utils/supabase/client';
 // import { User } from '@/types/user';
-import type { Profile } from "@/types/profile"
+import type { Profile } from '@/types/profile';
 //import { SupabaseClient } from '@supabase/supabase-js';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { useToast } from "@/hooks/use-toast"
-import { Loader2, CheckCircle2 } from "lucide-react"
-import { useRouter } from "next/navigation"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Loader2, CheckCircle2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
-interface ProfileFormProps extends React.ComponentPropsWithoutRef<"div"> {
+interface ProfileFormProps extends React.ComponentPropsWithoutRef<'div'> {
   initialProfile?: {
-    avatar: string
-    username: string
-    firstName: string
-    lastName: string
-    age: string
-    school: string
-    gradYear: string
-    major: string
-    bio: string
-    linkedin: string
-    github: string
-    portfolio: string
-  }
+    avatar: string;
+    username: string;
+    firstName: string;
+    lastName: string;
+    age: string;
+    school: string;
+    gradYear: string;
+    major: string;
+    bio: string;
+    linkedin: string;
+    github: string;
+    portfolio: string;
+  };
 }
 
-export const ProfileForm: React.FC<ProfileFormProps> = ({ className, initialProfile, ...props }) => {
+export const ProfileForm: React.FC<ProfileFormProps> = ({
+  className,
+  initialProfile,
+  ...props
+}) => {
   const [profile, setProfile] = useState(
     initialProfile || {
-      avatar: "",
-      username: "",
-      firstName: "",
-      lastName: "",
-      age: "",
-      school: "",
-      gradYear: "",
-      major: "",
-      bio: "",
-      linkedin: "",
-      github: "",
-      portfolio: "",
-    },
-  )
+      avatar: '',
+      username: '',
+      firstName: '',
+      lastName: '',
+      age: '',
+      school: '',
+      gradYear: '',
+      major: '',
+      bio: '',
+      linkedin: '',
+      github: '',
+      portfolio: '',
+    }
+  );
 
-  const [isDirty, setIsDirty] = useState(false)
-  const [isFormEmpty, setIsFormEmpty] = useState(true)
-  const [user, setUser] = useState<Profile | null>(null)
-  const [isSaving, setIsSaving] = useState(false)
-  const [saveSuccess, setSaveSuccess] = useState(false)
-  const router = useRouter()
+  const [isDirty, setIsDirty] = useState(false);
+  const [isFormEmpty, setIsFormEmpty] = useState(true);
+  const [, setUser] = useState<Profile | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+  const router = useRouter();
 
   // fetch user info from SupaBase client on initial render
   useEffect(() => {
-    fetchUser()
-  }, [])
+    fetchUser();
+  }, []);
 
   const fetchUser = async () => {
-    const supabase = createClient()
-    const { data, error } = await supabase.auth.getUser()
+    const supabase = createClient();
+    const { data, error } = await supabase.auth.getUser();
     if (error) {
-      console.error(error)
-      return
+      console.error(error);
+      return;
     }
 
-    const dbUser = await supabase.from("profiles").select("*").eq("id", data.user?.id)
+    const dbUser = await supabase.from('profiles').select('*').eq('id', data.user?.id);
 
     if (dbUser.data && dbUser.data.length > 0) {
-      setUser(dbUser.data[0])
+      setUser(dbUser.data[0]);
 
       // Update the profile state with the fetched data
-      const userData = dbUser.data[0]
+      const userData = dbUser.data[0];
       setProfile((prev) => ({
         ...prev,
         avatar: userData.avatar || prev.avatar,
@@ -91,53 +100,54 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ className, initialProf
         linkedin: userData.linkedin || prev.linkedin,
         github: userData.github || prev.github,
         portfolio: userData.portfolio || prev.portfolio,
-      }))
+      }));
     }
-  }
+  };
 
   useEffect(() => {
     const isChanged = Object.keys(profile).some(
-      (key) => profile[key as keyof typeof profile] !== initialProfile?.[key as keyof typeof profile],
-    )
-    setIsDirty(isChanged)
+      (key) =>
+        profile[key as keyof typeof profile] !== initialProfile?.[key as keyof typeof profile]
+    );
+    setIsDirty(isChanged);
 
-    const isEmpty = Object.values(profile).every((value) => value === "")
-    setIsFormEmpty(isEmpty)
-  }, [profile, initialProfile])
+    const isEmpty = Object.values(profile).every((value) => value === '');
+    setIsFormEmpty(isEmpty);
+  }, [profile, initialProfile]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setProfile((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setProfile((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSaving(true)
-    setSaveSuccess(false)
+    e.preventDefault();
+    setIsSaving(true);
+    setSaveSuccess(false);
 
     try {
-      const supabase = createClient()
-      const { data: userData, error: userError } = await supabase.auth.getUser()
+      const supabase = createClient();
+      const { data: userData, error: userError } = await supabase.auth.getUser();
 
       if (userError) {
-        throw new Error(userError.message)
+        throw new Error(userError.message);
       }
 
       if (!userData.user) {
-        throw new Error("User not authenticated")
+        throw new Error('User not authenticated');
       }
 
       // Create a single object with all profile fields
       const profileData = {
         id: userData.user.id,
         ...profile,
-      }
+      };
 
       // Upsert all data at once
-      const { error } = await supabase.from("profiles").upsert(profileData)
+      const { error } = await supabase.from('profiles').upsert(profileData);
 
       if (error) {
-        throw new Error(error.message)
+        throw new Error(error.message);
       }
 
       // Update the user state with the new profile data
@@ -146,30 +156,30 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ className, initialProf
           ({
             ...prev,
             ...profile,
-          }) as Profile,
-      )
+          }) as Profile
+      );
 
       // Show success state
-      setSaveSuccess(true)
+      setSaveSuccess(true);
 
       // Refresh the page data
-      router.refresh()
+      router.refresh();
 
       // Reset dirty state since we've saved
-      setIsDirty(false)
+      setIsDirty(false);
     } catch (error) {
-      console.error("Error saving profile:", error)
+      console.error('Error saving profile:', error);
     } finally {
-      setIsSaving(false)
+      setIsSaving(false);
 
       // Reset success state after 3 seconds
       if (saveSuccess) {
         setTimeout(() => {
-          setSaveSuccess(false)
-        }, 3000)
+          setSaveSuccess(false);
+        }, 3000);
       }
     }
-  }
+  };
 
   return (
     <Card className={className} {...props}>
@@ -260,11 +270,13 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ className, initialProf
                   <SelectValue placeholder="Select graduation year" />
                 </SelectTrigger>
                 <SelectContent>
-                  {Array.from({ length: 200 }, (_, i) => new Date().getFullYear() + i - 100).map((year) => (
-                    <SelectItem key={year} value={year.toString()}>
-                      {year}
-                    </SelectItem>
-                  ))}
+                  {Array.from({ length: 200 }, (_, i) => new Date().getFullYear() + i - 100).map(
+                    (year) => (
+                      <SelectItem key={year} value={year.toString()}>
+                        {year}
+                      </SelectItem>
+                    )
+                  )}
                 </SelectContent>
               </Select>
             </div>
@@ -318,7 +330,11 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ className, initialProf
                 placeholder="https://your-portfolio.com"
               />
             </div>
-            <Button type="submit" className="w-full" disabled={(!isDirty && !isFormEmpty) || isSaving}>
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={(!isDirty && !isFormEmpty) || isSaving}
+            >
               {isSaving ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -330,13 +346,12 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({ className, initialProf
                   Saved!
                 </>
               ) : (
-                "Save Changes"
+                'Save Changes'
               )}
             </Button>
           </div>
         </form>
       </CardContent>
     </Card>
-  )
-}
-
+  );
+};
