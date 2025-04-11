@@ -109,7 +109,7 @@ const teamMembers: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/kedar-bu/',
     github: 'https://github.com/KedarB203',
     imageAlt: 'Kedar Avatar',
-    profilePic: '/images/kedarb.png',
+    profilePic: '/images/team/kedarb.jpg',
   },
   {
     name: 'Samuel Konigbagbe',
