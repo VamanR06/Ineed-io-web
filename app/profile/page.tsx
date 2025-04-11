@@ -58,16 +58,16 @@ const ProfilePage: React.FC = () => {
       const { data, error } = await client
         .from('profiles')
         .select('bio')
-        .eq('user_id', user.data.user?.id)
-        .single();
+        .eq('id', user.data.user?.id)
+        .single()
       if (error) {
         console.error('Error fetching data:', error);
       } else {
-        setBio(data);
+        setBio(data.bio);
       }
     };
     fetchBio();
-  }, []);
+  }, [setBio]);
 
   useEffect(() => {
     if (!user) return;
@@ -98,14 +98,7 @@ const ProfilePage: React.FC = () => {
     };
     fetchAvatar();
   }, [user]);
-
-  /*
-  TODO #12: If a user has a bio in their profiles table, display it under their avatar
-
-  //need new useEffect for the bio
-  //we have to make a bio component to display the bio
-  */
-
+  console.log(bio)
   return (
     <motion.div
       initial="initial"
