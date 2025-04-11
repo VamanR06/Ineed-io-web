@@ -19,6 +19,7 @@ const ProfilePage: React.FC = () => {
   const [applications, setApplications] = useState<Application[]>([]);
   const [avatarImage, setAvatarImage] = useState<string | null>(null);
   const [firstName, setFirstName] = useState<string | null>(null);
+  const [bio, setBio] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -49,6 +50,23 @@ const ProfilePage: React.FC = () => {
       }
     };
     fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchBio = async () => {
+      const client = createClient();
+      const user = await client.auth.getUser();
+      const { data, error } = await client
+        .from('profiles')
+        .select('bio')
+        .eq('user_id', user.data.user?.id)
+        .single();
+      if (error) {
+        console.error('Error fetching data:', error);
+      } else {
+        setBio(data);
+      }
+    };
+    fetchBio();
   }, []);
 
   useEffect(() => {
