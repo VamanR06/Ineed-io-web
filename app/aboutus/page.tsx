@@ -106,8 +106,10 @@ const teamMembers: TeamMember[] = [
     name: 'Kedar Bulusu',
     role: 'Developer',
     majorMinor: 'Computer Engineering',
+    linkedin: 'https://www.linkedin.com/in/kedar-bu/',
+    github: 'https://github.com/KedarB203',
     imageAlt: 'Kedar Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/kedarb.png',
   },
   {
     name: 'Samuel Konigbagbe',
