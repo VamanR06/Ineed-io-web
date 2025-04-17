@@ -49,9 +49,12 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Brandon Shin',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Science and Astronomy',
     imageAlt: 'Brandon Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/headshot.png',
+    linkedin: 'https://www.linkedin.com/in/brandon-shin-46b67020b/',
+    github: 'https://github.com/brshin/',
+    website: 'https://brandon-shin.com/',
   },
   {
     name: 'Darren Du',

@@ -59,7 +59,7 @@ const ProfilePage: React.FC = () => {
         .from('profiles')
         .select('bio')
         .eq('id', user.data.user?.id)
-        .single()
+        .single();
       if (error) {
         console.error('Error fetching data:', error);
       } else {
@@ -98,7 +98,7 @@ const ProfilePage: React.FC = () => {
     };
     fetchAvatar();
   }, [user]);
-  console.log(bio)
+  console.log(bio);
   return (
     <motion.div
       initial="initial"
