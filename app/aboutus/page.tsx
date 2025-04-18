@@ -35,9 +35,12 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Ali Monthana',
     role: 'Developer',
-    majorMinor: '',
+    majorMinor: 'Computer Sceience',
     imageAlt: 'Ali Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/alimothana.jpg',
+    linkedin: 'https://www.linkedin.com/in/alimothana/',
+    github: 'https://github.com/amothana',
+    website: 'https://alimothana.com/',
   },
   {
     name: 'Anthony Nguyen',
