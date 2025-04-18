@@ -19,6 +19,7 @@ const ProfilePage: React.FC = () => {
   const [applications, setApplications] = useState<Application[]>([]);
   const [avatarImage, setAvatarImage] = useState<string | null>(null);
   const [firstName, setFirstName] = useState<string | null>(null);
+  const [bio, setBio] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -50,6 +51,23 @@ const ProfilePage: React.FC = () => {
     };
     fetchData();
   }, []);
+  useEffect(() => {
+    const fetchBio = async () => {
+      const client = createClient();
+      const user = await client.auth.getUser();
+      const { data, error } = await client
+        .from('profiles')
+        .select('bio')
+        .eq('id', user.data.user?.id)
+        .single();
+      if (error) {
+        console.error('Error fetching data:', error);
+      } else {
+        setBio(data.bio);
+      }
+    };
+    fetchBio();
+  }, [setBio]);
 
   useEffect(() => {
     if (!user) return;
@@ -80,11 +98,7 @@ const ProfilePage: React.FC = () => {
     };
     fetchAvatar();
   }, [user]);
-
-  /*
-  TODO #12: If a user has a bio in their profiles table, display it under their avatar
-  */
-
+  console.log(bio);
   return (
     <motion.div
       initial="initial"
@@ -92,20 +106,21 @@ const ProfilePage: React.FC = () => {
       variants={fadeInVariants}
       transition={{ duration: 1, ease: 'easeInOut' }}
     >
-      <div className="ineed.io-profile.page min-h-screen bg-background p-6">
+      <div className="ineed.io-profile.page min-h-screen p-6">
         <div className="flex flex-col items-center">
           <ProfileHeader user={user} />
           <div className="mb-1"></div>
           <div className="group relative">
-            <Avatar className="h-60 w-60 shadow-lg shadow-teal-500/50">
+            <Avatar className="mb-8 h-60 w-60 shadow-md shadow-primary">
               <AvatarImage src={avatarImage || ''} />
               <AvatarFallback>{firstName ? firstName.charAt(0) : 'U'}</AvatarFallback>
             </Avatar>
           </div>
         </div>
-        <div className="shadow-lg shadow-teal-900/10">
+        <div className="shadow-900/10 shadow-lg">
           <div>
             <ProfileMetrics applications={applications} />
+            <div className="mb-8"> </div>
             <Badges />
           </div>
         </div>

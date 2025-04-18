@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { X, Download } from 'lucide-react';
+import { ScrollArea } from '@/components/ui/scroll-area';
+
 import {
   Table,
   TableBody,
@@ -132,7 +134,7 @@ export function ApplicationsTable({
       const select_all = document.querySelector('input[type="checkbox"][name="select-all"]');
       (select_all as HTMLInputElement).checked = true;
     }
-  }, [filteredApplications]);
+  }, [filteredApplications, applications.length, checkedApplications.length]);
 
   //TODO: Add functionality such that users can update the status of an internship!
   //Check out https://ui.shadcn.com/docs/components/dialog for the popup
@@ -169,6 +171,11 @@ export function ApplicationsTable({
       router.refresh();
     }
   };
+
+  // TODO
+  // Create button to import csv file with application data
+  // Probably show user a standard format to import csv as
+  // Read the file and populate database with data
 
   return (
     <Card className="flex flex-col gap-6 p-6 shadow-md shadow-primary">
@@ -313,11 +320,15 @@ export function ApplicationsTable({
                   <AlertDialogHeader>
                     <AlertDialogTitle>Delete Application</AlertDialogTitle>
                     <AlertDialogDescription>
-                      Are you sure you want to delete the following applications:
-                      {checkedApplications.map((app) => (
-                        <li key={app.id}>{app.company_name}</li>
-                      ))}
-                      This action cannot be undone.
+                      <div>Are you sure you want to delete the following applications:</div>
+                      <ScrollArea className="h-96 w-full rounded-md border p-4">
+                        <ul>
+                          {checkedApplications.map((app) => (
+                            <li key={app.id}>{app.company_name}</li>
+                          ))}
+                        </ul>
+                      </ScrollArea>
+                      <div>This action cannot be undone.</div>
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>

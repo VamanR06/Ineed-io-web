@@ -42,16 +42,19 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Anthony Nguyen',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Science',
     imageAlt: 'Anthony Avatar',
     profilePic: '/images/logo.png',
   },
   {
     name: 'Brandon Shin',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Science and Astronomy',
     imageAlt: 'Brandon Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/headshot.png',
+    linkedin: 'https://www.linkedin.com/in/brandon-shin-46b67020b/',
+    github: 'https://github.com/brshin/',
+    website: 'https://brandon-shin.com/',
   },
   {
     name: 'Darren Du',
@@ -105,9 +108,11 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Kedar Bulusu',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Engineering',
+    linkedin: 'https://www.linkedin.com/in/kedar-bu/',
+    github: 'https://github.com/KedarB203',
     imageAlt: 'Kedar Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/kedarb.jpg',
   },
   {
     name: 'Samuel Konigbagbe',

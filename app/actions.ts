@@ -128,3 +128,23 @@ export const deleteAccountAction = async () => {
   await supabase.auth.signOut();
   return redirect('/');
 };
+
+export const fetchAdminMetrics = async () => {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from('metrics').select();
+  if (error) {
+    console.log(error);
+  } else {
+    return data;
+  }
+};
+
+export const fetchUserCount = async () => {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from('profiles').select();
+  if (error) {
+    console.log(error);
+  } else {
+    return data.length;
+  }
+};

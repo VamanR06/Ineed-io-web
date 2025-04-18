@@ -1,4 +1,4 @@
-import { Users2, UserPlus, TrendingUp } from 'lucide-react';
+import { Users2, UserPlus, TrendingUp, TrendingDown, NotebookPen, LayoutList } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Application } from '@/types/application';
 import { Separator } from '../ui/separator';
@@ -33,7 +33,6 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
       return date <= thirtyDaysAgo && date >= sixtyDaysAgo;
     });
   };
-
   const filter30DaysOrMore = (applications: Application[]): Application[] => {
     const now = new Date();
     const thirtyDaysAgo = new Date();
@@ -63,6 +62,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
   const prevRejectionRate = prevRejectedApplications / prevTotalResults;
   const currTotalResults = currAcceptedApplications + currRejectedApplications;
   const currRejectionRate = currRejectedApplications / currTotalResults;
+  const currSuccessRate = currAcceptedApplications / currTotalResults;
   const ratePercentChange =
     Math.round(((currRejectionRate - prevRejectionRate) / prevRejectionRate) * 100 * 10) / 10;
 
@@ -86,7 +86,7 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
       value: pendingCount + '/' + totalCount,
       trend: Math.round((pendingCount / totalCount) * 100 * 10) / 10,
       icon: Users2,
-      total: applications.length,
+      total: NotebookPen,
     },
     {
       title: 'Total Applications this Month',
@@ -95,10 +95,22 @@ export function DashboardMetrics({ applications = [] }: { applications: Applicat
       icon: UserPlus,
     },
     {
+      title: 'Success Rate',
+      value: Math.round(currSuccessRate * 100 * 10) / 10 + '%',
+      trend: ratePercentChange,
+      icon: TrendingUp,
+    },
+    {
       title: 'Rejection Rate',
       value: Math.round(currRejectionRate * 100 * 10) / 10 + '%',
       trend: ratePercentChange,
-      icon: TrendingUp,
+      icon: TrendingDown,
+    },
+    {
+      title: 'Pending Applications',
+      value: pendingApplications.length,
+      trend: ratePercentChange,
+      icon: LayoutList,
     },
   ];
 
