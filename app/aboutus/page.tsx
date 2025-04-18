@@ -80,7 +80,8 @@ const teamMembers: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/felix-shen-a40195299',
     github: 'https://github.com/Blank-FS',
     imageAlt: 'Felix Avatar',
-    profilePic: '/images/team/felixTemp.png',
+    website: 'https://blank-fs.github.io/',
+    profilePic: '/images/team/felixshn.jpg',
   },
   {
     name: 'Forest Qin',
