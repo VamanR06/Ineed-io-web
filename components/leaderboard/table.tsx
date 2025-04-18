@@ -163,11 +163,7 @@ export function LeaderboardTable() {
             <TableHead className="text-gray-600 dark:text-gray-400">User</TableHead>
             <TableHead className="text-gray-600 dark:text-gray-400">Rank</TableHead>
             <TableHead className="text-gray-600 dark:text-gray-400">Age</TableHead>
-            <TableHead className="text-gray-600 dark:text-gray-400">Labels</TableHead>
-            <TableHead className="text-gray-600 dark:text-gray-400">Balance</TableHead>
             <TableHead className="text-gray-600 dark:text-gray-400">Apps</TableHead>
-            <TableHead className="text-gray-600 dark:text-gray-400">LinkedIn</TableHead>
-            <TableHead className="text-gray-600 dark:text-gray-400">Activity</TableHead>
             <TableHead className="w-12 text-gray-600 dark:text-gray-400"></TableHead>
           </TableRow>
         </TableHeader>
@@ -201,29 +197,8 @@ export function LeaderboardTable() {
               <TableCell className="text-gray-900 dark:text-gray-300">
                 {user.age ? user.age : ''}
               </TableCell>
-              <TableCell>
-                <div className="flex flex-wrap gap-1">
-                  {user.labels.map((label, index) => (
-                    <Badge
-                      key={index}
-                      variant="outline"
-                      className="border-gray-200 bg-gray-50 text-xs text-gray-700 dark:border-[#374151] dark:bg-[#111827] dark:text-gray-300"
-                    >
-                      {label}
-                    </Badge>
-                  ))}
-                  {user.labels.length === 0 && (
-                    <span className="text-gray-500 dark:text-gray-500">-</span>
-                  )}
-                </div>
-              </TableCell>
-              <TableCell className="text-gray-900 dark:text-gray-300">{user.balance}</TableCell>
               <TableCell className="text-gray-900 dark:text-gray-300">
                 {user.applications}
-              </TableCell>
-              <TableCell className="text-gray-900 dark:text-gray-300">{user.linkedin}</TableCell>
-              <TableCell>
-                <div className="flex gap-1">{getActivityDots(user.activity)}</div>
               </TableCell>
               <TableCell>
                 <Button
