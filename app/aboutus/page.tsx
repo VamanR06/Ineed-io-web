@@ -133,9 +133,11 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Vaman Rajagopal',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Science and Robotics',
     imageAlt: 'Vaman Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/vamanr.jpg',
+    linkedin: 'https://www.linkedin.com/in/vamanr/',
+    github: 'https://github.com/VamanR06'
   },
 ];
 
