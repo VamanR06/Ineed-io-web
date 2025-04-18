@@ -14,7 +14,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
 import { PostgrestError } from '@supabase/supabase-js';
 import Link from 'next/link';
 import { Card } from '../ui/card';
@@ -92,17 +91,6 @@ export function LeaderboardTable() {
     if (score >= 70) return 'bg-[#84cc16]';
     if (score >= 60) return 'bg-[#eab308]';
     return 'bg-[#f97316]';
-  };
-
-  const getActivityDots = (activity: number) => {
-    return Array(5)
-      .fill(0)
-      .map((_, i) => (
-        <div
-          key={i}
-          className={`h-2 w-2 rounded-full ${i < activity ? 'bg-[#3b82f6]' : 'bg-gray-300 dark:bg-[#374151]'}`}
-        />
-      ));
   };
 
   if (error) {

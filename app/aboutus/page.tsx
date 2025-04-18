@@ -35,7 +35,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Ali Monthana',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: '',
     imageAlt: 'Ali Avatar',
     profilePic: '/images/logo.png',
   },
@@ -57,16 +57,9 @@ const teamMembers: TeamMember[] = [
     website: 'https://brandon-shin.com/',
   },
   {
-    name: 'Darren Du',
-    role: 'Developer',
-    majorMinor: 'Add your major and minor here',
-    imageAlt: 'Darren Avatar',
-    profilePic: '/images/logo.png',
-  },
-  {
     name: 'Connor Woods',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: '',
     imageAlt: 'Connor Avatar',
     profilePic: '/images/logo.png',
   },
@@ -79,13 +72,6 @@ const teamMembers: TeamMember[] = [
     github: 'https://github.com/dtnguyen0',
     website: 'https://davidn.netlify.app/',
     profilePic: '/images/team/DavidProfHeadshot2.jpg',
-  },
-  {
-    name: 'Dylan Kim',
-    role: 'Developer',
-    majorMinor: 'Add your major and minor here',
-    imageAlt: 'Dylan Avatar',
-    profilePic: '/images/logo.png',
   },
   {
     name: 'Felix Shen',
@@ -115,13 +101,6 @@ const teamMembers: TeamMember[] = [
     profilePic: '/images/team/kedarb.jpg',
   },
   {
-    name: 'Samuel Konigbagbe',
-    role: 'Developer',
-    majorMinor: 'Add your major and minor here',
-    imageAlt: 'Samuel Avatar',
-    profilePic: '/images/logo.png',
-  },
-  {
     name: 'Tyler Arciniaga',
     role: 'Developer',
     majorMinor: 'Computer Engineering',
@@ -137,7 +116,7 @@ const teamMembers: TeamMember[] = [
     imageAlt: 'Vaman Avatar',
     profilePic: '/images/team/vamanr.jpg',
     linkedin: 'https://www.linkedin.com/in/vamanr/',
-    github: 'https://github.com/VamanR06'
+    github: 'https://github.com/VamanR06',
   },
 ];
 
