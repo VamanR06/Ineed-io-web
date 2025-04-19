@@ -35,9 +35,12 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Ali Monthana',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Sceience',
     imageAlt: 'Ali Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/alimothana.jpg',
+    linkedin: 'https://www.linkedin.com/in/alimothana/',
+    github: 'https://github.com/amothana',
+    website: 'https://alimothana.com/',
   },
   {
     name: 'Anthony Nguyen',
@@ -57,16 +60,9 @@ const teamMembers: TeamMember[] = [
     website: 'https://brandon-shin.com/',
   },
   {
-    name: 'Darren Du',
-    role: 'Developer',
-    majorMinor: 'Add your major and minor here',
-    imageAlt: 'Darren Avatar',
-    profilePic: '/images/logo.png',
-  },
-  {
     name: 'Connor Woods',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: '',
     imageAlt: 'Connor Avatar',
     profilePic: '/images/logo.png',
   },
@@ -81,20 +77,14 @@ const teamMembers: TeamMember[] = [
     profilePic: '/images/team/DavidProfHeadshot2.jpg',
   },
   {
-    name: 'Dylan Kim',
-    role: 'Developer',
-    majorMinor: 'Add your major and minor here',
-    imageAlt: 'Dylan Avatar',
-    profilePic: '/images/logo.png',
-  },
-  {
     name: 'Felix Shen',
     role: 'Developer',
     majorMinor: 'Computer Science',
     linkedin: 'https://www.linkedin.com/in/felix-shen-a40195299',
     github: 'https://github.com/Blank-FS',
     imageAlt: 'Felix Avatar',
-    profilePic: '/images/team/felixTemp.png',
+    website: 'https://blank-fs.github.io/',
+    profilePic: '/images/team/felixshn.jpg',
   },
   {
     name: 'Forest Qin',
@@ -115,13 +105,6 @@ const teamMembers: TeamMember[] = [
     profilePic: '/images/team/kedarb.jpg',
   },
   {
-    name: 'Samuel Konigbagbe',
-    role: 'Developer',
-    majorMinor: 'Add your major and minor here',
-    imageAlt: 'Samuel Avatar',
-    profilePic: '/images/logo.png',
-  },
-  {
     name: 'Tyler Arciniaga',
     role: 'Developer',
     majorMinor: 'Computer Engineering',
@@ -133,9 +116,11 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Vaman Rajagopal',
     role: 'Developer',
-    majorMinor: 'Add your major and minor here',
+    majorMinor: 'Computer Science and Robotics',
     imageAlt: 'Vaman Avatar',
-    profilePic: '/images/logo.png',
+    profilePic: '/images/team/vamanr.jpg',
+    linkedin: 'https://www.linkedin.com/in/vamanr/',
+    github: 'https://github.com/VamanR06',
   },
 ];
 
